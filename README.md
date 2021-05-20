@@ -17,3 +17,11 @@ Resources
 * [QuickStart](https://opensource.adobe.com/pdftools-sdk-docs/beta/extract/index.html#)
 * [Samples](https://github.com/adobe/pdfservices-extract-python-sdk-samples)
 * [API Reference](https://opensource.adobe.com/pdfservices-extract-python-sdk-samples/apidocs/index.html)
+
+### Contributing
+
+Contributions are welcome! Read the [Contributing Guide](.github/CONTRIBUTING.md) for more information.
+
+### Licensing
+
+This project is licensed under the Apache2 License. See [LICENSE](LICENSE.md) for more information.
