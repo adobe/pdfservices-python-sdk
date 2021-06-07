@@ -27,7 +27,8 @@ from adobe.pdfservices.operation.pdfops.options.extractpdf.extract_pdf_options i
 
 
 class ExtractPDFOperation(Operation):
-    """An Operation that extracts pdf elements such as text, images, tables in a structured format from a PDF.
+    """An Operation that extracts pdf elements such as text and tables in a structured format from a PDF, along
+    with renditions for tables and figures.
 
     Sample usage.
 
@@ -37,7 +38,7 @@ class ExtractPDFOperation(Operation):
             base_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
             credentials = Credentials.service_account_credentials_builder() \\
-                .from_file(base_path + "/pdftools-api-credentials.json") \\
+                .from_file(base_path + "/pdfservices-api-credentials.json") \\
                 .build()
 
             execution_context = ExecutionContext.create(credentials)
@@ -47,9 +48,10 @@ class ExtractPDFOperation(Operation):
             extract_pdf_operation.set_input(source)
 
             extract_pdf_options: ExtractPDFOptions = ExtractPDFOptions.builder() \\
-                .with_elements_to_extract([PDFElementType.TEXT, PDFElementType.TABLES]) \\
-                .with_elements_to_extract_renditions([PDFElementType.TABLES, PDFElementType.FIGURES]) \\
+                .with_elements_to_extract([ExtractElementType.TEXT, ExtractElementType.TABLES]) \\
+                .with_elements_to_extract_renditions([ExtractRenditionsElementType.TABLES, ExtractRenditionsElementType.FIGURES]) \\
                 .with_get_char_info(True) \\
+                .with_include_styling_info(True) \\
                 .build()
             extract_pdf_operation.set_options(extract_pdf_options)
 

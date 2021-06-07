@@ -1,7 +1,7 @@
-PDFServices Extract Python SDK
+PDFServices Python SDK
 =======================
 
-The Adobe PDFServices Extract Python SDK provides APIs for extracting elements and renditions from PDFs.
+The Adobe PDFServices Python SDK provides ML APIs. Currently, it contains only Extract API, for extracting elements and renditions from PDFs.
 
 Adobe Document Cloud’s simple cloud-based APIs help you get up and running quickly. Once you’ve received your developer credential, download and set up the sample project. After you’re familiar with the APIs, leverage the samples in your own server-side code.
 
@@ -9,19 +9,11 @@ Installation
 ------------
 
 * Install [Python](https://www.python.org/) 3.6 or higher. 
-* pip install pdfservices-extract-sdk
+* pip install pdfservices-sdk
 
 Resources
 ------------
 
-* [QuickStart](https://opensource.adobe.com/pdftools-sdk-docs/beta/extract/index.html#)
-* [Samples](https://github.com/adobe/pdfservices-extract-python-sdk-samples)
-* [API Reference](https://opensource.adobe.com/pdfservices-extract-python-sdk-samples/apidocs/index.html)
-
-### Contributing
-
-Contributions are welcome! Read the [Contributing Guide](.github/CONTRIBUTING.md) for more information.
-
-### Licensing
-
-This project is licensed under the Apache2 License. See [LICENSE](LICENSE.md) for more information.
+* [QuickStart](https://www.adobe.com/go/pdftoolsapi_doc)
+* [Samples](https://www.adobe.com/go/pdfservices_python_samples)
+* [API Reference](https://www.adobe.com/go/pdfservices_python_docs)

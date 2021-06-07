@@ -12,10 +12,18 @@ adobe.pdfservices.operation.pdfops.options.extractpdf.extract\_pdf\_options modu
    :undoc-members:
    :show-inheritance:
 
-adobe.pdfservices.operation.pdfops.options.extractpdf.pdf\_element\_type module
+adobe.pdfservices.operation.pdfops.options.extractpdf.extract\_element\_type module
 -------------------------------------------------------------------------------
 
-.. automodule:: adobe.pdfservices.operation.pdfops.options.extractpdf.pdf_element_type
+.. automodule:: adobe.pdfservices.operation.pdfops.options.extractpdf.extract_element_type
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+adobe.pdfservices.operation.pdfops.options.extractpdf.extract_renditions\_element\_type module
+-------------------------------------------------------------------------------
+
+.. automodule:: adobe.pdfservices.operation.pdfops.options.extractpdf.extract_renditions_element_type
    :members:
    :undoc-members:
    :show-inheritance:

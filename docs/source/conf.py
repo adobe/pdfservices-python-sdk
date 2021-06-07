@@ -17,7 +17,7 @@ sys.path.insert(0, os.path.abspath('../../src'))
 
 # -- Project information -----------------------------------------------------
 
-project = 'pdfservices-extract-sdk'
+project = 'pdfservices-sdk'
 copyright = '2021, Adobe'
 author = 'Adobe'
 

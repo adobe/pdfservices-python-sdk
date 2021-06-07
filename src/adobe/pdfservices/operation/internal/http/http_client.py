@@ -50,8 +50,8 @@ def process_request(http_request: HttpRequest, success_status_codes: List,
 def _append_default_headers(headers: dict):
     # Set SDK Info header
     headers[DefaultHeaders.DC_APP_INFO_HEADER_KEY] = "{lang}-{name}-{version}".format(lang="python",
-                                                                                      name='pdfservices-extract-sdk',
-                                                                                      version='1.0.0-beta1')
+                                                                                      name='pdfservices-sdk',
+                                                                                      version='1.0.0')
     # Set default API Key
     headers[DefaultHeaders.X_API_KEY_HEADER_NAME] = DefaultHeaders.X_API_KEY_HEADER_VALUE
     headers[DefaultHeaders.ACCEPT_HEADER_NAME] = DefaultHeaders.JSON_TXT_CONTENT_TYPE
