@@ -34,24 +34,30 @@ class StructuredData:
         self.data = data
         self.parse_data()
 
-    def get_pdfelement_type(self, type):
-        # TODO: where in java the cid: usecase is handled
-        if type.find(":") >= 0:
-            type = type.split(":")[1]
-        return self.elementContentNameToType[type]
+    def get_pdfelement_type(self, filename):
+        if filename.find(":") >= 0:
+            filename = filename.split(":")[1]
+        return self.elementContentNameToType.get(filename, "renditions")
 
     def parse_data(self):
         if "elements" in self.data:
-            elements = self.data["elements"]
-            for element in elements:
-                rendition_type = self.pdf_rendition_identifier(element)
-                if rendition_type:
-                    fileNames = element["filePaths"]
-                    for idx, fileName in enumerate(fileNames):
-                        self.elementContentNameToType[fileName] = rendition_type
-                        fileNames[idx] = "{dir}{path_sep}{file_name}".format(dir=rendition_type.lower(),
-                                                                             path_sep=os.path.sep,
-                                                                             file_name=fileName)
+            self.update_elements_path_for_tables_and_renditions(self.data["elements"])
+
+    def update_elements_path_for_tables_and_renditions(self, elements):
+        for element in elements:
+            rendition_type = self.pdf_rendition_identifier(element)
+            if rendition_type:
+                fileNames = element["filePaths"]
+                for idx, fileName in enumerate(fileNames):
+                    self.elementContentNameToType[fileName] = rendition_type
+                    fileNames[idx] = "{dir}{path_sep}{file_name}".format(dir=rendition_type.lower(),
+                                                                         path_sep=os.path.sep,
+                                                                         file_name=fileName)
+            # Kids is a list of elements which is present if styling info is included
+            Kids = element.get("Kids", [])
+            if len(Kids) > 0:
+                self.update_elements_path_for_tables_and_renditions(Kids)
+
 
     def pdf_rendition_identifier(self, pdf_element):
         if self.is_rendition_element(pdf_element):
@@ -118,13 +124,10 @@ class ExtractDataParser:
         ero: ExtractRenditionOutput = ExtractRenditionOutput()
         ero.file_name = file_name
         ero.body = body_part
-        multipart_formfield = extract_output_metadata.indexed_meta_info[file_name]
-        file_format = multipart_formfield.dc_format
-        extension = ExtractDataParser.get_extension(file_format)
-        ero.rendition_extension = extension
-        pdf_element_type = structured_data.get_pdfelement_type(
-            ExtractDataParser.filename_with_extension(file_name, extension))
-        ero.pdf_element_type = pdf_element_type
+        file_format = extract_output_metadata.indexed_meta_info[file_name].dc_format
+        ero.rendition_extension = ExtractDataParser.get_extension(file_format)
+        ero.pdf_element_type = structured_data.get_pdfelement_type(
+            ExtractDataParser.filename_with_extension(file_name, ero.rendition_extension))
         return ero
 
     def get_output_metadata(self, analyzer_str):

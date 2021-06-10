@@ -7,25 +7,25 @@ def parse_requirements(filename, session=None):
     return [line for line in lineiter if line and not line.startswith("#")]
 
 
-with open("README.md", "r") as fh:
+with open("README.md", "r", encoding='utf-8') as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="pdfservices-extract-sdk",
-    version="1.0.0-beta1",
+    name="pdfservices-sdk",
+    version="1.0.0",
     author='Adobe Document Services',
-    author_email='extractapi@adobe.com',
+    author_email='Adobe',
     license='Apache2',
-    description="Adobe Document Services Extract PDF API Client Library",
+    description="Adobe PDFServices Client Library",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://opensource.adobe.com/pdftools-sdk-docs/beta/extract/index.html#",
+    url="https://www.adobe.com/go/pdftoolsapi_doc",
     package_dir={'': 'src'},
     packages=setuptools.find_packages('src'),
     python_requires=">=3.6",
     install_requires=parse_requirements('requirements.txt', session=False),
     classifiers=[
-        "Development Status :: 4 - Beta",
+        "Development Status :: 5 - Production/Stable",
         "Intended Audience :: Developers",
         "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
