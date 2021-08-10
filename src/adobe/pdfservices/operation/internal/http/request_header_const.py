@@ -19,5 +19,4 @@ class DefaultHeaders:
     DC_APP_INFO_HEADER_KEY = "x-api-app-info"
     X_DCSDK_OPS_INFO_HEADER_NAME = "x-dcsdk-ops-info"
     SESSION_TOKEN_REQUEST_ID_HEADER_KEY = "X-DEBUG-ID"
-    X_API_KEY_HEADER_VALUE = "AdobeDCPlatformExtractKey"
     JSON_TXT_CONTENT_TYPE = "application/json, text/plain, */*"
