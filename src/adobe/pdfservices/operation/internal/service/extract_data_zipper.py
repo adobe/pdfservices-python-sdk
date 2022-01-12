@@ -22,7 +22,7 @@ class ExtractDataZipper:
     rdata = []
 
     def add_structured_data(self, data):
-        self.zip_file.writestr(data= json.dumps(data.data), zinfo_or_arcname= data.get_file_name())
+        self.zip_file.writestr(data= json.dumps(data.data, ensure_ascii=False).encode('utf-8'), zinfo_or_arcname= data.get_file_name())
 
     def add_rendition_data(self, rdata):
         file_name = rdata.file_name + rdata.rendition_extension
