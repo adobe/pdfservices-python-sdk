@@ -20,3 +20,7 @@ class Authenticator(ABC):
     @abstractmethod
     def refresh_token(self):
         pass
+
+    @abstractmethod
+    def get_api_key(self):
+        pass

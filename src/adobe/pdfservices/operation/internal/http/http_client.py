@@ -34,6 +34,7 @@ def process_request(http_request: HttpRequest, success_status_codes: List,
         # get token and append auth header
         access_token = http_request.authenticator.session_token().access_token
         http_request.headers[DefaultHeaders.AUTHORIZATION_HEADER_NAME] = "Bearer " + access_token
+        http_request.headers[DefaultHeaders.X_API_KEY_HEADER_NAME] = http_request.authenticator.get_api_key()
 
     # retry the request if it fails with 401 and specific error code
     while (True):
@@ -51,9 +52,7 @@ def _append_default_headers(headers: dict):
     # Set SDK Info header
     headers[DefaultHeaders.DC_APP_INFO_HEADER_KEY] = "{lang}-{name}-{version}".format(lang="python",
                                                                                       name='pdfservices-sdk',
-                                                                                      version='1.0.0')
-    # Set default API Key
-    headers[DefaultHeaders.X_API_KEY_HEADER_NAME] = DefaultHeaders.X_API_KEY_HEADER_VALUE
+                                                                                      version='1.0.2')
     headers[DefaultHeaders.ACCEPT_HEADER_NAME] = DefaultHeaders.JSON_TXT_CONTENT_TYPE
 
 
