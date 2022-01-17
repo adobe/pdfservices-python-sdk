@@ -48,7 +48,7 @@ class JwtAuthenticator(Authenticator):
         return int((datetime.now() - self.token.expired_at).seconds / 60)
 
     def refresh_token(self):
-        jwt_token = self.prepare_jwt()
+        jwt_token = self._prepare_jwt()
         url = "{jwt_endpoint}/{jwt_uri_suffix}".format(
             jwt_endpoint=self.service_account_configuration.ims_base_uri,
             jwt_uri_suffix=ServiceConstants.JWT_URI_SUFFIX
@@ -66,6 +66,9 @@ class JwtAuthenticator(Authenticator):
         except Exception:
             raise SdkException("Exception in fetching access token", sys.exc_info())
         return self.token
+
+    def get_api_key(self):
+        return self.service_account_configuration.client_id
 
     def handle_ims_failure(self, response):
         self._logger.error(
@@ -86,7 +89,7 @@ class JwtAuthenticator(Authenticator):
                                  error_message=content.get("error_description", None),
                                  request_tracking_id=ResponseUtil.get_request_tracking_id_from_response(response, True))
 
-    def prepare_jwt(self):
+    def _prepare_jwt(self):
         audience = "{base_uri}/{audience_suffix}{client_id}".format(
             base_uri=self.service_account_configuration.ims_base_uri,
             audience_suffix=ServiceConstants.JWT_AUDIENCE_SUFFIX,
