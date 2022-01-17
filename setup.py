@@ -14,7 +14,7 @@ setuptools.setup(
     name="pdfservices-sdk",
     version="1.0.2",
     author='Adobe Document Services',
-    author_email='Adobe',
+    author_email='extractapi@adobe.com',
     license='Apache2',
     description="Adobe PDFServices Client Library",
     long_description=long_description,
