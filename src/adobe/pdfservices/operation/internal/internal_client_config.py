@@ -32,6 +32,9 @@ class InternalClientConfig(ClientConfig):
     def get_cpf_extract_service_id(self):
         return self._cpf_extract_analyzer_id
 
+    def get_cpf_autotag_service_id(self):
+        return ServiceConstants.CPF_OPS_AUTOTAG_ANALYZER_ID
+
     def get_connect_timeout(self):
         return self._connect_timeout/1000 if self._connect_timeout else None
 

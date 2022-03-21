@@ -47,10 +47,12 @@ class ServiceConstants:
     JWT_URI_SUFFIX = 'ims/exchange/jwt/'
     JWT_AUDIENCE_SUFFIX = 'c/'
     JWT_CLAIM = 's/ent_documentcloud_sdk'
-    OPERATION_RESULT_TEMP_DIRECTORY = 'extractSdkResult'
+    OPERATION_RESULT_TEMP_DIRECTORY = 'sdkResult'
     CPF_OPS_CREATE_URI = 'https://cpf-ue1.adobe.io/ops/:create'
     CPF_OPS_EXTRACT_ANALYZER_ID = 'urn:aaid:cpf:58af6e2c-1f0c-400d-9188-078000185695'
+    CPF_OPS_AUTOTAG_ANALYZER_ID = 'urn:aaid:cpf:6aec0d31-27dd-40e2-8b9c-926b1e50ade6'
     TEXT_MIME_TYPE = "text/directory"
     EXTRACT_OPERATION_NAME = "EXTRACT_PDF"
+    AUTOTAG_OPERATION_NAME = "AUTOTAG_PDF"
     CONTENT_ANALYZER_REQUESTS_STRING = "contentAnalyzerRequests"
     CONTENT_ANALYZER_RESPONSE_STRING = "contentAnalyzerResponse"

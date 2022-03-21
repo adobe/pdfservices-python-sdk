@@ -19,6 +19,7 @@ import requests
 from adobe.pdfservices.operation.exception.exceptions import ServiceApiException, SdkException
 from adobe.pdfservices.operation.internal.api.dto.request.platform.cpf_content_analyzer_req import \
     CPFContentAnalyzerRequests
+from adobe.pdfservices.operation.internal.exceptions import OperationException
 from adobe.pdfservices.operation.internal.http import http_client
 from adobe.pdfservices.operation.internal.http.http_method import HttpMethod
 from adobe.pdfservices.operation.internal.http.http_request import HttpRequest
@@ -36,7 +37,6 @@ class CPFApi:
     @staticmethod
     def cpf_create_ops_api(context: InternalExecutionContext, analyzer_request: CPFContentAnalyzerRequests,
                            source_files: List[FileRefImpl], operation):
-
         start_time = datetime.now()
         multipart_dict: dict = {
             ServiceConstants.CONTENT_ANALYZER_REQUESTS_STRING:
