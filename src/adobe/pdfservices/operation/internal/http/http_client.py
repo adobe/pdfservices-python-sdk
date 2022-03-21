@@ -45,6 +45,13 @@ def process_request(http_request: HttpRequest, success_status_codes: List,
             # Only single retry is required in case of token expiry
             http_request.retryable = False
         else:
+            if response.status_code not in (200,202):
+                raise OperationException(message=response.text,
+                                         status_code=response.status_code,
+                                         error_code=response.reason,
+                                         error_message=response.text,
+                                         request_tracking_id=ResponseUtil.get_request_tracking_id_from_response(
+                                             response, False))
             return response
 
 
@@ -52,7 +59,7 @@ def _append_default_headers(headers: dict):
     # Set SDK Info header
     headers[DefaultHeaders.DC_APP_INFO_HEADER_KEY] = "{lang}-{name}-{version}".format(lang="python",
                                                                                       name='pdfservices-sdk',
-                                                                                      version='1.0.2')
+                                                                                      version='1.0.2b1')
     headers[DefaultHeaders.ACCEPT_HEADER_NAME] = DefaultHeaders.JSON_TXT_CONTENT_TYPE
 
 

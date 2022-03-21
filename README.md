@@ -16,4 +16,4 @@ Resources
 
 * [QuickStart](https://www.adobe.com/go/pdftoolsapi_doc)
 * [Samples](https://www.adobe.com/go/pdfservices_python_samples)
-* [API Reference](https://www.adobe.com/go/pdfservices_python_docs)
+* [API Reference](https://www.adobe.com/go/pdfservices_python_docs) 
