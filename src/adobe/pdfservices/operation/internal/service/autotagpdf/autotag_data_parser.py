@@ -18,8 +18,8 @@ from adobe.pdfservices.operation.io.file_ref import FileRef
 class AutotagDataParser:
     content: str = None
     content_type_header: str = None
-    pdf_file_path: FileRef
-    xls_file_path: FileRef
+    pdf_file_path: str
+    xls_file_path: str
 
     def __init__(self, content, content_type_header, pdf_file_path, xls_file_path):
         self.content = content
@@ -33,11 +33,13 @@ class AutotagDataParser:
             cds = cds.decode()
             return cds.replace("form-data; name=\"", "").replace("\"", "")
 
-    def save_file(self, body, filename):
+    def save_file(self, body, filename, autotag_pdf_output_files: AutotagPDFOutputFiles):
         if 'taggedoutput' in filename:
             file_path = self.pdf_file_path
+            autotag_pdf_output_files.pdf_file = FileRef.create_from_local_file(self.pdf_file_path)
         elif 'reportoutput' in filename:
             file_path = self.xls_file_path
+            autotag_pdf_output_files.xls_file = FileRef.create_from_local_file(self.xls_file_path)
         else:
             return
         with open(file_path, 'wb') as file:
@@ -46,12 +48,10 @@ class AutotagDataParser:
     def parse(self):
         decoded_content = MultipartDecoder(self.content,
                                            self.content_type_header)
+        autotag_pdf_output_files = AutotagPDFOutputFiles()
+
         for part in decoded_content.parts:
             cds = part.headers[b'Content-Disposition']
             key = AutotagDataParser.get_key_dstring(cds)
-            self.save_file(part.content, key)
-
-        autotag_pdf_output_files = AutotagPDFOutputFiles()
-        autotag_pdf_output_files.pdf_file = self.pdf_file_path
-        autotag_pdf_output_files.xls_file = self.xls_file_path
+            self.save_file(part.content, key, autotag_pdf_output_files)
         return autotag_pdf_output_files

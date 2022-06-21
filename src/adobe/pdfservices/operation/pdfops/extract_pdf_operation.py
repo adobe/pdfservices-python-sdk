@@ -143,7 +143,7 @@ class ExtractPDFOperation(Operation):
             self._logger.error("Operation instance must only be invoked once")
             raise ValueError("Operation instance must not be reused, can only be invoked once")
 
-    def _validate(self, execution_context:InternalExecutionContext):
+    def _validate(self, execution_context: InternalExecutionContext):
         if not execution_context:
             raise ValueError("Client Context not initialized before invoking the operation")
         execution_context.validate()

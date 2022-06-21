@@ -22,12 +22,10 @@ class AutotagPDFOutputWithReport(Outputs, json.JSONDecoder):
 
     json_hint = {
         'elements_pdf_format' : {'name' : 'tagged-pdf', 'type' : Document},
-        'elements_xls_format' : { 'name' : 'report', 'type' : Document}
+        'elements_xls_format' : {'name' : 'report', 'type' : Document}
     }
-
 
     def __init__(self):
         super().__init__()
         self.elements_pdf_format = Document(ExtensionMediaTypeMapping.PDF, "taggedoutput")
         self.elements_xls_format = Document(ExtensionMediaTypeMapping.XLSX, "reportoutput")
-

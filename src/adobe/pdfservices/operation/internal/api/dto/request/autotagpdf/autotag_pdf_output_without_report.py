@@ -19,7 +19,7 @@ from adobe.pdfservices.operation.internal.service_constants import ServiceConsta
 class AutotagPDFOutputWithoutReport(Outputs, json.JSONDecoder):
 
     json_hint = {
-        'elements_pdf_format': {'name': 'tagged-pdf', 'type': Document},
+        'elements_pdf_format' : {'name' : 'tagged-pdf', 'type' : Document},
     }
 
     def __init__(self):

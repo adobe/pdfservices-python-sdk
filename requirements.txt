@@ -9,7 +9,7 @@ polling==0.3.1
 polling2==0.4.6
 pycparser==2.20
 Pygments==2.8.0
-PyJWT==2.0.1
+PyJWT==2.4.0
 pyparsing==2.4.7
 PyYAML==5.4.1
 requests==2.25.1
