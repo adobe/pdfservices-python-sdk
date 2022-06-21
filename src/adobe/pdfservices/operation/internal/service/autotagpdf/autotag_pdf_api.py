@@ -36,7 +36,7 @@ class AutotagPDFAPI:
         autotag_pdf_params = AutotagPDFParams.from_autotag_pdf_options(autotag_pdf_options)
         inputs = Inputs(ExtensionMediaTypeMapping.PDF, CPFParams(autotag_pdf_params))
         autotag_service_id = context.client_config.get_cpf_autotag_service_id()
-        if autotag_pdf_options.generate_report == True:
+        if autotag_pdf_options is not None and autotag_pdf_options.generate_report:
             autotag_pdf_output = AutotagPDFOutputWithReport()
         else:
             autotag_pdf_output = AutotagPDFOutputWithoutReport()

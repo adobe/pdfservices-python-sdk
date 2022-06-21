@@ -27,14 +27,17 @@ from adobe.pdfservices.operation.pdfops.options.autotagpdf.autotag_pdf_options i
 
 
 class AutotagPDFOperation(Operation):
-    """ An operation that autotags PDF file and generate tagged PDF file and report file.
+    """ An operation that enables clients to improve accessibility of the PDF document. It generates the tagged PDF,
+    along with an optional XLSX report providing detailed information about the added tags. The operation replaces any
+    existing tags within the input document, so it provides the most benefit for PDFs that have no tags or low-quality
+    tags.
 
     Sample usage.
 
     .. code-block:: python
 
         try:
-            base_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+            base_path = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
             credentials = Credentials.service_account_credentials_builder() \\
                 .from_file(base_path + "/pdfservices-api-credentials.json") \\
@@ -43,23 +46,30 @@ class AutotagPDFOperation(Operation):
             execution_context = ExecutionContext.create(credentials)
             autotag_pdf_operation = AutotagPDFOperation.create_new()
 
-            source = FileRef.create_from_local_file(base_path + "/resources/autotagPdfInput.pdf")
+            input_file_path = 'autotagPdfInput.pdf'
+            source = FileRef.create_from_local_file(base_path + "/resources/" + input_file_path)
             autotag_pdf_operation.set_input(source)
 
             autotag_pdf_options: AutotagPDFOptions = AutotagPDFOptions.builder() \\
-                .generate_report() \\
-                .shift_headings() \\
-                .pdf_version(PDFVersion.v17,PDFVersion.V20) \\
+                .with_shift_headings() \\
+                .with_generate_report() \\
                 .build()
             autotag_pdf_operation.set_options(autotag_pdf_options)
 
-            result: AutotagOutputFiles = autotag_pdf_operation.execute(execution_context)
+            autotag_output_files: AutotagPDFOutputFiles = autotag_pdf_operation.execute(execution_context)
 
-            result.pdf_file().save_as(base_path + "/output/AutotagPdf.pdf")
-            if(result.pdf_file() != none):
-                result.save_as(base_path +"/output/AutotagPdfReport.xlsx")
-        except (ServiceApiException, ServiceUsageException, SdkException):
-            logging.exception("Exception encountered while executing operation")
+            input_file_name = Path(input_file_path).stem
+            base_output_path = base_path + "/output/AutotagPDFWithOptions/"
+
+            Path(base_output_path).mkdir(parents=True, exist_ok=True)
+            tagged_pdf_path = f'{base_output_path}{input_file_name}-tagged.pdf'
+            report_path = f'{base_output_path}{input_file_name}-report.xlsx'
+
+            autotag_output_files.save_pdf_file(tagged_pdf_path)
+            autotag_output_files.save_xls_file(report_path)
+
+        except (ServiceApiException, ServiceUsageException, SdkException) as e:
+            logging.exception(f'Exception encountered while executing operation: {e}')
 
     """
 
@@ -94,7 +104,7 @@ class AutotagPDFOperation(Operation):
         :rtype: AutotagPDFOperation
         """
         if not isinstance(autotag_pdf_options, AutotagPDFOptions):
-            raise ValueError("Only ExtractPDFOptions type instance is accepted")
+            raise ValueError("Only AutotagPDFOptions type instance is accepted")
         self._autotag_pdf_options = autotag_pdf_options
         return self
 
@@ -114,13 +124,15 @@ class AutotagPDFOperation(Operation):
 
     def execute(self, execution_context: ExecutionContext):
         """
-        Executes this operation synchronously using the supplied context and returns a new FileRef instance for the resulting tagged pdf file and an optional report.
-        The resulting file may be stored in the system temporary directory. See :class:`adobe.pdfservices.operation.io.file_ref.FileRef` for how temporary resources are cleaned up.
+        Executes this operation synchronously using the supplied context and returns a new AutotagPDFOutputFiles
+        instance for the generated tagged pdf file and XLSX report file. The resulting file may be stored in the system
+        temporary directory.
+        See :class:`adobe.pdfservices.operation.io.file_ref.FileRef` for how temporary resources are cleaned up.
 
         :param execution_context: The context in which the operation will be executed.
         :type execution_context: ExecutionContext
-        :return: The FileRef to the result.
-        :rtype: FileRef
+        :return: The instance of AutotagPDFOutputFiles.
+        :rtype: AutotagPDFOutputFiles
         :raises ServiceApiException: if an API call results in an error response.
         """
         try:
@@ -130,13 +142,18 @@ class AutotagPDFOperation(Operation):
             location = AutotagPDFAPI.autotag_pdf(execution_context, self._source_file_ref, self._autotag_pdf_options)
             self._is_invoked = True
             file_location_pdf = get_temporary_destination_path(target_extension=ExtensionMediaTypeMapping.PDF.extension)
-            file_location_xlsx = get_temporary_destination_path(target_extension=ExtensionMediaTypeMapping.XLSX.extension)
-            autotag_pdf_output_files: AutotagPDFOutputFiles = AutotagPDFAPI.download_and_save(location=location, context=execution_context, file_location_pdf=file_location_pdf, file_location_xlsx=file_location_xlsx)
+            file_location_xlsx = get_temporary_destination_path(
+                target_extension=ExtensionMediaTypeMapping.XLSX.extension)
+            autotag_pdf_output_files: AutotagPDFOutputFiles = AutotagPDFAPI.download_and_save(location=location,
+                                                                                              context=execution_context,
+                                                                                              file_location_pdf=file_location_pdf,
+                                                                                              file_location_xlsx=file_location_xlsx)
             self._logger.info("Autotag Operation Successful - Transaction ID: %s", get_transaction_id(location))
             return autotag_pdf_output_files
         except OperationException as oex:
             raise ServiceApiException(message=oex.error_message, error_code=oex.error_code,
-                                      request_tracking_id=oex.request_tracking_id, status_code=oex.status_code) from None
+                                      request_tracking_id=oex.request_tracking_id,
+                                      status_code=oex.status_code) from None
 
     def _validate_invocation_count(self):
         if self._is_invoked:
