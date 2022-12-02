@@ -15,6 +15,7 @@ class ExtensionMediaTypeMapping(str, enum.Enum):
     PDF = "application/pdf"
     ZIP = "application/zip"
     XLSX = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+    JSON = "application/json"
 
     @property
     def mime_type(self):

@@ -9,7 +9,7 @@
 # governing permissions and limitations under the License.
 import json
 
-from adobe.pdfservices.operation.internal.service_constants import ServiceConstants
+from adobe.pdfservices.operation.internal.constants.service_constants import ServiceConstants
 from adobe.pdfservices.operation.internal.util import file_utils
 
 
@@ -19,9 +19,8 @@ class ClientConfig(object):
     """
     _CONNECT_TIMEOUT_KEY = "connectTimeout"
     _READ_TIMEOUT_KEY = "readTimeout"
-    _CPF_SERVICES_KEY = "cpfServices"
-    _CPF_SERVICES_OPS_CREATE_KEY = "cpfOpsCreateUri"
-    _CPF_EXTRACT_ANALYZER_ID = "cpfExtractAnalyzerId"
+    _PDF_SERVICES = "pdf_services"
+    _PDF_SERVICES_URI = "pdf_services_uri"
 
     @staticmethod
     def builder():
@@ -42,8 +41,7 @@ class ClientConfig(object):
         def __init__(self):
             self._connect_timeout = ServiceConstants.HTTP_CONNECT_TIMEOUT
             self._read_timeout = ServiceConstants.HTTP_READ_TIMEOUT
-            self._cpf_ops_create_uri = ServiceConstants.CPF_OPS_CREATE_URI
-            self._cpf_extract_analyzer_id = ServiceConstants.CPF_OPS_EXTRACT_ANALYZER_ID
+            self._pdf_services_uri = ServiceConstants.PDF_SERVICES_URI
 
         # the time it allows for the client to establish a connection to the server
         def with_connect_timeout(self, connect_timeout: int):
@@ -56,6 +54,17 @@ class ClientConfig(object):
             :rtype: ClientConfig.Builder
             """
             self._connect_timeout = connect_timeout
+            return self
+
+        def with_pdf_services_uri(self, pdf_services_uri: str):
+            """Sets the pdf services uri link.
+
+            :param pdf_services_uri: url for the new rest api
+            :type pdf_services_uri: str
+            :return: This Builder instance to add any additional parameters.
+            :rtype: ClientConfig.Builder
+            """
+            self._pdf_services_uri = pdf_services_uri
             return self
 
         # the time it will wait on a response once connection is estalished
@@ -88,18 +97,19 @@ class ClientConfig(object):
 
                 {
                     "connectTimeout": "4000",
-                    "readTimeout": "20000"
+                    "readTimeout": "20000",
+                    "region": "eu"
                 }
             """
             config_json_str = file_utils.read_conf_file_content(client_config_file_path)
             config_dict = json.loads(config_json_str)
             self._connect_timeout = int(config_dict.get(ClientConfig._CONNECT_TIMEOUT_KEY, self._connect_timeout))
             self._read_timeout = int(config_dict.get(ClientConfig._READ_TIMEOUT_KEY, self._read_timeout))
-            cpf_services_config = config_dict.get(ClientConfig._CPF_SERVICES_KEY, {})
-            self._cpf_ops_create_uri = cpf_services_config.get(ClientConfig._CPF_SERVICES_OPS_CREATE_KEY,
-                                                               self._cpf_ops_create_uri)
-            self._cpf_extract_analyzer_id = cpf_services_config.get(ClientConfig._CPF_EXTRACT_ANALYZER_ID,
-                                                                    self._cpf_extract_analyzer_id)
+            pdf_services_config = config_dict.get(ClientConfig._PDF_SERVICES)
+            if pdf_services_config:
+                pdf_services_uri_node = pdf_services_config.get(ClientConfig._PDF_SERVICES_URI)
+                if pdf_services_uri_node:
+                    self._pdf_services_uri = pdf_services_uri_node
             return self
 
         def build(self):
@@ -110,5 +120,4 @@ class ClientConfig(object):
             :rtype: ClientConfig
             """
             from adobe.pdfservices.operation.internal.internal_client_config import InternalClientConfig
-            return InternalClientConfig(self._connect_timeout, self._read_timeout, self._cpf_ops_create_uri,
-                                        self._cpf_extract_analyzer_id)
+            return InternalClientConfig(self._connect_timeout, self._read_timeout, self._pdf_services_uri)

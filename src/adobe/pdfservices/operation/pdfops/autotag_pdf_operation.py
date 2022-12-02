@@ -9,6 +9,7 @@
 # governing permissions and limitations under the License.
 
 import logging
+import uuid
 
 from adobe.pdfservices.operation.exception.exceptions import ServiceApiException
 from adobe.pdfservices.operation.execution_context import ExecutionContext
@@ -17,13 +18,14 @@ from adobe.pdfservices.operation.internal.api.dto.request.autotagpdf.autotag_pdf
 from adobe.pdfservices.operation.internal.exceptions import OperationException
 from adobe.pdfservices.operation.internal.extension_media_type_mapping import ExtensionMediaTypeMapping
 from adobe.pdfservices.operation.internal.internal_execution_context import InternalExecutionContext
-from adobe.pdfservices.operation.internal.service.autotagpdf.autotag_pdf_api import AutotagPDFAPI
+from adobe.pdfservices.operation.internal.api.storage_api import StorageApi
 from adobe.pdfservices.operation.internal.util.file_utils import get_transaction_id
 from adobe.pdfservices.operation.internal.util.path_util import get_temporary_destination_path
 from adobe.pdfservices.operation.internal.util.validation_util import validate_media_type
 from adobe.pdfservices.operation.io.file_ref import FileRef
 from adobe.pdfservices.operation.operation import Operation
 from adobe.pdfservices.operation.pdfops.options.autotagpdf.autotag_pdf_options import AutotagPDFOptions
+from adobe.pdfservices.operation.internal.service.autotag_pdf_service import AutotagPDFService
 
 
 class AutotagPDFOperation(Operation):
@@ -108,6 +110,14 @@ class AutotagPDFOperation(Operation):
         self._autotag_pdf_options = autotag_pdf_options
         return self
 
+    def get_options(self):
+        """gets the AutotagPDFOptions.
+
+        :return: The options parameter of the operation
+        :rtype: AutotagPDFOptions
+        """
+        return self._autotag_pdf_options
+
     def set_input(self, source_file_ref: FileRef):
         """
         Sets an input file.
@@ -139,21 +149,32 @@ class AutotagPDFOperation(Operation):
             self._validate(execution_context=execution_context)
             self._logger.info("All validations successfully done. Beginning AutotagPDF operation execution")
 
-            location = AutotagPDFAPI.autotag_pdf(execution_context, self._source_file_ref, self._autotag_pdf_options)
+            x_request_id = str(uuid.uuid1())
+            download_uri_list = AutotagPDFService.autotag_pdf(execution_context, self._source_file_ref, self.get_options(),
+                                                         x_request_id)
             self._is_invoked = True
-            file_location_pdf = get_temporary_destination_path(target_extension=ExtensionMediaTypeMapping.PDF.extension)
-            file_location_xlsx = get_temporary_destination_path(
+            temporary_tagged_pdf_destination_path = get_temporary_destination_path(target_extension=ExtensionMediaTypeMapping.PDF.extension)
+            temporary_report_destination_path = get_temporary_destination_path(
                 target_extension=ExtensionMediaTypeMapping.XLSX.extension)
-            autotag_pdf_output_files: AutotagPDFOutputFiles = AutotagPDFAPI.download_and_save(location=location,
-                                                                                              context=execution_context,
-                                                                                              file_location_pdf=file_location_pdf,
-                                                                                              file_location_xlsx=file_location_xlsx)
-            self._logger.info("Autotag Operation Successful - Transaction ID: %s", get_transaction_id(location))
+            StorageApi.download_and_save_file(execution_context, download_uri_list[0],
+                                           temporary_tagged_pdf_destination_path)
+
+            autotag_pdf_output_files = AutotagPDFOutputFiles()
+            autotag_pdf_output_files.pdf_file = FileRef.create_from_local_file(temporary_tagged_pdf_destination_path)
+
+            if self.get_options() is not None and self.get_options().generate_report == True:
+                StorageApi.download_and_save_file(execution_context, download_uri_list[1],
+                                            temporary_report_destination_path)
+                autotag_pdf_output_files.xls_file = FileRef.create_from_local_file(temporary_report_destination_path)
+
+            self._logger.info("Autotag Operation Successful - Request ID: %s", x_request_id)
             return autotag_pdf_output_files
-        except OperationException as oex:
-            raise ServiceApiException(message=oex.error_message, error_code=oex.error_code,
-                                      request_tracking_id=oex.request_tracking_id,
-                                      status_code=oex.status_code) from None
+
+        except ServiceApiException as se:
+            raise se
+
+        except Exception as ex:
+            raise ex
 
     def _validate_invocation_count(self):
         if self._is_invoked:

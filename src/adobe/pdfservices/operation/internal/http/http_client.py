@@ -10,19 +10,16 @@
 import json
 import logging
 import sys
-from http import HTTPStatus
 from typing import Callable, List
 
-import pkg_resources
 import requests
 
 from adobe.pdfservices.operation.exception.exceptions import SdkException
-from adobe.pdfservices.operation.internal.exceptions import OperationException
 from adobe.pdfservices.operation.internal.http.request_header_const import DefaultHeaders
-from adobe.pdfservices.operation.internal.http.response_util import ResponseUtil, CPF_STATUS, REPORT, ERROR_CODE, \
-    STATUS, TITLE
+from adobe.pdfservices.operation.internal.http.response_util import ResponseUtil
 from adobe.pdfservices.operation.internal.http.http_method import HttpMethod
 from adobe.pdfservices.operation.internal.http.http_request import HttpRequest
+from adobe.pdfservices.operation.internal.exceptions import OperationException
 
 _logger = logging.getLogger(__name__)
 
@@ -40,12 +37,12 @@ def process_request(http_request: HttpRequest, success_status_codes: List,
     while (True):
         response = _execute_request(http_request)
         if _handle_response_and_retry(response, success_status_codes,
-                                      error_response_handler, not http_request.authenticator) and http_request.retryable:
+                                      error_response_handler, not http_request.authenticator, http_request.request_key) and http_request.retryable:
             _force_authenticate(http_request)
             # Only single retry is required in case of token expiry
             http_request.retryable = False
         else:
-            if response.status_code not in (200, 202):
+            if response.status_code not in (200, 201, 202):
                 raise OperationException(message=response.text,
                                          status_code=response.status_code,
                                          error_code=response.reason,
@@ -59,7 +56,7 @@ def _append_default_headers(headers: dict):
     # Set SDK Info header
     headers[DefaultHeaders.DC_APP_INFO_HEADER_KEY] = "{lang}-{name}-{version}".format(lang="python",
                                                                                       name='pdfservices-sdk',
-                                                                                      version='1.0.2b2')
+                                                                                      version='2.0.0b')
     headers[DefaultHeaders.ACCEPT_HEADER_NAME] = DefaultHeaders.JSON_TXT_CONTENT_TYPE
 
 
@@ -84,7 +81,11 @@ def _execute_request(http_request: HttpRequest):
         elif http_request.method == HttpMethod.GET:
             response = requests.get(url=http_request.url, allow_redirects=True, headers=http_request.headers,
                                     timeout=timeout)
-    except Exception:
+        elif http_request.method == HttpMethod.PUT:
+            response = requests.put(url=http_request.url, data=http_request.data, headers=http_request.headers,
+                                    timeout=timeout)
+
+    except Exception as e:
         raise SdkException("Request could not be completed. Possible cause attached!", sys.exc_info())
     return response
 
@@ -95,25 +96,9 @@ def _force_authenticate(http_request: HttpRequest):
     http_request.headers[DefaultHeaders.AUTHORIZATION_HEADER_NAME] = "Bearer " + access_token
 
 
-def _handle_response_and_retry(response: requests.Response, success_status_codes, error_response_handler, is_ims_api):
+def _handle_response_and_retry(response: requests.Response, success_status_codes, error_response_handler, is_ims_api, request_key: str):
     if response.status_code not in success_status_codes:
         _logger.debug(
             "Failure response code {error_code} encountered from backend".format(error_code=response.status_code))
-        should_retry = ResponseUtil.handle_api_failures(response, is_ims_api)
+        should_retry = ResponseUtil.handle_api_failures(response, request_key, is_ims_api)
         return should_retry if should_retry else error_response_handler(response)
-    elif response.status_code != HTTPStatus.ACCEPTED and "multipart" not in response.headers["Content-Type"]:
-        content = json.loads(response.content)
-        if content.get(CPF_STATUS, None):
-            cpf_status = content.get(CPF_STATUS, None)
-            report_error_code = "UNKNOWN"
-            if cpf_status.get(REPORT, None):
-                report_error_code = ResponseUtil._get_report_error_code(response_content=content)
-            if cpf_status.get(STATUS, '') not in success_status_codes:
-                raise OperationException(message="Error response received for request",
-                                 request_tracking_id=ResponseUtil.get_request_tracking_id_from_response(response,
-                                                                                                        False),
-                                 status_code=cpf_status.get(STATUS, ''),
-                                 error_message=cpf_status.get(TITLE, ""),
-                                 report_error_code=report_error_code)
-
-
