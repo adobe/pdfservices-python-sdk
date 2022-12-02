@@ -11,7 +11,7 @@ import json
 import os
 from abc import ABC
 
-from adobe.pdfservices.operation.internal.service_constants import ServiceConstants
+from adobe.pdfservices.operation.internal.constants.service_constants import ServiceConstants
 from adobe.pdfservices.operation.internal.util import path_util, file_utils
 from .credentials import Credentials
 from ..internal.util.validation_util import is_empty

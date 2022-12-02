@@ -67,3 +67,10 @@ class FileRef(ABC):
     @abstractmethod
     def write_to_stream(self, writer_stream):
         pass
+
+    def get_media_type(self):
+        """
+            returns the media type
+        """
+        return self._media_type
+

@@ -10,10 +10,8 @@
 
 from adobe.pdfservices.operation.auth.service_account_credentials import ServiceAccountCredentials
 from adobe.pdfservices.operation.execution_context import ExecutionContext
-from adobe.pdfservices.operation.internal.http.request_header_const import DefaultHeaders
 
 from adobe.pdfservices.operation.internal.auth.auth_factory import AuthenticatorFactory
-from adobe.pdfservices.operation.internal.service_constants import ServiceConstants
 from adobe.pdfservices.operation.internal.internal_client_config import InternalClientConfig
 
 
