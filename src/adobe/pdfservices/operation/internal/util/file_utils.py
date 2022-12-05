@@ -8,12 +8,6 @@
 # OF ANY KIND, either express or implied. See the License for the specific language
 # governing permissions and limitations under the License.
 
-import os
-import tempfile
-import uuid
-from typing import Optional
-
-from adobe.pdfservices.operation.internal.service_constants import ServiceConstants
 from adobe.pdfservices.operation.internal.util.path_util import get_file_path
 
 

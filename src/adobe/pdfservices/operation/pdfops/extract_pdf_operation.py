@@ -9,15 +9,14 @@
 # governing permissions and limitations under the License.
 
 import logging
-from typing import List
+import uuid
 
 from adobe.pdfservices.operation.exception.exceptions import ServiceApiException
 from adobe.pdfservices.operation.execution_context import ExecutionContext
-from adobe.pdfservices.operation.internal.api.cpf_api import CPFApi
-from adobe.pdfservices.operation.internal.exceptions import OperationException
+from adobe.pdfservices.operation.internal.api.storage_api import StorageApi
 from adobe.pdfservices.operation.internal.extension_media_type_mapping import ExtensionMediaTypeMapping
 from adobe.pdfservices.operation.internal.internal_execution_context import InternalExecutionContext
-from adobe.pdfservices.operation.internal.service.extract_pdf_api import ExtractPDFAPI
+from adobe.pdfservices.operation.internal.service.extract_pdf_service import ExtractPDFService
 from adobe.pdfservices.operation.internal.util.file_utils import get_transaction_id
 from adobe.pdfservices.operation.internal.util.path_util import get_temporary_destination_path
 from adobe.pdfservices.operation.internal.util.validation_util import validate_media_type
@@ -85,6 +84,14 @@ class ExtractPDFOperation(Operation):
         """
         return ExtractPDFOperation(cls.__create_key)
 
+    def get_options(self):
+        """gets the ExtractPDFOptions.
+
+        :return: The options parameter of the operation
+        :rtype: ExtractPDFOptions
+        """
+        return self._extract_pdf_options
+
     def set_options(self, extract_pdf_options: ExtractPDFOptions):
         """ sets the ExtractPDFOptions.
 
@@ -128,15 +135,23 @@ class ExtractPDFOperation(Operation):
             self._validate(execution_context=execution_context)
             self._logger.info("All validations successfully done. Beginning ExtractPDF operation execution")
 
-            location = ExtractPDFAPI.extract_pdf(execution_context, self._source_file_ref, self._extract_pdf_options)
-            self._is_invoked = True
+            x_request_id = str(uuid.uuid4())
+            download_uri = ExtractPDFService.extract_pdf(execution_context, self._source_file_ref, self.get_options(),
+                                                         x_request_id)
+
             file_location = get_temporary_destination_path(target_extension=ExtensionMediaTypeMapping.ZIP.extension)
-            ExtractPDFAPI.download_and_save(location=location, context=execution_context, file_location=file_location)
-            self._logger.info("Extract Operation Successful - Transaction ID: %s", get_transaction_id(location))
-            return FileRef.create_from_local_file(file_location)
-        except OperationException as oex:
-            raise ServiceApiException(message=oex.error_message, error_code=oex.error_code,
-                                      request_tracking_id=oex.request_tracking_id, status_code=oex.status_code) from None
+
+            file = StorageApi.download_and_save_file(execution_context, download_uri, file_location)
+
+            self._logger.info(f'Extract Operation Successful - Transaction ID: {get_transaction_id(x_request_id)}')
+
+            return file
+
+        except ServiceApiException as se:
+            raise se
+
+        except Exception as ex:
+            raise ex
 
     def _validate_invocation_count(self):
         if self._is_invoked:
