@@ -12,7 +12,7 @@ import tempfile
 import uuid
 from typing import Optional
 
-from adobe.pdfservices.operation.internal.service_constants import ServiceConstants
+from adobe.pdfservices.operation.internal.constants.service_constants import ServiceConstants
 
 
 def get_extension(file_path):

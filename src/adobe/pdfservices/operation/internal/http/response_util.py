@@ -9,20 +9,23 @@
 # governing permissions and limitations under the License.
 import json
 import logging
+from xml.etree.ElementTree import fromstring
+from xml.sax import SAXParseException
 
 import requests
 
-from adobe.pdfservices.operation.exception.exceptions import ServiceUsageException
+from adobe.pdfservices.operation.exception.exceptions import ServiceUsageException, ServiceApiException
+from adobe.pdfservices.operation.internal.constants.request_key import RequestKey
 from adobe.pdfservices.operation.internal.exceptions import OperationException
 
-CPF_STATUS="cpf:status"
-STATUS="status"
-ERROR_CODE="error_code"
-TITLE="title"
-ERROR="error"
-REASON="reason"
-REPORT="report"
-MESSAGE="message"
+CPF_STATUS = "cpf:status"
+STATUS = "status"
+ERROR_CODE = "error_code"
+TITLE = "title"
+ERROR = "error"
+REASON = "reason"
+REPORT = "report"
+MESSAGE = "message"
 
 class ResponseUtil:
     _logger = logging.getLogger(__name__)
@@ -55,7 +58,7 @@ class ResponseUtil:
                           "(www.adobe.com/go/pdftoolsapi_home) to start using free trial quota or (www.adobe.com/go/pdftoolsapi_err_quota) to upgrade to paid credentials."
 
     @staticmethod
-    def handle_api_failures(response: requests.Response, is_ims_call=False):
+    def handle_api_failures(response: requests.Response, request_key, is_ims_call=False):
         # Check if we need a custom error message for this status code
         custom_error_message = ResponseUtil.CUSTOM_ERROR_MESSAGES_STATUS_CODE_MAPPING.get(response.status_code)
         if custom_error_message:
@@ -65,6 +68,7 @@ class ResponseUtil:
                                      error_message=custom_error_message.get(MESSAGE),
                                      request_tracking_id=ResponseUtil.get_request_tracking_id_from_response(response,
                                                                                                             is_ims_call))
+        ResponseUtil.handle_upload_asset_failure(response, request_key)
         # Special handling for service usage exception cases
         if response.status_code == 429:
             ResponseUtil.handle_service_usage_failure(response)
@@ -93,14 +97,29 @@ class ResponseUtil:
             elif ResponseUtil.SERVICE_USAGE_EXCEPTION_STATUS_CODE_429002_STRING == response_content.get(ERROR_CODE,
                                                                                                         None):
                 response_content[MESSAGE] = ResponseUtil.INTEGRATION_SERVICE_USAGE_LIMIT_REACHED_ERROR_MESSAGE
-        raise ServiceUsageException(message=response_content.get(MESSAGE, None),
+        raise ServiceUsageException(message=response_content.get('error').get('message'),
                                     request_tracking_id=ResponseUtil.get_request_tracking_id_from_response(response,
                                                                                                            False),
                                     error_code=error_code,
                                     status_code=response.status_code)
 
     @staticmethod
+    def handle_upload_asset_failure(response, request_key):
+        if request_key == RequestKey.UPLOAD:
+            try:
+                    response_content = fromstring(response.content)
+                    error_code = response_content.find('Code').text
+                    request_id = response_content.find('RequestId').text
+                    error_message = response_content.find('Message').text
+                    status_code = response.status_code
+            except SAXParseException:
+                raise ServiceApiException("Error in uploading file")
+            raise OperationException(message="Error response received for request", status_code=status_code,
+                                     request_tracking_id=request_id,error_message=error_message,error_code=error_code)
+
+    @staticmethod
     def handle_cpf_error_response(response):
+
         response_content = json.loads(response.content)
         error_code = response_content.get(ERROR_CODE, None)
         error_message = response_content.get(MESSAGE, None)
