@@ -14,6 +14,7 @@ import enum
 class ExtensionMediaTypeMapping(str, enum.Enum):
     PDF = "application/pdf"
     ZIP = "application/zip"
+    JSON = "application/json"
 
     @property
     def mime_type(self):

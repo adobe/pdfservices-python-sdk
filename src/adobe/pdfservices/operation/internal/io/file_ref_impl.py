@@ -14,7 +14,7 @@ import os
 from io import BufferedWriter
 
 from adobe.pdfservices.operation.exception.exceptions import SdkException
-from adobe.pdfservices.operation.internal.service_constants import ServiceConstants
+from adobe.pdfservices.operation.internal.constants.service_constants import ServiceConstants
 from adobe.pdfservices.operation.internal.extension_media_type_mapping import ExtensionMediaTypeMapping
 from adobe.pdfservices.operation.internal.util.path_util import get_extension
 from adobe.pdfservices.operation.io.file_ref import FileRef
@@ -27,7 +27,10 @@ class FileRefImpl(FileRef):
 
     def get_as_stream(self):
         if self._file_path:
-            return open(self._file_path, 'rb')
+            file = open(self._file_path, 'rb')
+            file_content = file.read()
+            file.close()
+            return file_content
         else:
             file_stream = self._input_stream
         return file_stream

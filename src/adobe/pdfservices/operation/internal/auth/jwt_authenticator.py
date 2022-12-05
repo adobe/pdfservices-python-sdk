@@ -17,12 +17,13 @@ from http import HTTPStatus
 import jwt
 
 from adobe.pdfservices.operation.auth.service_account_credentials import ServiceAccountCredentials
-from adobe.pdfservices.operation.exception.exceptions import SdkException, ServiceApiException
+from adobe.pdfservices.operation.exception.exceptions import SdkException
 from adobe.pdfservices.operation.internal.auth.authenticator import Authenticator
 from adobe.pdfservices.operation.internal.auth.session_token import SessionToken
+from adobe.pdfservices.operation.internal.constants.request_key import RequestKey
 from adobe.pdfservices.operation.internal.exceptions import OperationException
 from adobe.pdfservices.operation.internal.http.response_util import ResponseUtil
-from adobe.pdfservices.operation.internal.service_constants import ServiceConstants, custom_error_messages
+from adobe.pdfservices.operation.internal.constants.service_constants import ServiceConstants, custom_error_messages
 from adobe.pdfservices.operation.internal.http import http_client
 from adobe.pdfservices.operation.internal.http.http_method import HttpMethod
 from adobe.pdfservices.operation.internal.http.http_request import HttpRequest
@@ -57,8 +58,8 @@ class JwtAuthenticator(Authenticator):
                                         "client_id": self.service_account_configuration.client_id,
                                         "client_secret": self.service_account_configuration.client_secret}
         try:
-            http_request = HttpRequest(http_method=HttpMethod.POST, url=url, data=access_token_request_payload,
-                                       headers={})
+            http_request = HttpRequest(http_method=HttpMethod.POST, request_key=RequestKey.AUTHN, url=url,
+                                       data=access_token_request_payload, headers={})
             response = http_client.process_request(http_request=http_request, success_status_codes=[HTTPStatus.OK],
                                                    error_response_handler=self.handle_ims_failure)
             content = json.loads(response.content)

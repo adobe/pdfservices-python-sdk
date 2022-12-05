@@ -14,9 +14,10 @@ from adobe.pdfservices.operation.internal.http.http_method import HttpMethod
 class HttpRequest:
 
     # (url, data/files, headers, authenticator (if none its not authenticated), socket_timeout, connect_timeout)
-    def __init__(self, http_method: HttpMethod, url: str, headers: dict, data=None, files=None,
+    def __init__(self, http_method: HttpMethod, request_key: str, url: str, headers: dict, data=None, files=None,
                  authenticator: Authenticator = None, read_timeout=None, connect_timeout=None, retryable:bool=False):
         self.method = http_method
+        self.request_key = request_key
         self.url = url
         self.headers = headers
         self.data = data

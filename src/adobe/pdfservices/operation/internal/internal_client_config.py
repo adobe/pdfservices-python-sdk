@@ -9,7 +9,7 @@
 # governing permissions and limitations under the License.
 
 from adobe.pdfservices.operation.client_config import ClientConfig
-from adobe.pdfservices.operation.internal.service_constants import ServiceConstants
+from adobe.pdfservices.operation.internal.constants.service_constants import ServiceConstants
 
 
 class InternalClientConfig(ClientConfig):
@@ -18,19 +18,15 @@ class InternalClientConfig(ClientConfig):
     # Setting default values is required for when client config is not provided explicitly.
     def __init__(self, connect_timeout: int = ServiceConstants.HTTP_CONNECT_TIMEOUT,
                  read_timeout: int = ServiceConstants.HTTP_READ_TIMEOUT,
-                 cpf_ops_create_uri: str = ServiceConstants.CPF_OPS_CREATE_URI,
-                 cpf_extract_analyzer_id: str = ServiceConstants.CPF_OPS_EXTRACT_ANALYZER_ID):
+                 pdf_services_uri: str = ServiceConstants.PDF_SERVICES_URI):
+
         super().__init__()
         self._connect_timeout = connect_timeout
         self._read_timeout = read_timeout
-        self._cpf_ops_create_uri = cpf_ops_create_uri
-        self._cpf_extract_analyzer_id = cpf_extract_analyzer_id
+        self._pdf_services_uri = pdf_services_uri
 
-    def get_cpf_ops_create_uri(self):
-        return self._cpf_ops_create_uri
-
-    def get_cpf_extract_service_id(self):
-        return self._cpf_extract_analyzer_id
+    def get_pdf_services_uri(self):
+        return self._pdf_services_uri
 
     def get_connect_timeout(self):
         return self._connect_timeout/1000 if self._connect_timeout else None
