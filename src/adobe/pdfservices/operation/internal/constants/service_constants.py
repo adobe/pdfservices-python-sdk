@@ -47,7 +47,7 @@ class ServiceConstants:
     JWT_URI_SUFFIX = 'ims/exchange/jwt/'
     JWT_AUDIENCE_SUFFIX = 'c/'
     JWT_CLAIM = 's/ent_documentcloud_sdk'
-    OPERATION_RESULT_TEMP_DIRECTORY = 'extractSdkResult'
+    OPERATION_RESULT_TEMP_DIRECTORY = 'sdk_result'
     CPF_OPS_CREATE_URI = 'https://cpf-ue1.adobe.io/ops/:create'
     EXTRACT_OPERATION_ENDPOINT = 'extractpdf'
     TEXT_MIME_TYPE = "text/directory"
@@ -56,3 +56,5 @@ class ServiceConstants:
     CONTENT_ANALYZER_RESPONSE_STRING = "contentAnalyzerResponse"
     ASSET_UPLOAD_URI_REQUESTS_STRING = "assetUploadURIRequests"
     PDF_SERVICES_URI = "https://pdf-services.adobe.io"
+    PDF_SERVICES_URI_US = "https://pdf-services-va6.adobe.io"
+    PDF_SERVICES_URI_EU = "https://pdf-services-irl1.adobe.io"

@@ -11,6 +11,7 @@ import json
 
 from adobe.pdfservices.operation.internal.constants.service_constants import ServiceConstants
 from adobe.pdfservices.operation.internal.util import file_utils
+from adobe.pdfservices.operation.region import Region
 
 
 class ClientConfig(object):
@@ -21,6 +22,7 @@ class ClientConfig(object):
     _READ_TIMEOUT_KEY = "readTimeout"
     _PDF_SERVICES = "pdf_services"
     _PDF_SERVICES_URI = "pdf_services_uri"
+    _REGION = "region"
 
     @staticmethod
     def builder():
@@ -43,6 +45,30 @@ class ClientConfig(object):
             self._read_timeout = ServiceConstants.HTTP_READ_TIMEOUT
             self._pdf_services_uri = ServiceConstants.PDF_SERVICES_URI
 
+        def with_region(self, region: Region):
+            """Updates the relevant value for the region.
+
+            :param region: Service region(US or EU). Default value is US.
+            :type region: Region
+            :return: This Builder instance to add any additional parameters.
+            :rtype: ClientConfig.Builder
+            """
+            self._set_pdf_services_uri_for_region(region)
+            return self
+
+        def _set_pdf_services_uri_for_region(self, region: Region):
+            """Sets the pdf service uri based on the region.
+
+            :param region: Service region(US or EU).Default value is US.
+            :type region: Region
+            :return: Region specific pdf_services_uri
+            :rtype: str
+            """
+            if region == 'us':
+                self._pdf_services_uri = ServiceConstants.PDF_SERVICES_URI_US
+            elif region == 'eu':
+                self._pdf_services_uri = ServiceConstants.PDF_SERVICES_URI_EU
+
         # the time it allows for the client to establish a connection to the server
         def with_connect_timeout(self, connect_timeout: int):
             """Sets the connect timeout. It should be greater than zero.
@@ -54,17 +80,6 @@ class ClientConfig(object):
             :rtype: ClientConfig.Builder
             """
             self._connect_timeout = connect_timeout
-            return self
-
-        def with_pdf_services_uri(self, pdf_services_uri: str):
-            """Sets the pdf services uri link.
-
-            :param pdf_services_uri: url for the new rest api
-            :type pdf_services_uri: str
-            :return: This Builder instance to add any additional parameters.
-            :rtype: ClientConfig.Builder
-            """
-            self._pdf_services_uri = pdf_services_uri
             return self
 
         # the time it will wait on a response once connection is estalished
@@ -97,13 +112,16 @@ class ClientConfig(object):
 
                 {
                     "connectTimeout": "4000",
-                    "readTimeout": "20000"
+                    "readTimeout": "20000",
+                    "region": "eu"
                 }
             """
             config_json_str = file_utils.read_conf_file_content(client_config_file_path)
             config_dict = json.loads(config_json_str)
             self._connect_timeout = int(config_dict.get(ClientConfig._CONNECT_TIMEOUT_KEY, self._connect_timeout))
             self._read_timeout = int(config_dict.get(ClientConfig._READ_TIMEOUT_KEY, self._read_timeout))
+            region_node = config_dict.get(ClientConfig._REGION)
+            self.with_region(region_node)
             pdf_services_config = config_dict.get(ClientConfig._PDF_SERVICES)
             if pdf_services_config:
                 pdf_services_uri_node = pdf_services_config.get(ClientConfig._PDF_SERVICES_URI)
