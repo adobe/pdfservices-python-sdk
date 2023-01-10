@@ -163,7 +163,8 @@
 <p>JSON structure:</p>
 <div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;connectTimeout&quot;</span><span class="p">:</span> <span class="s2">&quot;4000&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;readTimeout&quot;</span><span class="p">:</span> <span class="s2">&quot;20000&quot;</span>
+    <span class="nt">&quot;readTimeout&quot;</span><span class="p">:</span> <span class="s2">&quot;20000&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;region&quot;</span><span class="p">:</span> <span class="s2">&quot;eu&quot;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -187,12 +188,12 @@
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="adobe.pdfservices.operation.client_config.ClientConfig.Builder.with_pdf_services_uri">
-<span class="sig-name descname"><span class="pre">with_pdf_services_uri</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pdf_services_uri</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#adobe.pdfservices.operation.client_config.ClientConfig.Builder.with_pdf_services_uri" title="Permalink to this definition"></a></dt>
-<dd><p>Sets the pdf services uri link.</p>
+<dt class="sig sig-object py" id="adobe.pdfservices.operation.client_config.ClientConfig.Builder.with_read_timeout">
+<span class="sig-name descname"><span class="pre">with_read_timeout</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">read_timeout</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#adobe.pdfservices.operation.client_config.ClientConfig.Builder.with_read_timeout" title="Permalink to this definition"></a></dt>
+<dd><p>Sets the read timeout. It should be greater than zero.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>pdf_services_uri</strong> (<em>str</em>) – url for the new rest api</p>
+<dd class="field-odd"><p><strong>read_timeout</strong> (<em>int</em>) – Defines the read timeout in milliseconds, The number of milliseconds the client will                 wait for the server to send a response after the connection is established.                Default value is 10000 milliseconds</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>This Builder instance to add any additional parameters.</p>
@@ -204,12 +205,12 @@
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="adobe.pdfservices.operation.client_config.ClientConfig.Builder.with_read_timeout">
-<span class="sig-name descname"><span class="pre">with_read_timeout</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">read_timeout</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#adobe.pdfservices.operation.client_config.ClientConfig.Builder.with_read_timeout" title="Permalink to this definition"></a></dt>
-<dd><p>Sets the read timeout. It should be greater than zero.</p>
+<dt class="sig sig-object py" id="adobe.pdfservices.operation.client_config.ClientConfig.Builder.with_region">
+<span class="sig-name descname"><span class="pre">with_region</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">region</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">adobe.pdfservices.operation.region.Region</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#adobe.pdfservices.operation.client_config.ClientConfig.Builder.with_region" title="Permalink to this definition"></a></dt>
+<dd><p>Updates the relevant value for the region.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>read_timeout</strong> (<em>int</em>) – Defines the read timeout in milliseconds, The number of milliseconds the client will                 wait for the server to send a response after the connection is established.                Default value is 10000 milliseconds</p>
+<dd class="field-odd"><p><strong>region</strong> (<em>Region</em>) – Service region(US or EU). Default value is US.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>This Builder instance to add any additional parameters.</p>
