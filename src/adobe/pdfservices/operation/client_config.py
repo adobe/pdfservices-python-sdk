@@ -43,6 +43,7 @@ class ClientConfig(object):
             self._read_timeout = ServiceConstants.HTTP_READ_TIMEOUT
             self._pdf_services_uri = ServiceConstants.PDF_SERVICES_URI
 
+
         # the time it allows for the client to establish a connection to the server
         def with_connect_timeout(self, connect_timeout: int):
             """Sets the connect timeout. It should be greater than zero.
@@ -54,17 +55,6 @@ class ClientConfig(object):
             :rtype: ClientConfig.Builder
             """
             self._connect_timeout = connect_timeout
-            return self
-
-        def with_pdf_services_uri(self, pdf_services_uri: str):
-            """Sets the pdf services uri link.
-
-            :param pdf_services_uri: url for the new rest api
-            :type pdf_services_uri: str
-            :return: This Builder instance to add any additional parameters.
-            :rtype: ClientConfig.Builder
-            """
-            self._pdf_services_uri = pdf_services_uri
             return self
 
         # the time it will wait on a response once connection is estalished
