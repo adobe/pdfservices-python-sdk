@@ -62,7 +62,6 @@ class FileRefImpl(FileRef):
                     writer_stream.write(buffer)
                     if len(buffer) < io.DEFAULT_BUFFER_SIZE:
                         break
-            writer_stream.close()
             self._logger.info("Writing file at {tmp_file_path} to writer stream".format(tmp_file_path=self._file_path))
         else:
             self._logger.error(
