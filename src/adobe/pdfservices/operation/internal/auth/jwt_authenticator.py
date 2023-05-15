@@ -17,6 +17,7 @@ from http import HTTPStatus
 import jwt
 
 from adobe.pdfservices.operation.auth.service_account_credentials import ServiceAccountCredentials
+from adobe.pdfservices.operation.internal.auth.service_account_credentials_with_uri import ServiceAccountCredentialsWithUri
 from adobe.pdfservices.operation.exception.exceptions import SdkException
 from adobe.pdfservices.operation.internal.auth.authenticator import Authenticator
 from adobe.pdfservices.operation.internal.auth.session_token import SessionToken
@@ -31,7 +32,7 @@ from adobe.pdfservices.operation.internal.http.http_request import HttpRequest
 
 class JwtAuthenticator(Authenticator):
     token: SessionToken = None
-    service_account_configuration: ServiceAccountCredentials
+    service_account_configuration: ServiceAccountCredentialsWithUri
     jwt_endpoint = ''
 
     def __init__(self, service_account_configuration):

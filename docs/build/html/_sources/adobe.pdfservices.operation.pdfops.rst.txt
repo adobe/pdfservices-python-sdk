@@ -20,6 +20,14 @@ adobe.pdfservices.operation.pdfops.extract\_pdf\_operation module
    :undoc-members:
    :show-inheritance:
 
+adobe.pdfservices.operation.pdfops.autotag\_pdf\_operation module
+-----------------------------------------------------------------
+
+.. automodule:: adobe.pdfservices.operation.pdfops.autotag_pdf_operation
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 Module contents
 ---------------
 

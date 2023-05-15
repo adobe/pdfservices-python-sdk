@@ -50,11 +50,13 @@ class ServiceConstants:
     OPERATION_RESULT_TEMP_DIRECTORY = 'sdk_result'
     CPF_OPS_CREATE_URI = 'https://cpf-ue1.adobe.io/ops/:create'
     EXTRACT_OPERATION_ENDPOINT = 'extractpdf'
+    AUTOTAG_OPERATION_ENDPOINT = 'autotag'
     TEXT_MIME_TYPE = "text/directory"
     EXTRACT_OPERATION_NAME = "EXTRACT_PDF"
+    AUTOTAG_OPERATION_NAME = "AUTOTAG_PDF"
     CONTENT_ANALYZER_REQUESTS_STRING = "contentAnalyzerRequests"
     CONTENT_ANALYZER_RESPONSE_STRING = "contentAnalyzerResponse"
     ASSET_UPLOAD_URI_REQUESTS_STRING = "assetUploadURIRequests"
     PDF_SERVICES_URI = "https://pdf-services.adobe.io"
-    PDF_SERVICES_URI_US = "https://pdf-services-va6.adobe.io"
-    PDF_SERVICES_URI_EU = "https://pdf-services-irl1.adobe.io"
+    PDF_SERVICES_URI_US = "https://pdf-services-ue1.adobe.io"
+    PDF_SERVICES_URI_EU = "https://pdf-services-ew1.adobe.io"

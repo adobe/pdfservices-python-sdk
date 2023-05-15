@@ -31,22 +31,12 @@ class ServiceAccountCredentials(Credentials, ABC):
     """
 
     # TODO Can this constructor be excluded from documentation
-    def __init__(self, client_id, client_secret, private_key, organization_id, account_id,
-                 ims_base_uri=ServiceConstants.JWT_BASE_URI, claim=None):
-
+    def __init__(self, client_id, client_secret, private_key, organization_id, account_id):
         self._client_id = _is_valid(client_id, "client_id")
         self._client_secret = _is_valid(client_secret, "client_secret")
         self._private_key = _is_valid(private_key, "private_key")
         self._organization_id = _is_valid(organization_id, "organization_id")
         self._account_id = _is_valid(account_id, "account_id")
-        self.ims_base_uri = ServiceConstants.JWT_BASE_URI if not ims_base_uri else ims_base_uri
-        if not claim:
-            format_str = "{base}{claim}" if self.ims_base_uri.endswith("/") else "{base}/{claim}"
-            claim = format_str.format(
-                base=self.ims_base_uri,
-                claim=ServiceConstants.JWT_CLAIM
-            )
-        self._claim = _is_valid(claim, "claim")
 
     @property
     def client_id(self):
@@ -62,11 +52,6 @@ class ServiceAccountCredentials(Credentials, ABC):
     def private_key(self):
         """  Content of the Private Key (PEM format) """
         return self._private_key
-
-    @property
-    def claim(self):
-        """ Identifies the Service for which Authorization(Access) Token will be issued"""
-        return self._claim
 
     @property
     def organization_id(self):
@@ -91,6 +76,8 @@ class ServiceAccountCredentials(Credentials, ABC):
         _ORGANIZATION_ID = "organization_id"
         _TECHNICAL_ACCOUNT_ID = "account_id"
         _IMS_BASE_URI = "ims_base_uri"
+        _PDF_SERVICES = "pdf_services"
+        _PDF_SERVICES_URI = "pdf_services_uri"
 
         def __init__(self):
             self._client_id = None
@@ -100,6 +87,7 @@ class ServiceAccountCredentials(Credentials, ABC):
             self._organization_id = None
             self._ims_base_uri = ServiceConstants.JWT_BASE_URI
             self._claim = None
+            self._pdf_services_uri = ServiceConstants.PDF_SERVICES_URI
             return
 
         def with_client_id(self, client_id: str):
@@ -201,6 +189,8 @@ class ServiceAccountCredentials(Credentials, ABC):
                     credentials_file_directory = os.path.dirname(path_util.conf_file_abs_path(credentials_file_path))
                     private_key_file_path = os.path.join(credentials_file_directory, private_key_file_path)
                 self._private_key = file_utils.read_conf_file_content(private_key_file_path)
+            pdf_services = config_dict.get(self._PDF_SERVICES, {})
+            self._pdf_services_uri = pdf_services.get(self._PDF_SERVICES_URI, self._pdf_services_uri)
             return self
 
         def build(self):
@@ -209,5 +199,7 @@ class ServiceAccountCredentials(Credentials, ABC):
             :return: A ServiceAccountCredentials instance.
             :rtype: ServiceAccountCredentials
             """
-            return ServiceAccountCredentials(self._client_id, self._client_secret, self._private_key, self._organization_id,
-                                             self._account_id, self._ims_base_uri, self._claim)
+
+            from adobe.pdfservices.operation.internal.auth.service_account_credentials_with_uri import ServiceAccountCredentialsWithUri
+            return ServiceAccountCredentialsWithUri(self._client_id, self._client_secret, self._private_key, self._organization_id, self._account_id,
+                                             self._pdf_services_uri, self._ims_base_uri, self._claim)
