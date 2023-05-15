@@ -20,6 +20,7 @@ ClientConfigBuilder
     :members:
     :undoc-members:
     :show-inheritance:
+    :noindex:
 
 Credentials
 ---------------------
@@ -45,6 +46,20 @@ ExtractPDFOperation
 ExtractPDFOptions
 -------------------
 .. autoclass:: adobe.pdfservices.operation.pdfops.options.extractpdf.extract_pdf_options.ExtractPDFOptions
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+AutotagPDFOperation
+---------------------
+.. autoclass:: adobe.pdfservices.operation.pdfops.autotag_pdf_operation.AutotagPDFOperation
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+AutotagPDFOptions
+-------------------
+.. autoclass:: adobe.pdfservices.operation.pdfops.options.autotagpdf.autotag_pdf_options.AutotagPDFOptions
     :members:
     :undoc-members:
     :show-inheritance:
@@ -76,6 +91,7 @@ ServiceAccountCredentialsBuilder
     :members:
     :undoc-members:
     :show-inheritance:
+    :noindex:
 
 
 

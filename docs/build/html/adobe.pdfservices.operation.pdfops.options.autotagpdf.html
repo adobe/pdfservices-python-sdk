@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>adobe.pdfservices.operation.exception package &mdash; pdfservices-sdk  documentation</title>
+  <title>adobe.pdfservices.operation.pdfops.options.autotagpdf package &mdash; pdfservices-sdk  documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/custom.css" type="text/css" />
@@ -47,6 +47,7 @@
 <li class="toctree-l5"><a class="reference internal" href="reference/index.html#adobe.pdfservices.operation.client_config.ClientConfig.Builder.build"><code class="docutils literal notranslate"><span class="pre">ClientConfig.Builder.build()</span></code></a></li>
 <li class="toctree-l5"><a class="reference internal" href="reference/index.html#adobe.pdfservices.operation.client_config.ClientConfig.Builder.from_file"><code class="docutils literal notranslate"><span class="pre">ClientConfig.Builder.from_file()</span></code></a></li>
 <li class="toctree-l5"><a class="reference internal" href="reference/index.html#adobe.pdfservices.operation.client_config.ClientConfig.Builder.with_connect_timeout"><code class="docutils literal notranslate"><span class="pre">ClientConfig.Builder.with_connect_timeout()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="reference/index.html#adobe.pdfservices.operation.client_config.ClientConfig.Builder.with_pdf_services_uri"><code class="docutils literal notranslate"><span class="pre">ClientConfig.Builder.with_pdf_services_uri()</span></code></a></li>
 <li class="toctree-l5"><a class="reference internal" href="reference/index.html#adobe.pdfservices.operation.client_config.ClientConfig.Builder.with_read_timeout"><code class="docutils literal notranslate"><span class="pre">ClientConfig.Builder.with_read_timeout()</span></code></a></li>
 <li class="toctree-l5"><a class="reference internal" href="reference/index.html#adobe.pdfservices.operation.client_config.ClientConfig.Builder.with_region"><code class="docutils literal notranslate"><span class="pre">ClientConfig.Builder.with_region()</span></code></a></li>
 </ul>
@@ -56,17 +57,7 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="reference/index.html#clientconfigbuilder">ClientConfigBuilder</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="reference/index.html#id0"><code class="docutils literal notranslate"><span class="pre">Builder</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="reference/index.html#id1"><code class="docutils literal notranslate"><span class="pre">Builder.build()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="reference/index.html#id2"><code class="docutils literal notranslate"><span class="pre">Builder.from_file()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="reference/index.html#id3"><code class="docutils literal notranslate"><span class="pre">Builder.with_connect_timeout()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="reference/index.html#id4"><code class="docutils literal notranslate"><span class="pre">Builder.with_read_timeout()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="reference/index.html#id5"><code class="docutils literal notranslate"><span class="pre">Builder.with_region()</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="reference/index.html#clientconfigbuilder">ClientConfigBuilder</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/index.html#credentials">Credentials</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="reference/index.html#adobe.pdfservices.operation.auth.credentials.Credentials"><code class="docutils literal notranslate"><span class="pre">Credentials</span></code></a><ul>
 <li class="toctree-l4"><a class="reference internal" href="reference/index.html#adobe.pdfservices.operation.auth.credentials.Credentials.service_account_credentials_builder"><code class="docutils literal notranslate"><span class="pre">Credentials.service_account_credentials_builder()</span></code></a></li>
@@ -116,7 +107,18 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="reference/index.html#autotagpdfoperation">AutotagPDFOperation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/index.html#autotagpdfoperation">AutotagPDFOperation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="reference/index.html#adobe.pdfservices.operation.pdfops.autotag_pdf_operation.AutotagPDFOperation"><code class="docutils literal notranslate"><span class="pre">AutotagPDFOperation</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="reference/index.html#adobe.pdfservices.operation.pdfops.autotag_pdf_operation.AutotagPDFOperation.SUPPORTED_SOURCE_MEDIA_TYPES"><code class="docutils literal notranslate"><span class="pre">AutotagPDFOperation.SUPPORTED_SOURCE_MEDIA_TYPES</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference/index.html#adobe.pdfservices.operation.pdfops.autotag_pdf_operation.AutotagPDFOperation.create_new"><code class="docutils literal notranslate"><span class="pre">AutotagPDFOperation.create_new()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference/index.html#adobe.pdfservices.operation.pdfops.autotag_pdf_operation.AutotagPDFOperation.execute"><code class="docutils literal notranslate"><span class="pre">AutotagPDFOperation.execute()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference/index.html#adobe.pdfservices.operation.pdfops.autotag_pdf_operation.AutotagPDFOperation.get_options"><code class="docutils literal notranslate"><span class="pre">AutotagPDFOperation.get_options()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference/index.html#adobe.pdfservices.operation.pdfops.autotag_pdf_operation.AutotagPDFOperation.set_input"><code class="docutils literal notranslate"><span class="pre">AutotagPDFOperation.set_input()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference/index.html#adobe.pdfservices.operation.pdfops.autotag_pdf_operation.AutotagPDFOperation.set_options"><code class="docutils literal notranslate"><span class="pre">AutotagPDFOperation.set_options()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="reference/index.html#autotagpdfoptions">AutotagPDFOptions</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="reference/index.html#adobe.pdfservices.operation.pdfops.options.autotagpdf.autotag_pdf_options.AutotagPDFOptions"><code class="docutils literal notranslate"><span class="pre">AutotagPDFOptions</span></code></a><ul>
 <li class="toctree-l4"><a class="reference internal" href="reference/index.html#adobe.pdfservices.operation.pdfops.options.autotagpdf.autotag_pdf_options.AutotagPDFOptions.Builder"><code class="docutils literal notranslate"><span class="pre">AutotagPDFOptions.Builder</span></code></a><ul>
@@ -187,19 +189,7 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="reference/index.html#serviceaccountcredentialsbuilder">ServiceAccountCredentialsBuilder</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="reference/index.html#id6"><code class="docutils literal notranslate"><span class="pre">Builder</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="reference/index.html#id7"><code class="docutils literal notranslate"><span class="pre">Builder.build()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="reference/index.html#id8"><code class="docutils literal notranslate"><span class="pre">Builder.from_file()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="reference/index.html#id9"><code class="docutils literal notranslate"><span class="pre">Builder.with_account_id()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="reference/index.html#id10"><code class="docutils literal notranslate"><span class="pre">Builder.with_client_id()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="reference/index.html#id11"><code class="docutils literal notranslate"><span class="pre">Builder.with_client_secret()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="reference/index.html#id12"><code class="docutils literal notranslate"><span class="pre">Builder.with_organization_id()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="reference/index.html#id13"><code class="docutils literal notranslate"><span class="pre">Builder.with_private_key()</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="reference/index.html#serviceaccountcredentialsbuilder">ServiceAccountCredentialsBuilder</a></li>
 </ul>
 </li>
 </ul>
@@ -218,7 +208,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">adobe.pdfservices.operation.exception package</li>
+      <li class="breadcrumb-item active">adobe.pdfservices.operation.pdfops.options.autotagpdf package</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -227,103 +217,96 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="adobe-pdfservices-operation-exception-package">
-<h1>adobe.pdfservices.operation.exception package<a class="headerlink" href="#adobe-pdfservices-operation-exception-package" title="Permalink to this heading"></a></h1>
+  <section id="adobe-pdfservices-operation-pdfops-options-autotagpdf-package">
+<h1>adobe.pdfservices.operation.pdfops.options.autotagpdf package<a class="headerlink" href="#adobe-pdfservices-operation-pdfops-options-autotagpdf-package" title="Permalink to this heading"></a></h1>
 <section id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
 </section>
-<section id="module-adobe.pdfservices.operation.exception.exceptions">
-<span id="adobe-pdfservices-operation-exception-exceptions-module"></span><h2>adobe.pdfservices.operation.exception.exceptions module<a class="headerlink" href="#module-adobe.pdfservices.operation.exception.exceptions" title="Permalink to this heading"></a></h2>
-<dl class="py exception">
-<dt class="sig sig-object py" id="adobe.pdfservices.operation.exception.exceptions.SdkException">
-<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">adobe.pdfservices.operation.exception.exceptions.</span></span><span class="sig-name descname"><span class="pre">SdkException</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">request_tracking_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#adobe.pdfservices.operation.exception.exceptions.SdkException" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
-<p>SdkException is typically thrown for client-side or network errors.</p>
-<dl class="py property">
-<dt class="sig sig-object py" id="adobe.pdfservices.operation.exception.exceptions.SdkException.request_tracking_id">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">request_tracking_id</span></span><a class="headerlink" href="#adobe.pdfservices.operation.exception.exceptions.SdkException.request_tracking_id" title="Permalink to this definition"></a></dt>
-<dd><p>The request tracking id of the exception.</p>
+<section id="module-adobe.pdfservices.operation.pdfops.options.autotagpdf.autotag_pdf_options">
+<span id="adobe-pdfservices-operation-pdfops-options-autotagpdf-autotag-pdf-options-module"></span><h2>adobe.pdfservices.operation.pdfops.options.autotagpdf.autotag_pdf_options module<a class="headerlink" href="#module-adobe.pdfservices.operation.pdfops.options.autotagpdf.autotag_pdf_options" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="adobe.pdfservices.operation.pdfops.options.autotagpdf.autotag_pdf_options.AutotagPDFOptions">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">adobe.pdfservices.operation.pdfops.options.autotagpdf.autotag_pdf_options.</span></span><span class="sig-name descname"><span class="pre">AutotagPDFOptions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">generate_report</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shift_headings</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#adobe.pdfservices.operation.pdfops.options.autotagpdf.autotag_pdf_options.AutotagPDFOptions" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>An Options Class that defines the options for AutotagPDFOperation.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">autotag_pdf_options</span><span class="p">:</span> <span class="n">AutotagPDFOptions</span> <span class="o">=</span> <span class="n">AutotagPDFOptions</span><span class="o">.</span><span class="n">builder</span><span class="p">()</span> \
+    <span class="o">.</span><span class="n">generate_report</span><span class="p">()</span> \
+    <span class="o">.</span><span class="n">shift_headings</span><span class="p">()</span> \
+    <span class="o">.</span><span class="n">build</span><span class="p">()</span>
+</pre></div>
+</div>
+<dl class="py class">
+<dt class="sig sig-object py" id="adobe.pdfservices.operation.pdfops.options.autotagpdf.autotag_pdf_options.AutotagPDFOptions.Builder">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Builder</span></span><a class="headerlink" href="#adobe.pdfservices.operation.pdfops.options.autotagpdf.autotag_pdf_options.AutotagPDFOptions.Builder" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>The builder for <a class="reference internal" href="reference/index.html#adobe.pdfservices.operation.pdfops.options.autotagpdf.autotag_pdf_options.AutotagPDFOptions" title="adobe.pdfservices.operation.pdfops.options.autotagpdf.autotag_pdf_options.AutotagPDFOptions"><code class="xref py py-class docutils literal notranslate"><span class="pre">AutotagPDFOptions</span></code></a>.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="adobe.pdfservices.operation.pdfops.options.autotagpdf.autotag_pdf_options.AutotagPDFOptions.Builder.build">
+<span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#adobe.pdfservices.operation.pdfops.options.autotagpdf.autotag_pdf_options.AutotagPDFOptions.Builder.build" title="Permalink to this definition"></a></dt>
+<dd><p>builds and returns the AutotagPDFOptions instance</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="adobe.pdfservices.operation.pdfops.options.autotagpdf.autotag_pdf_options.AutotagPDFOptions.Builder.with_generate_report">
+<span class="sig-name descname"><span class="pre">with_generate_report</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#adobe.pdfservices.operation.pdfops.options.autotagpdf.autotag_pdf_options.AutotagPDFOptions.Builder.with_generate_report" title="Permalink to this definition"></a></dt>
+<dd><p>sets the Boolean specifying whether to generate an XLSX report containing the information about the tags</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>This Builder instance to add any additional parameters.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="reference/index.html#adobe.pdfservices.operation.pdfops.options.autotagpdf.autotag_pdf_options.AutotagPDFOptions.Builder" title="adobe.pdfservices.operation.pdfops.options.autotagpdf.autotag_pdf_options.AutotagPDFOptions.Builder">AutotagPDFOptions.Builder</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="adobe.pdfservices.operation.pdfops.options.autotagpdf.autotag_pdf_options.AutotagPDFOptions.Builder.with_shift_headings">
+<span class="sig-name descname"><span class="pre">with_shift_headings</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#adobe.pdfservices.operation.pdfops.options.autotagpdf.autotag_pdf_options.AutotagPDFOptions.Builder.with_shift_headings" title="Permalink to this definition"></a></dt>
+<dd><p>sets the Boolean specifying whether to shift headings in the output PDF file</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>This Builder instance to add any additional parameters.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="reference/index.html#adobe.pdfservices.operation.pdfops.options.autotagpdf.autotag_pdf_options.AutotagPDFOptions.Builder" title="adobe.pdfservices.operation.pdfops.options.autotagpdf.autotag_pdf_options.AutotagPDFOptions.Builder">AutotagPDFOptions.Builder</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
 
-<dl class="py exception">
-<dt class="sig sig-object py" id="adobe.pdfservices.operation.exception.exceptions.ServiceApiException">
-<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">adobe.pdfservices.operation.exception.exceptions.</span></span><span class="sig-name descname"><span class="pre">ServiceApiException</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">request_tracking_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">status_code</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">error_code</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'UNKNOWN'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#adobe.pdfservices.operation.exception.exceptions.ServiceApiException" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
-<p>ServiceApiException is thrown when an underlying service API call results in an error.</p>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="adobe.pdfservices.operation.exception.exceptions.ServiceApiException.DEFAULT_ERROR_CODE">
-<span class="sig-name descname"><span class="pre">DEFAULT_ERROR_CODE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'UNKNOWN'</span></em><a class="headerlink" href="#adobe.pdfservices.operation.exception.exceptions.ServiceApiException.DEFAULT_ERROR_CODE" title="Permalink to this definition"></a></dt>
-<dd><p>Returns the HTTP Status code or DEFAULT_STATUS_CODE if the status code doesn’t adequately represent the error.</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="adobe.pdfservices.operation.exception.exceptions.ServiceApiException.DEFAULT_STATUS_CODE">
-<span class="sig-name descname"><span class="pre">DEFAULT_STATUS_CODE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#adobe.pdfservices.operation.exception.exceptions.ServiceApiException.DEFAULT_STATUS_CODE" title="Permalink to this definition"></a></dt>
-<dd><p>The default value of status code if there is no status code for this service exception.</p>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="adobe.pdfservices.operation.exception.exceptions.ServiceApiException.error_code">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">error_code</span></span><a class="headerlink" href="#adobe.pdfservices.operation.exception.exceptions.ServiceApiException.error_code" title="Permalink to this definition"></a></dt>
-<dd><p>Returns the detailed message of this error.</p>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="adobe.pdfservices.operation.exception.exceptions.ServiceApiException.request_tracking_id">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">request_tracking_id</span></span><a class="headerlink" href="#adobe.pdfservices.operation.exception.exceptions.ServiceApiException.request_tracking_id" title="Permalink to this definition"></a></dt>
-<dd><p>The request tracking id of the exception.</p>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="adobe.pdfservices.operation.exception.exceptions.ServiceApiException.status_code">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">status_code</span></span><a class="headerlink" href="#adobe.pdfservices.operation.exception.exceptions.ServiceApiException.status_code" title="Permalink to this definition"></a></dt>
-<dd><p>Returns the HTTP Status code or DEFAULT_STATUS_CODE if the status code doesn’t adequately represent the error.</p>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py exception">
-<dt class="sig sig-object py" id="adobe.pdfservices.operation.exception.exceptions.ServiceUsageException">
-<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">adobe.pdfservices.operation.exception.exceptions.</span></span><span class="sig-name descname"><span class="pre">ServiceUsageException</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">request_tracking_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">status_code</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">429</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">error_code</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'UNKNOWN'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#adobe.pdfservices.operation.exception.exceptions.ServiceUsageException" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
-<p>ServiceUsageError is thrown when either service usage limit has been reached or credentials quota has been exhausted.</p>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="adobe.pdfservices.operation.exception.exceptions.ServiceUsageException.DEFAULT_ERROR_CODE">
-<span class="sig-name descname"><span class="pre">DEFAULT_ERROR_CODE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'UNKNOWN'</span></em><a class="headerlink" href="#adobe.pdfservices.operation.exception.exceptions.ServiceUsageException.DEFAULT_ERROR_CODE" title="Permalink to this definition"></a></dt>
-<dd><p>The default value of error code if there is no status code for this service failure.</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="adobe.pdfservices.operation.exception.exceptions.ServiceUsageException.DEFAULT_STATUS_CODE">
-<span class="sig-name descname"><span class="pre">DEFAULT_STATUS_CODE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">429</span></em><a class="headerlink" href="#adobe.pdfservices.operation.exception.exceptions.ServiceUsageException.DEFAULT_STATUS_CODE" title="Permalink to this definition"></a></dt>
-<dd><p>The default value of status code if there is no status code for this service failure.</p>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="adobe.pdfservices.operation.exception.exceptions.ServiceUsageException.error_code">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">error_code</span></span><a class="headerlink" href="#adobe.pdfservices.operation.exception.exceptions.ServiceUsageException.error_code" title="Permalink to this definition"></a></dt>
-<dd><p>Returns the detailed message of this error.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="adobe.pdfservices.operation.pdfops.options.autotagpdf.autotag_pdf_options.AutotagPDFOptions.builder">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">builder</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#adobe.pdfservices.operation.pdfops.options.autotagpdf.autotag_pdf_options.AutotagPDFOptions.builder" title="Permalink to this definition"></a></dt>
+<dd><p>Returns a Builder for <a class="reference internal" href="reference/index.html#adobe.pdfservices.operation.pdfops.options.autotagpdf.autotag_pdf_options.AutotagPDFOptions" title="adobe.pdfservices.operation.pdfops.options.autotagpdf.autotag_pdf_options.AutotagPDFOptions"><code class="xref py py-class docutils literal notranslate"><span class="pre">AutotagPDFOptions</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The builder class for AutotagPDFOptions</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="reference/index.html#adobe.pdfservices.operation.pdfops.options.autotagpdf.autotag_pdf_options.AutotagPDFOptions.Builder" title="adobe.pdfservices.operation.pdfops.options.autotagpdf.autotag_pdf_options.AutotagPDFOptions.Builder">AutotagPDFOptions.Builder</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py property">
-<dt class="sig sig-object py" id="adobe.pdfservices.operation.exception.exceptions.ServiceUsageException.request_tracking_id">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">request_tracking_id</span></span><a class="headerlink" href="#adobe.pdfservices.operation.exception.exceptions.ServiceUsageException.request_tracking_id" title="Permalink to this definition"></a></dt>
-<dd><p>The request tracking id of the exception.</p>
+<dt class="sig sig-object py" id="adobe.pdfservices.operation.pdfops.options.autotagpdf.autotag_pdf_options.AutotagPDFOptions.generate_report">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">generate_report</span></span><a class="headerlink" href="#adobe.pdfservices.operation.pdfops.options.autotagpdf.autotag_pdf_options.AutotagPDFOptions.generate_report" title="Permalink to this definition"></a></dt>
+<dd><p>Boolean specifying whether to generate an XLSX report as an output</p>
 </dd></dl>
 
 <dl class="py property">
-<dt class="sig sig-object py" id="adobe.pdfservices.operation.exception.exceptions.ServiceUsageException.status_code">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">status_code</span></span><a class="headerlink" href="#adobe.pdfservices.operation.exception.exceptions.ServiceUsageException.status_code" title="Permalink to this definition"></a></dt>
-<dd><p>Returns the HTTP Status code or DEFAULT_STATUS_CODE if the status code doesn’t adequately represent the error.</p>
+<dt class="sig sig-object py" id="adobe.pdfservices.operation.pdfops.options.autotagpdf.autotag_pdf_options.AutotagPDFOptions.shift_headings">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">shift_headings</span></span><a class="headerlink" href="#adobe.pdfservices.operation.pdfops.options.autotagpdf.autotag_pdf_options.AutotagPDFOptions.shift_headings" title="Permalink to this definition"></a></dt>
+<dd><p>Boolean specifying whether to shift the headings in the output PDF file</p>
 </dd></dl>
 
 </dd></dl>
 
 </section>
-<section id="module-adobe.pdfservices.operation.exception">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-adobe.pdfservices.operation.exception" title="Permalink to this heading"></a></h2>
+<section id="module-adobe.pdfservices.operation.pdfops.options.autotagpdf">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-adobe.pdfservices.operation.pdfops.options.autotagpdf" title="Permalink to this heading"></a></h2>
 </section>
 </section>
 

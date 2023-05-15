@@ -45,6 +45,17 @@ class ClientConfig(object):
             self._read_timeout = ServiceConstants.HTTP_READ_TIMEOUT
             self._pdf_services_uri = ServiceConstants.PDF_SERVICES_URI
 
+        def with_pdf_services_uri(self, pdf_services_uri: str):
+            """Sets the pdf service uri.
+
+            :param pdf_services_uri: PDF service URI.
+            :type pdf_services_uri: str
+            :return: This Builder instance to add any additional parameters.
+            :rtype: ClientConfig.Builder
+            """
+            self._pdf_services_uri = pdf_services_uri
+            return self
+
         def with_region(self, region: Region):
             """Updates the relevant value for the region.
 

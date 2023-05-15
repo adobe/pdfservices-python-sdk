@@ -138,8 +138,6 @@ class ResponseUtil:
         elif response_content.get(ERROR, None):
             error_code = response.status_code
             error_message = response_content.get(ERROR, {}).get(MESSAGE, None)
-        if response.status_code == 401 and error_code != "401013":
-            return True
         raise OperationException(message="Error response received for request",
                                  request_tracking_id=ResponseUtil.get_request_tracking_id_from_response(response,
                                                                                                         False),
