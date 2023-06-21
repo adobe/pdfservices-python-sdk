@@ -9,6 +9,7 @@
 # governing permissions and limitations under the License.
 
 from adobe.pdfservices.operation.auth.service_account_credentials import ServiceAccountCredentials
+from adobe.pdfservices.operation.auth.service_principal_credentials import ServicePrincipalCredentials
 from adobe.pdfservices.operation.execution_context import ExecutionContext
 
 from adobe.pdfservices.operation.internal.auth.auth_factory import AuthenticatorFactory
@@ -21,14 +22,14 @@ class InternalExecutionContext(ExecutionContext):
     _client_config: InternalClientConfig = None
 
     def __init__(self, credentials, client_config):
-        if isinstance(credentials, ServiceAccountCredentials):
+        if isinstance(credentials, ServiceAccountCredentials) or isinstance(credentials, ServicePrincipalCredentials):
             self._credentials = credentials
             if isinstance(client_config, InternalClientConfig):
                 self._client_config = client_config
             else:
                 self._client_config = InternalClientConfig()
             self._client_config.validate()
-            self.authenticator = AuthenticatorFactory.get_authenticator(self._credentials)
+            self.authenticator = AuthenticatorFactory.get_authenticator(self._credentials, self._client_config)
         else:
             raise ValueError("Invalid Credentials provided as argument")
 

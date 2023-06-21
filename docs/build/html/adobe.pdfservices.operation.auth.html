@@ -61,6 +61,7 @@
 <li class="toctree-l2"><a class="reference internal" href="reference/index.html#credentials">Credentials</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="reference/index.html#adobe.pdfservices.operation.auth.credentials.Credentials"><code class="docutils literal notranslate"><span class="pre">Credentials</span></code></a><ul>
 <li class="toctree-l4"><a class="reference internal" href="reference/index.html#adobe.pdfservices.operation.auth.credentials.Credentials.service_account_credentials_builder"><code class="docutils literal notranslate"><span class="pre">Credentials.service_account_credentials_builder()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference/index.html#adobe.pdfservices.operation.auth.credentials.Credentials.service_principal_credentials_builder"><code class="docutils literal notranslate"><span class="pre">Credentials.service_principal_credentials_builder()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -190,6 +191,21 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="reference/index.html#serviceaccountcredentialsbuilder">ServiceAccountCredentialsBuilder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/index.html#serviceprincipalcredentials">ServicePrincipalCredentials</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="reference/index.html#adobe.pdfservices.operation.auth.service_principal_credentials.ServicePrincipalCredentials"><code class="docutils literal notranslate"><span class="pre">ServicePrincipalCredentials</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="reference/index.html#adobe.pdfservices.operation.auth.service_principal_credentials.ServicePrincipalCredentials.Builder"><code class="docutils literal notranslate"><span class="pre">ServicePrincipalCredentials.Builder</span></code></a><ul>
+<li class="toctree-l5"><a class="reference internal" href="reference/index.html#adobe.pdfservices.operation.auth.service_principal_credentials.ServicePrincipalCredentials.Builder.build"><code class="docutils literal notranslate"><span class="pre">ServicePrincipalCredentials.Builder.build()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="reference/index.html#adobe.pdfservices.operation.auth.service_principal_credentials.ServicePrincipalCredentials.Builder.with_client_id"><code class="docutils literal notranslate"><span class="pre">ServicePrincipalCredentials.Builder.with_client_id()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="reference/index.html#adobe.pdfservices.operation.auth.service_principal_credentials.ServicePrincipalCredentials.Builder.with_client_secret"><code class="docutils literal notranslate"><span class="pre">ServicePrincipalCredentials.Builder.with_client_secret()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="reference/index.html#adobe.pdfservices.operation.auth.service_principal_credentials.ServicePrincipalCredentials.client_id"><code class="docutils literal notranslate"><span class="pre">ServicePrincipalCredentials.client_id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference/index.html#adobe.pdfservices.operation.auth.service_principal_credentials.ServicePrincipalCredentials.client_secret"><code class="docutils literal notranslate"><span class="pre">ServicePrincipalCredentials.client_secret</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="reference/index.html#serviceprincipalcredentialsbuilder">ServicePrincipalCredentialsBuilder</a></li>
 </ul>
 </li>
 </ul>
@@ -228,7 +244,7 @@
 <dt class="sig sig-object py" id="adobe.pdfservices.operation.auth.credentials.Credentials">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">adobe.pdfservices.operation.auth.credentials.</span></span><span class="sig-name descname"><span class="pre">Credentials</span></span><a class="headerlink" href="#adobe.pdfservices.operation.auth.credentials.Credentials" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></p>
-<p>Marker base class for different types of credentials. Currently it supports only <a class="reference internal" href="reference/index.html#adobe.pdfservices.operation.auth.service_account_credentials.ServiceAccountCredentials" title="adobe.pdfservices.operation.auth.service_account_credentials.ServiceAccountCredentials"><code class="xref py py-class docutils literal notranslate"><span class="pre">ServiceAccountCredentials</span></code></a>.
+<p>Marker base class for different types of credentials. Currently it supports <a class="reference internal" href="reference/index.html#adobe.pdfservices.operation.auth.service_account_credentials.ServiceAccountCredentials" title="adobe.pdfservices.operation.auth.service_account_credentials.ServiceAccountCredentials"><code class="xref py py-class docutils literal notranslate"><span class="pre">ServiceAccountCredentials</span></code></a> and <a class="reference internal" href="reference/index.html#adobe.pdfservices.operation.auth.service_principal_credentials.ServicePrincipalCredentials" title="adobe.pdfservices.operation.auth.service_principal_credentials.ServicePrincipalCredentials"><code class="xref py py-class docutils literal notranslate"><span class="pre">ServicePrincipalCredentials</span></code></a>.
 The factory methods within this class can be used to create instances of credentials classes.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="adobe.pdfservices.operation.auth.credentials.Credentials.service_account_credentials_builder">
@@ -242,6 +258,23 @@ The factory methods within this class can be used to create instances of credent
 <dd class="field-even"><p><a class="reference internal" href="reference/index.html#adobe.pdfservices.operation.auth.service_account_credentials.ServiceAccountCredentials.Builder" title="adobe.pdfservices.operation.auth.service_account_credentials.ServiceAccountCredentials.Builder">ServiceAccountCredentials.Builder</a></p>
 </dd>
 </dl>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version 2.3.0: </span>Notice: JWT based service account credentials has been deprecated. Please use OAuth Server-to-Server based <a class="reference internal" href="reference/index.html#adobe.pdfservices.operation.auth.service_principal_credentials.ServicePrincipalCredentials" title="adobe.pdfservices.operation.auth.service_principal_credentials.ServicePrincipalCredentials"><code class="xref py py-class docutils literal notranslate"><span class="pre">ServicePrincipalCredentials</span></code></a>.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="adobe.pdfservices.operation.auth.credentials.Credentials.service_principal_credentials_builder">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">service_principal_credentials_builder</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#adobe.pdfservices.operation.auth.credentials.Credentials.service_principal_credentials_builder" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a new <a class="reference internal" href="reference/index.html#adobe.pdfservices.operation.auth.service_principal_credentials.ServicePrincipalCredentials" title="adobe.pdfservices.operation.auth.service_principal_credentials.ServicePrincipalCredentials"><code class="xref py py-class docutils literal notranslate"><span class="pre">ServicePrincipalCredentials</span></code></a> builder.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>An instance of ServicePrincipalCredentials Builder.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="reference/index.html#adobe.pdfservices.operation.auth.service_principal_credentials.ServicePrincipalCredentials.Builder" title="adobe.pdfservices.operation.auth.service_principal_credentials.ServicePrincipalCredentials.Builder">ServicePrincipalCredentials.Builder</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -253,9 +286,11 @@ The factory methods within this class can be used to create instances of credent
 <dt class="sig sig-object py" id="adobe.pdfservices.operation.auth.service_account_credentials.ServiceAccountCredentials">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">adobe.pdfservices.operation.auth.service_account_credentials.</span></span><span class="sig-name descname"><span class="pre">ServiceAccountCredentials</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">client_secret</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">private_key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">organization_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">account_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#adobe.pdfservices.operation.auth.service_account_credentials.ServiceAccountCredentials" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="reference/index.html#adobe.pdfservices.operation.auth.credentials.Credentials" title="adobe.pdfservices.operation.auth.credentials.Credentials"><code class="xref py py-class docutils literal notranslate"><span class="pre">Credentials</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></p>
-<p>Service Account credentials allow your application to call PDF Tools Extract API on behalf of the application itself,
-or on behalf of an enterprise organization. For getting the credentials,
-<a class="reference external" href="https://www.adobe.com/go/pdfextractapi_requestform">Click Here</a>.</p>
+<p>Service Account credentials allow your application to call PDF Services API on behalf of the application itself,
+or on behalf of an enterprise organization.</p>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version 2.3.0: </span>Notice: JWT based service account credentials has been deprecated. Please use OAuth Server-to-Server based <code class="xref py py-class docutils literal notranslate"><span class="pre">ServicePrincipalCredentials</span></code>.</p>
+</div>
 <dl class="py class">
 <dt class="sig sig-object py" id="adobe.pdfservices.operation.auth.service_account_credentials.ServiceAccountCredentials.Builder">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Builder</span></span><a class="headerlink" href="#adobe.pdfservices.operation.auth.service_account_credentials.ServiceAccountCredentials.Builder" title="Permalink to this definition"></a></dt>
@@ -273,6 +308,9 @@ or on behalf of an enterprise organization. For getting the credentials,
 <dd class="field-even"><p><a class="reference internal" href="reference/index.html#adobe.pdfservices.operation.auth.service_account_credentials.ServiceAccountCredentials" title="adobe.pdfservices.operation.auth.service_account_credentials.ServiceAccountCredentials">ServiceAccountCredentials</a></p>
 </dd>
 </dl>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version 2.3.0: </span>Notice: JWT based service account credentials has been deprecated. Please use OAuth Server-to-Server based <code class="xref py py-class docutils literal notranslate"><span class="pre">ServicePrincipalCredentials</span></code>.</p>
+</div>
 </dd></dl>
 
 <dl class="py method">
@@ -361,7 +399,7 @@ or on behalf of an enterprise organization. For getting the credentials,
 <dl class="py method">
 <dt class="sig sig-object py" id="adobe.pdfservices.operation.auth.service_account_credentials.ServiceAccountCredentials.Builder.with_organization_id">
 <span class="sig-name descname"><span class="pre">with_organization_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">organization_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#adobe.pdfservices.operation.auth.service_account_credentials.ServiceAccountCredentials.Builder.with_organization_id" title="Permalink to this definition"></a></dt>
-<dd><p>Set Organization Id (format: <a class="reference external" href="mailto:org_ident&#37;&#52;&#48;AdobeOrg">org_ident<span>&#64;</span>AdobeOrg</a>) that has been configured for access to PDF Tools API</p>
+<dd><p>Set Organization Id (format: <a class="reference external" href="mailto:org_ident&#37;&#52;&#48;AdobeOrg">org_ident<span>&#64;</span>AdobeOrg</a>) that has been configured for access to PDF Services API</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>organization_id</strong> (<em>str</em>) – Organization ID (format: <a class="reference external" href="mailto:org_ident&#37;&#52;&#48;AdobeOrg">org_ident<span>&#64;</span>AdobeOrg</a>)</p>
@@ -415,13 +453,92 @@ or on behalf of an enterprise organization. For getting the credentials,
 <dl class="py property">
 <dt class="sig sig-object py" id="adobe.pdfservices.operation.auth.service_account_credentials.ServiceAccountCredentials.organization_id">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">organization_id</span></span><a class="headerlink" href="#adobe.pdfservices.operation.auth.service_account_credentials.ServiceAccountCredentials.organization_id" title="Permalink to this definition"></a></dt>
-<dd><p>Identifies the organization(format: <a class="reference external" href="mailto:org_ident&#37;&#52;&#48;AdobeOrg">org_ident<span>&#64;</span>AdobeOrg</a>) that has been configured for access to PDF Tools API.</p>
+<dd><p>Identifies the organization (format: <a class="reference external" href="mailto:org_ident&#37;&#52;&#48;AdobeOrg">org_ident<span>&#64;</span>AdobeOrg</a>) that has been configured for access to PDF Services API.</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="adobe.pdfservices.operation.auth.service_account_credentials.ServiceAccountCredentials.private_key">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">private_key</span></span><a class="headerlink" href="#adobe.pdfservices.operation.auth.service_account_credentials.ServiceAccountCredentials.private_key" title="Permalink to this definition"></a></dt>
 <dd><p>Content of the Private Key (PEM format)</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="adobe-pdfservices-operation-auth-service-principal-credentials-module">
+<h2>adobe.pdfservices.operation.auth.service_principal_credentials module<a class="headerlink" href="#adobe-pdfservices-operation-auth-service-principal-credentials-module" title="Permalink to this heading"></a></h2>
+<span class="target" id="module-adobe.pdfservices.operation.auth.service_principal_credentials"></span><dl class="py class">
+<dt class="sig sig-object py" id="adobe.pdfservices.operation.auth.service_principal_credentials.ServicePrincipalCredentials">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">adobe.pdfservices.operation.auth.service_principal_credentials.</span></span><span class="sig-name descname"><span class="pre">ServicePrincipalCredentials</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">client_secret</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#adobe.pdfservices.operation.auth.service_principal_credentials.ServicePrincipalCredentials" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="reference/index.html#adobe.pdfservices.operation.auth.credentials.Credentials" title="adobe.pdfservices.operation.auth.credentials.Credentials"><code class="xref py py-class docutils literal notranslate"><span class="pre">Credentials</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></p>
+<p>OAuth Server-to-Server based Service Principal credentials allow your application to call PDF Services API on behalf of the application itself,
+or on behalf of an enterprise organization. For getting the credentials,
+<a class="reference external" href="https://www.adobe.com/go/dcsdks_credentials?ref=getStartedWithServicesSdk">Click Here</a>.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="adobe.pdfservices.operation.auth.service_principal_credentials.ServicePrincipalCredentials.Builder">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Builder</span></span><a class="headerlink" href="#adobe.pdfservices.operation.auth.service_principal_credentials.ServicePrincipalCredentials.Builder" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Builds a <a class="reference internal" href="reference/index.html#adobe.pdfservices.operation.auth.service_principal_credentials.ServicePrincipalCredentials" title="adobe.pdfservices.operation.auth.service_principal_credentials.ServicePrincipalCredentials"><code class="xref py py-class docutils literal notranslate"><span class="pre">ServicePrincipalCredentials</span></code></a> instance.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="adobe.pdfservices.operation.auth.service_principal_credentials.ServicePrincipalCredentials.Builder.build">
+<span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#adobe.pdfservices.operation.auth.service_principal_credentials.ServicePrincipalCredentials.Builder.build" title="Permalink to this definition"></a></dt>
+<dd><p>Returns a new <a class="reference internal" href="reference/index.html#adobe.pdfservices.operation.auth.service_principal_credentials.ServicePrincipalCredentials" title="adobe.pdfservices.operation.auth.service_principal_credentials.ServicePrincipalCredentials"><code class="xref py py-class docutils literal notranslate"><span class="pre">ServicePrincipalCredentials</span></code></a> instance built from the current state of this builder.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A ServicePrincipalCredentials instance.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="reference/index.html#adobe.pdfservices.operation.auth.service_principal_credentials.ServicePrincipalCredentials" title="adobe.pdfservices.operation.auth.service_principal_credentials.ServicePrincipalCredentials">ServicePrincipalCredentials</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="adobe.pdfservices.operation.auth.service_principal_credentials.ServicePrincipalCredentials.Builder.with_client_id">
+<span class="sig-name descname"><span class="pre">with_client_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#adobe.pdfservices.operation.auth.service_principal_credentials.ServicePrincipalCredentials.Builder.with_client_id" title="Permalink to this definition"></a></dt>
+<dd><p>Set Client ID (API Key)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>client_id</strong> (<em>str</em>) – Client Id (API Key)</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>This Builder instance to add any additional parameters.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="reference/index.html#adobe.pdfservices.operation.auth.service_principal_credentials.ServicePrincipalCredentials.Builder" title="adobe.pdfservices.operation.auth.service_principal_credentials.ServicePrincipalCredentials.Builder">ServicePrincipalCredentials.Builder</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="adobe.pdfservices.operation.auth.service_principal_credentials.ServicePrincipalCredentials.Builder.with_client_secret">
+<span class="sig-name descname"><span class="pre">with_client_secret</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client_secret</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#adobe.pdfservices.operation.auth.service_principal_credentials.ServicePrincipalCredentials.Builder.with_client_secret" title="Permalink to this definition"></a></dt>
+<dd><p>Set Client Secret</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>client_secret</strong> (<em>str</em>) – Client Secret</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>This Builder instance to add any additional parameters.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="reference/index.html#adobe.pdfservices.operation.auth.service_principal_credentials.ServicePrincipalCredentials.Builder" title="adobe.pdfservices.operation.auth.service_principal_credentials.ServicePrincipalCredentials.Builder">ServicePrincipalCredentials.Builder</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="adobe.pdfservices.operation.auth.service_principal_credentials.ServicePrincipalCredentials.client_id">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">client_id</span></span><a class="headerlink" href="#adobe.pdfservices.operation.auth.service_principal_credentials.ServicePrincipalCredentials.client_id" title="Permalink to this definition"></a></dt>
+<dd><p>Client Id (API Key)</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="adobe.pdfservices.operation.auth.service_principal_credentials.ServicePrincipalCredentials.client_secret">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">client_secret</span></span><a class="headerlink" href="#adobe.pdfservices.operation.auth.service_principal_credentials.ServicePrincipalCredentials.client_secret" title="Permalink to this definition"></a></dt>
+<dd><p>Client Secret</p>
 </dd></dl>
 
 </dd></dl>

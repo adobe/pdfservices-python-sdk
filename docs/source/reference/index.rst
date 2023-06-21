@@ -93,5 +93,20 @@ ServiceAccountCredentialsBuilder
     :show-inheritance:
     :noindex:
 
+ServicePrincipalCredentials
+--------------------------
+.. autoclass:: adobe.pdfservices.operation.auth.service_principal_credentials.ServicePrincipalCredentials
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+ServicePrincipalCredentialsBuilder
+--------------------------------
+.. autoclass:: adobe.pdfservices.operation.auth.service_principal_credentials.ServicePrincipalCredentials.Builder
+    :members:
+    :undoc-members:
+    :show-inheritance:
+    :noindex:
+
 
 

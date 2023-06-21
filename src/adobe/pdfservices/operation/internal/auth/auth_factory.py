@@ -10,14 +10,19 @@
 
 from adobe.pdfservices.operation.auth.credentials import Credentials
 from adobe.pdfservices.operation.auth.service_account_credentials import ServiceAccountCredentials
+from adobe.pdfservices.operation.auth.service_principal_credentials import ServicePrincipalCredentials
 from adobe.pdfservices.operation.internal.auth.jwt_authenticator import JwtAuthenticator
+from adobe.pdfservices.operation.internal.auth.service_principal_authenticator import ServicePrincipalAuthenticator
+from adobe.pdfservices.operation.internal.internal_client_config import InternalClientConfig
 
 
 class AuthenticatorFactory:
 
     @staticmethod
-    def get_authenticator(credential: Credentials):
+    def get_authenticator(credential: Credentials, client_config: InternalClientConfig):
         if isinstance(credential, ServiceAccountCredentials):
             return JwtAuthenticator(credential)
+        elif isinstance(credential, ServicePrincipalCredentials):
+            return ServicePrincipalAuthenticator(credential, client_config)
         else:
             raise ValueError("Invalid Credentials provided as argument")
