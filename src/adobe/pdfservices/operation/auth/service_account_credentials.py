@@ -13,30 +13,24 @@ from abc import ABC
 
 from adobe.pdfservices.operation.internal.constants.service_constants import ServiceConstants
 from adobe.pdfservices.operation.internal.util import path_util, file_utils
-from .credentials import Credentials
-from ..internal.util.validation_util import is_empty
-
-
-def _is_valid(value, name):
-    if is_empty(value):
-        raise ValueError(name + " must not be blank")
-    return value
+from .credentials import Credentials, _is_valid
 
 
 class ServiceAccountCredentials(Credentials, ABC):
     """
-    Service Account credentials allow your application to call PDF Tools Extract API on behalf of the application itself,
-    or on behalf of an enterprise organization. For getting the credentials,
-    `Click Here <https://www.adobe.com/go/pdfextractapi_requestform>`_.
-    """
+     Service Account credentials allow your application to call PDF Services API on behalf of the application itself,
+     or on behalf of an enterprise organization.
 
-    # TODO Can this constructor be excluded from documentation
+     .. deprecated:: 2.3.0
+         Notice: JWT based service account credentials has been deprecated. Please use OAuth Server-to-Server based :class:`ServicePrincipalCredentials`.
+     """
+
     def __init__(self, client_id, client_secret, private_key, organization_id, account_id):
-        self._client_id = _is_valid(client_id, "client_id")
-        self._client_secret = _is_valid(client_secret, "client_secret")
-        self._private_key = _is_valid(private_key, "private_key")
-        self._organization_id = _is_valid(organization_id, "organization_id")
-        self._account_id = _is_valid(account_id, "account_id")
+        self._client_id = _is_valid(client_id, 'client_id')
+        self._client_secret = _is_valid(client_secret, 'client_secret')
+        self._private_key = _is_valid(private_key, 'private_key')
+        self._organization_id = _is_valid(organization_id, 'organization_id')
+        self._account_id = _is_valid(account_id, 'account_id')
 
     @property
     def client_id(self):
@@ -55,7 +49,7 @@ class ServiceAccountCredentials(Credentials, ABC):
 
     @property
     def organization_id(self):
-        """Identifies the organization(format: org_ident@AdobeOrg) that has been configured for access to PDF Tools API."""
+        """ Identifies the organization (format: org_ident@AdobeOrg) that has been configured for access to PDF Services API. """
         return self._organization_id
 
     @property
@@ -124,7 +118,7 @@ class ServiceAccountCredentials(Credentials, ABC):
             return self
 
         def with_organization_id(self, organization_id: str):
-            """ Set Organization Id (format: org_ident@AdobeOrg) that has been configured for access to PDF Tools API
+            """ Set Organization Id (format: org_ident@AdobeOrg) that has been configured for access to PDF Services API
 
             :param organization_id: Organization ID (format: org_ident@AdobeOrg)
             :type organization_id: str
@@ -198,6 +192,9 @@ class ServiceAccountCredentials(Credentials, ABC):
 
             :return: A ServiceAccountCredentials instance.
             :rtype: ServiceAccountCredentials
+
+            .. deprecated:: 2.3.0
+                 Notice: JWT based service account credentials has been deprecated. Please use OAuth Server-to-Server based :class:`ServicePrincipalCredentials`.
             """
 
             from adobe.pdfservices.operation.internal.auth.service_account_credentials_with_uri import ServiceAccountCredentialsWithUri

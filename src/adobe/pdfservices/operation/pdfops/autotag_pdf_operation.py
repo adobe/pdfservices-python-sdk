@@ -41,9 +41,10 @@ class AutotagPDFOperation(Operation):
         try:
             base_path = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-            credentials = Credentials.service_account_credentials_builder() \\
-                .from_file(base_path + "/pdfservices-api-credentials.json") \\
-                .build()
+            credentials = Credentials.service_principal_credentials_builder(). \\
+                with_client_id(os.getenv('PDF_SERVICES_CLIENT_ID')). \\
+                with_client_secret(os.getenv('PDF_SERVICES_CLIENT_SECRET')). \\
+                build()
 
             execution_context = ExecutionContext.create(credentials)
             autotag_pdf_operation = AutotagPDFOperation.create_new()

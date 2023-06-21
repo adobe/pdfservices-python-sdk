@@ -11,11 +11,11 @@
 custom_error_messages = {
 
     # Custom IMS error messages
-    "imsInvalidTokenGenericErrorMessage": 'Either your certificate for PDF Tools API credentials has expired or an ' +
+    "imsInvalidTokenGenericErrorMessage": 'Either your certificate for PDF Services API credentials has expired or an ' +
                                           'invalid Organization_ID/Account_ID has been used in credentials. Please visit Adobe IO ' +
                                           'Console(http://console.adobe.io/) to update your public certificate to use the same credentials or to check ' +
                                           'the value of Organization Id or Account ID.',
-    "imsCertificateExpiredErrorMessage": 'Your certificate for PDF Tools API credentials might have expired. ' +
+    "imsCertificateExpiredErrorMessage": 'Your certificate for PDF Services API credentials might have expired. ' +
                                          'Please visit Adobe IO Console(http://console.adobe.io/) to update your public certificate to use the same ' +
                                          'credentials.',
 
@@ -26,9 +26,9 @@ custom_error_messages = {
 
     # Quota specific exception error messages
     "quotaExhaustedErrorMessage": 'Free trial quota exhausted. Please visit (www.adobe.com/go/pdftoolsapi_err_quota) to ' +
-                                  'upgrade to paid credentials.',
+                                   'upgrade to paid credentials.',
     "quotaUnavailableErrorMessage": 'Quota for this operation is not available. Please visit ' +
-                                    '(www.adobe.com/go/pdftoolsapi_home) to start using free trial quota.'
+                                     '(www.adobe.com/go/pdftoolsapi_home) to start using free trial quota.'
 }
 
 
