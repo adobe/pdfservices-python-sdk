@@ -12,6 +12,7 @@ import io
 import logging
 import os
 from io import BufferedWriter
+from shutil import move
 
 from adobe.pdfservices.operation.exception.exceptions import SdkException
 from adobe.pdfservices.operation.internal.constants.service_constants import ServiceConstants
@@ -45,7 +46,7 @@ class FileRefImpl(FileRef):
             if not os.path.exists(dir):
                 os.mkdir(dir)
             if not os.path.exists(abs_path):
-                os.rename(self._file_path, abs_path)
+                move(self._file_path, abs_path)
                 return
             raise SdkException("Output file {file} exists".format(file=destination_file_path))
         else:
