@@ -2,7 +2,7 @@
 # This file is licensed to you under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License. You may obtain a copy
 # of the License at http://www.apache.org/licenses/LICENSE-2.0
-# 
+#
 # Unless required by applicable law or agreed to in writing, software distributed under
 # the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR REPRESENTATIONS
 # OF ANY KIND, either express or implied. See the License for the specific language
@@ -35,6 +35,7 @@ custom_error_messages = {
 class ServiceConstants:
     HTTP_CONNECT_TIMEOUT = 4000
     HTTP_READ_TIMEOUT = 10000
+    HTTP_PROCESSING_TIMEOUT = 600000       # default processing timeout of 10 mins
     HTTP_MAX_RETRIES = 1
     HTTP_RETRY_DELAY_FACTOR = 2
     HTTP_MAX_RETRYIN_TERVAL = 15000

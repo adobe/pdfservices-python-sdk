@@ -15,7 +15,6 @@ import polling2
 from polling2 import TimeoutException
 import requests
 
-from adobe.pdfservices.operation.internal.http.response_util import ResponseUtil
 from adobe.pdfservices.operation.internal.api.dto.response.job_status import JobStatus
 from adobe.pdfservices.operation.internal.constants.request_key import RequestKey
 from adobe.pdfservices.operation.internal.http.response_util import ResponseUtil
@@ -33,7 +32,7 @@ from adobe.pdfservices.operation.internal.api.dto.request.platform.platform_api_
 
 class PlatformApi:
     operation = '/operation/'
-    POLLING_TIMEOUT_STATUS_CODE = 0
+    PROCESSING_TIMEOUT_STATUS_CODE = 0
 
     @staticmethod
     def submit_job(context: InternalExecutionContext, platform_api_request: PlatformApiRequest, operation_endpoint: str,
@@ -82,15 +81,15 @@ class PlatformApi:
                                                     success_status_codes=[HTTPStatus.OK, HTTPStatus.ACCEPTED],
                                                     error_response_handler=PlatformApi.handle_error_response),
                 check_success=is_correct_response,
-                step=0.5,
-                timeout=10 * 60
+                step=1,
+                timeout=context.client_config.get_processing_timeout()
             )
-            logging.debug(f'Total polling time, Latency(ms): {(datetime.now() - start_time).microseconds / 1000}')
+            logging.debug(f'Total processing time, Latency(ms): {(datetime.now() - start_time).microseconds / 1000}')
             return response
         except TimeoutException:
-            logging.error("Polling Timeout reached. Something's wrong, file operation took too long")
-            raise OperationException(message="Operation execution has timed out!", error_message="Polling Timeout reached", request_tracking_id=ResponseUtil.get_request_tracking_id_from_response(response, True)
-                                     ,status_code=PlatformApi.POLLING_TIMEOUT_STATUS_CODE)
+            logging.error("Processing Timeout reached. Something's wrong, file operation took too long")
+            raise OperationException(message="Operation execution has timed out!", error_message="Processing Timeout reached", request_tracking_id=x_request_id
+                                     ,status_code=PlatformApi.PROCESSING_TIMEOUT_STATUS_CODE)
 
 
     @staticmethod
