@@ -11,7 +11,7 @@
 import json
 import logging
 import sys
-from datetime import datetime, timedelta
+from datetime import datetime
 from http import HTTPStatus
 
 from adobe.pdfservices.operation.auth.service_principal_credentials import ServicePrincipalCredentials
@@ -21,7 +21,7 @@ from adobe.pdfservices.operation.internal.auth.session_token import SessionToken
 from adobe.pdfservices.operation.internal.constants.request_key import RequestKey
 from adobe.pdfservices.operation.internal.exceptions import OperationException
 from adobe.pdfservices.operation.internal.http.response_util import ResponseUtil
-from adobe.pdfservices.operation.internal.constants.service_constants import ServiceConstants, custom_error_messages
+from adobe.pdfservices.operation.internal.constants.service_constants import custom_error_messages
 from adobe.pdfservices.operation.internal.http import http_client
 from adobe.pdfservices.operation.internal.http.http_method import HttpMethod
 from adobe.pdfservices.operation.internal.http.http_request import HttpRequest
@@ -44,13 +44,14 @@ class ServicePrincipalAuthenticator(Authenticator):
     def session_token(self):
         """ Access token for the PDF Services API """
         if self.token:
-            if self.older_in_minute() <= 2:
+            if self.time_to_expire() > 2:
                 return self.token
+        self._logger.info("Refreshing access token with creation time: {creation_time} minutes".format(creation_time=datetime.now()))
         return self.refresh_token()
 
-    def older_in_minute(self):
+    def time_to_expire(self):
         """ Time remaining in minutes till token expiry """
-        return int((datetime.now() - self.token.expired_at).seconds / 60)
+        return int((self.token.expired_at.timestamp() - datetime.now().timestamp()) / 60)
 
     def refresh_token(self):
         """ Refreshes the access token sent to PDF Services API """
@@ -69,7 +70,7 @@ class ServicePrincipalAuthenticator(Authenticator):
                                                    error_response_handler=self.handle_ims_failure)
 
             content = json.loads(response.content)
-            self.token = SessionToken(content['access_token'], content['expires_in'])
+            self.token = SessionToken(content['access_token'], content['expires_in'] * 1000)
         except Exception:
             raise SdkException("Exception in fetching access token", sys.exc_info())
         return self.token

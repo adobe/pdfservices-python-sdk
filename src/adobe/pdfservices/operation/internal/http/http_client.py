@@ -7,7 +7,6 @@
 # the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR REPRESENTATIONS
 # OF ANY KIND, either express or implied. See the License for the specific language
 # governing permissions and limitations under the License.
-import json
 import logging
 import sys
 from typing import Callable, List
@@ -48,7 +47,7 @@ def _append_default_headers(headers: dict):
     # Set SDK Info header
     headers[DefaultHeaders.DC_APP_INFO_HEADER_KEY] = "{lang}-{name}-{version}".format(lang="python",
                                                                                       name='pdfservices-sdk',
-                                                                                      version='2.3.0')
+                                                                                      version='2.3.1')
     headers[DefaultHeaders.ACCEPT_HEADER_NAME] = DefaultHeaders.JSON_TXT_CONTENT_TYPE
 
 
