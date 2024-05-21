@@ -1,12 +1,15 @@
-# Copyright 2021 Adobe. All rights reserved.
-# This file is licensed to you under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License. You may obtain a copy
-# of the License at http://www.apache.org/licenses/LICENSE-2.0
+# Copyright 2024 Adobe
+# All Rights Reserved.
 #
-# Unless required by applicable law or agreed to in writing, software distributed under
-# the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR REPRESENTATIONS
-# OF ANY KIND, either express or implied. See the License for the specific language
-# governing permissions and limitations under the License.
+# NOTICE:  All information contained herein is, and remains
+# the property of Adobe and its suppliers, if any. The intellectual
+# and technical concepts contained herein are proprietary to Adobe
+# and its suppliers and are protected by all applicable intellectual
+# property laws, including trade secret and copyright laws.
+# Dissemination of this information or reproduction of this material
+# is strictly forbidden unless prior written permission is obtained
+# from Adobe.
+
 
 custom_error_messages = {
 
@@ -26,38 +29,34 @@ custom_error_messages = {
 
     # Quota specific exception error messages
     "quotaExhaustedErrorMessage": 'Free trial quota exhausted. Please visit (www.adobe.com/go/pdftoolsapi_err_quota) to ' +
-                                   'upgrade to paid credentials.',
+                                  'upgrade to paid credentials.',
     "quotaUnavailableErrorMessage": 'Quota for this operation is not available. Please visit ' +
-                                     '(www.adobe.com/go/pdftoolsapi_home) to start using free trial quota.'
+                                    '(www.adobe.com/go/pdftoolsapi_home) to start using free trial quota.'
 }
 
 
 class ServiceConstants:
     HTTP_CONNECT_TIMEOUT = 4000
     HTTP_READ_TIMEOUT = 10000
-    HTTP_PROCESSING_TIMEOUT = 600000       # default processing timeout of 10 mins
-    HTTP_MAX_RETRIES = 1
-    HTTP_RETRY_DELAY_FACTOR = 2
-    HTTP_MAX_RETRYIN_TERVAL = 15000
-    HTTP_RETRY_BACKOFF_INTERVAL = 3000
-    HTTP_SUCCESS_RESPONSE_CODE = 200, 201, 202, 204
-    HTTP_RETRIABLE_RESPONSE_CODE = 401
-    APACHE_CLIENT_MAX_CONNECTION = 200
-    APACHE_CLIENT_MAX_CONNECTION_PER_ROUTE = 20
-    JWT_BASE_URI = 'https://ims-na1.adobelogin.com'
-    JWT_URI_SUFFIX = 'ims/exchange/jwt/'
-    JWT_AUDIENCE_SUFFIX = 'c/'
-    JWT_CLAIM = 's/ent_documentcloud_sdk'
     OPERATION_RESULT_TEMP_DIRECTORY = 'sdk_result'
-    CPF_OPS_CREATE_URI = 'https://cpf-ue1.adobe.io/ops/:create'
-    EXTRACT_OPERATION_ENDPOINT = 'extractpdf'
-    AUTOTAG_OPERATION_ENDPOINT = 'autotag'
-    TEXT_MIME_TYPE = "text/directory"
     EXTRACT_OPERATION_NAME = "EXTRACT_PDF"
     AUTOTAG_OPERATION_NAME = "AUTOTAG_PDF"
-    CONTENT_ANALYZER_REQUESTS_STRING = "contentAnalyzerRequests"
-    CONTENT_ANALYZER_RESPONSE_STRING = "contentAnalyzerResponse"
-    ASSET_UPLOAD_URI_REQUESTS_STRING = "assetUploadURIRequests"
-    PDF_SERVICES_URI = "https://pdf-services.adobe.io"
-    PDF_SERVICES_URI_US = "https://pdf-services-ue1.adobe.io"
-    PDF_SERVICES_URI_EU = "https://pdf-services-ew1.adobe.io"
+    CREATE_OPERATION_NAME = "CREATE_PDF"
+    DOCUMENT_MERGE_OPERATION_NAME = "DOCUMENT_MERGE"
+    ESEAL_PDF_NAME = "ESEAL_PDF"
+    PROTECT_PDF_NAME = "PROTECT_PDF"
+    COMBINE_PDF_NAME = "COMBINE_PDF"
+    EXPORT_PDF_OPERATION_NAME = "EXPORT_PDF"
+    OCR_PDF_OPERATION_NAME = "OCR_PDF"
+    HTML_TO_PDF_OPERATION_NAME = "HTML_TO_PDF"
+    COMPRESS_PDF_OPERATION_NAME = "COMPRESS_PDF"
+    LINEARIZE_PDF_OPERATION_NAME = "LINEARIZE_PDF"
+    REMOVE_PROTECTION_OPERATION_NAME = "REMOVE_PROTECTION"
+    PDF_TO_IMAGES_OPERATION_NAME = "PDF_TO_IMAGES"
+    INSERT_PAGES_OPERATION_NAME = "INSERT_PAGES"
+    REPLACE_PAGES_OPERATION_NAME = "REPLACE PAGES"
+    REORDER_PAGES_OPERATION_NAME = "REORDER_PAGES"
+    DELETE_PAGES_OPERATION_NAME = "DELETE_PAGES"
+    ROTATE_PAGES_OPERATION_NAME = "ROTATE_PAGES"
+    SPLIT_PDF_OPERATION_NAME = "SPLIT_PDF"
+    PDF_PROPERTIES_OPERATION_NAME = "PDF_PROPERTIES"

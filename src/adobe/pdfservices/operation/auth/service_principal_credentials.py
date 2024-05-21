@@ -1,82 +1,55 @@
-# Copyright 2023 Adobe. All rights reserved.
-# This file is licensed to you under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License. You may obtain a copy
-# of the License at http://www.apache.org/licenses/LICENSE-2.0
+# Copyright 2024 Adobe
+# All Rights Reserved.
 #
-# Unless required by applicable law or agreed to in writing, software distributed under
-# the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR REPRESENTATIONS
-# OF ANY KIND, either express or implied. See the License for the specific language
-# governing permissions and limitations under the License.
+# NOTICE:  All information contained herein is, and remains
+# the property of Adobe and its suppliers, if any. The intellectual
+# and technical concepts contained herein are proprietary to Adobe
+# and its suppliers and are protected by all applicable intellectual
+# property laws, including trade secret and copyright laws.
+# Dissemination of this information or reproduction of this material
+# is strictly forbidden unless prior written permission is obtained
+# from Adobe.
 
-import json
-import os
-from abc import ABC
-
-from adobe.pdfservices.operation.internal.constants.service_constants import ServiceConstants
-from adobe.pdfservices.operation.internal.util import path_util, file_utils
-from .credentials import Credentials, _is_valid
+from adobe.pdfservices.operation.auth.credentials import Credentials
+from adobe.pdfservices.operation.internal.constants.custom_error_messages import CustomErrorMessages
+from adobe.pdfservices.operation.internal.util.enforce_types import enforce_types
+from adobe.pdfservices.operation.internal.util.string_util import StringUtil
 
 
-class ServicePrincipalCredentials(Credentials, ABC):
+class ServicePrincipalCredentials(Credentials):
     """
-         OAuth Server-to-Server based Service Principal credentials allow your application to call PDF Services API on behalf of the application itself,
-         or on behalf of an enterprise organization. For getting the credentials,
-         `Click Here <https://www.adobe.com/go/dcsdks_credentials?ref=getStartedWithServicesSdk>`_.
-     """
+    Service Principal credentials allow your application to call PDF Services API. For getting the credentials,
+    `Click Here <https://www.adobe.com/go/dcsdks_credentials?ref=getStartedWithServicesSdk>`_.
+    """
 
-    def __init__(self, client_id, client_secret):
-        self._client_id = _is_valid(client_id, 'client_id')
-        self._client_secret = _is_valid(client_secret, 'client_secret')
-
-    @property
-    def client_id(self):
-        """ Client Id (API Key) """
-        return self._client_id
-
-    @property
-    def client_secret(self):
-        """  Client Secret"""
-        return self._client_secret
-
-    class Builder:
+    @enforce_types
+    def __init__(self, client_id: str, client_secret: str):
         """
-        Builds a :class:`ServicePrincipalCredentials` instance.
+        Constructs an instance of :samp:`ServicePrincipalCredentials`.
+
+        :param client_id: client ID for ServicePrincipalCredentials; can not be None or empty.
+        :type client_id: str
+        :param client_secret: client secret for ServicePrincipalCredentials; can not be None or empty.
+        :type client_secret: str
         """
-        _CLIENT_ID = "client_id"
-        _CLIENT_SECRET = "client_secret"
+        if StringUtil.is_blank(client_id):
+            raise ValueError(CustomErrorMessages.GENERIC_CAN_NOT_BE_NONE_OR_EMPTY.format("Client ID"))
+        if StringUtil.is_blank(client_secret):
+            raise ValueError(CustomErrorMessages.GENERIC_CAN_NOT_BE_NONE_OR_EMPTY.format("Client Secret"))
 
-        def __init__(self):
-            self._client_id = None
-            self._client_secret = None
-            return
+        self.__client_id: str = client_id
+        self.__client_secret: str = client_secret
 
-        def with_client_id(self, client_id: str):
-            """ Set Client ID (API Key)
+    def get_client_id(self):
+        """
+        :return: Client Id
+        :rtype: str
+        """
+        return self.__client_id
 
-            :param client_id: Client Id (API Key)
-            :type client_id: str
-            :return: This Builder instance to add any additional parameters.
-            :rtype: ServicePrincipalCredentials.Builder
-            """
-            self._client_id = client_id
-            return self
-
-        def with_client_secret(self, client_secret: str):
-            """ Set Client Secret
-
-            :param client_secret: Client Secret
-            :type client_secret: str
-            :return: This Builder instance to add any additional parameters.
-            :rtype: ServicePrincipalCredentials.Builder
-            """
-            self._client_secret = client_secret
-            return self
-
-        def build(self):
-            """ Returns a new :class:`ServicePrincipalCredentials` instance built from the current state of this builder.
-
-            :return: A ServicePrincipalCredentials instance.
-            :rtype: ServicePrincipalCredentials
-            """
-
-            return ServicePrincipalCredentials(self._client_id, self._client_secret)
+    def get_client_secret(self):
+        """
+        :return: Client Secret
+        :rtype: str
+        """
+        return self.__client_secret

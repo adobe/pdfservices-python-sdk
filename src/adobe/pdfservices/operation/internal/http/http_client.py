@@ -1,12 +1,15 @@
-# Copyright 2021 Adobe. All rights reserved.
-# This file is licensed to you under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License. You may obtain a copy
-# of the License at http://www.apache.org/licenses/LICENSE-2.0
+# Copyright 2024 Adobe
+# All Rights Reserved.
 #
-# Unless required by applicable law or agreed to in writing, software distributed under
-# the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR REPRESENTATIONS
-# OF ANY KIND, either express or implied. See the License for the specific language
-# governing permissions and limitations under the License.
+# NOTICE:  All information contained herein is, and remains
+# the property of Adobe and its suppliers, if any. The intellectual
+# and technical concepts contained herein are proprietary to Adobe
+# and its suppliers and are protected by all applicable intellectual
+# property laws, including trade secret and copyright laws.
+# Dissemination of this information or reproduction of this material
+# is strictly forbidden unless prior written permission is obtained
+# from Adobe.
+
 import logging
 import sys
 from typing import Callable, List
@@ -14,10 +17,10 @@ from typing import Callable, List
 import requests
 
 from adobe.pdfservices.operation.exception.exceptions import SdkException
-from adobe.pdfservices.operation.internal.http.request_header_const import DefaultHeaders
-from adobe.pdfservices.operation.internal.http.response_util import ResponseUtil
 from adobe.pdfservices.operation.internal.http.http_method import HttpMethod
 from adobe.pdfservices.operation.internal.http.http_request import HttpRequest
+from adobe.pdfservices.operation.internal.http.request_header_const import DefaultHeaders
+from adobe.pdfservices.operation.internal.http.response_util import ResponseUtil
 
 _logger = logging.getLogger(__name__)
 
@@ -32,10 +35,11 @@ def process_request(http_request: HttpRequest, success_status_codes: List,
         http_request.headers[DefaultHeaders.X_API_KEY_HEADER_NAME] = http_request.authenticator.get_api_key()
 
     # retry the request if it fails with 401 and specific error code
-    while (True):
+    while True:
         response = _execute_request(http_request)
         if _handle_response_and_retry(response, success_status_codes,
-                                      error_response_handler, not http_request.authenticator, http_request.request_key) and http_request.retryable:
+                                      error_response_handler, not http_request.authenticator,
+                                      http_request.request_key) and http_request.retryable:
             _force_authenticate(http_request)
             # Only single retry is required in case of token expiry
             http_request.retryable = False
@@ -47,7 +51,7 @@ def _append_default_headers(headers: dict):
     # Set SDK Info header
     headers[DefaultHeaders.DC_APP_INFO_HEADER_KEY] = "{lang}-{name}-{version}".format(lang="python",
                                                                                       name='pdfservices-sdk',
-                                                                                      version='2.3.1')
+                                                                                      version='4.0.0')
     headers[DefaultHeaders.ACCEPT_HEADER_NAME] = DefaultHeaders.JSON_TXT_CONTENT_TYPE
 
 
@@ -60,21 +64,33 @@ def _execute_request(http_request: HttpRequest):
                 response = requests.post(url=http_request.url,
                                          data=http_request.data,
                                          headers=http_request.headers,
-                                         timeout=timeout)
+                                         timeout=timeout,
+                                         proxies=http_request.proxies.proxy_config_map() if
+                                         http_request.proxies is not None else None)
             elif http_request.files:
                 response = requests.post(url=http_request.url,
                                          files=http_request.files,
                                          headers=http_request.headers,
-                                         timeout=timeout)
+                                         timeout=timeout,
+                                         proxies=http_request.proxies.proxy_config_map() if
+                                         http_request.proxies is not None else None)
                 for key, val in http_request.files.items():
                     if hasattr(val[1], 'close'):
                         val[1].close()
         elif http_request.method == HttpMethod.GET:
             response = requests.get(url=http_request.url, allow_redirects=True, headers=http_request.headers,
-                                    timeout=timeout)
+                                    timeout=timeout,
+                                    proxies=http_request.proxies.proxy_config_map() if
+                                    http_request.proxies is not None else None)
         elif http_request.method == HttpMethod.PUT:
             response = requests.put(url=http_request.url, data=http_request.data, headers=http_request.headers,
-                                    timeout=timeout)
+                                    timeout=timeout,
+                                    proxies=http_request.proxies.proxy_config_map() if
+                                    http_request.proxies is not None else None)
+        elif http_request.method == HttpMethod.DELETE:
+            response = requests.delete(url=http_request.url, headers=http_request.headers, timeout=timeout,
+                                       proxies=http_request.proxies.proxy_config_map() if
+                                       http_request.proxies is not None else None)
 
     except Exception as e:
         raise SdkException("Request could not be completed. Possible cause attached!", sys.exc_info())
@@ -87,7 +103,8 @@ def _force_authenticate(http_request: HttpRequest):
     http_request.headers[DefaultHeaders.AUTHORIZATION_HEADER_NAME] = "Bearer " + access_token
 
 
-def _handle_response_and_retry(response: requests.Response, success_status_codes, error_response_handler, is_ims_api, request_key: str):
+def _handle_response_and_retry(response: requests.Response, success_status_codes, error_response_handler, is_ims_api,
+                               request_key: str):
     if response.status_code not in success_status_codes:
         _logger.debug(
             "Failure response code {error_code} encountered from backend".format(error_code=response.status_code))

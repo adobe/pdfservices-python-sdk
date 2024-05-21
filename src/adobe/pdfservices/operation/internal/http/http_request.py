@@ -1,12 +1,16 @@
-# Copyright 2021 Adobe. All rights reserved.
-# This file is licensed to you under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License. You may obtain a copy
-# of the License at http://www.apache.org/licenses/LICENSE-2.0
+# Copyright 2024 Adobe
+# All Rights Reserved.
 #
-# Unless required by applicable law or agreed to in writing, software distributed under
-# the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR REPRESENTATIONS
-# OF ANY KIND, either express or implied. See the License for the specific language
-# governing permissions and limitations under the License.
+# NOTICE:  All information contained herein is, and remains
+# the property of Adobe and its suppliers, if any. The intellectual
+# and technical concepts contained herein are proprietary to Adobe
+# and its suppliers and are protected by all applicable intellectual
+# property laws, including trade secret and copyright laws.
+# Dissemination of this information or reproduction of this material
+# is strictly forbidden unless prior written permission is obtained
+# from Adobe.
+
+from adobe.pdfservices.operation.config.proxy.proxy_server_config import ProxyServerConfig
 from adobe.pdfservices.operation.internal.auth.authenticator import Authenticator
 from adobe.pdfservices.operation.internal.http.http_method import HttpMethod
 
@@ -15,7 +19,8 @@ class HttpRequest:
 
     # (url, data/files, headers, authenticator (if none its not authenticated), socket_timeout, connect_timeout)
     def __init__(self, http_method: HttpMethod, request_key: str, url: str, headers: dict, data=None, files=None,
-                 authenticator: Authenticator = None, read_timeout=None, connect_timeout=None, retryable:bool=False):
+                 authenticator: Authenticator = None, read_timeout=None, connect_timeout=None, retryable: bool = False,
+                 proxies: ProxyServerConfig = None):
         self.method = http_method
         self.request_key = request_key
         self.url = url
@@ -26,3 +31,4 @@ class HttpRequest:
         self.read_timeout = read_timeout
         self.connect_timeout = connect_timeout
         self.retryable = retryable
+        self.proxies = proxies
