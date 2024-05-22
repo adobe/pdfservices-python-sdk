@@ -12,8 +12,8 @@ with open("README.md", "r", encoding='utf-8') as fh:
 
 setuptools.setup(
     name="pdfservices-sdk",
-    version="2.3.1",
-    author='Adobe Document Services',
+    version="4.0.0",
+    author='Adobe Acrobat Services',
     author_email='extractapi@adobe.com',
     license='Apache2',
     description="Adobe PDFServices Client Library",
@@ -22,14 +22,12 @@ setuptools.setup(
     url="https://www.adobe.com/go/pdftoolsapi_doc",
     package_dir={'': 'src'},
     packages=setuptools.find_packages('src'),
-    python_requires=">=3.6",
+    python_requires=">=3.10",
     install_requires=parse_requirements('requirements.txt', session=False),
     classifiers=[
         "Development Status :: 5 - Production/Stable",
         "Intended Audience :: Developers",
-        "Programming Language :: Python :: 3.6",
-        "Programming Language :: Python :: 3.7",
-        "Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: 3.12",
         "License :: OSI Approved :: Apache Software License",
         "Operating System :: OS Independent",
     ],

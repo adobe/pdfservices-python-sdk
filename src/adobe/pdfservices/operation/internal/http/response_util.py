@@ -1,12 +1,15 @@
-# Copyright 2021 Adobe. All rights reserved.
-# This file is licensed to you under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License. You may obtain a copy
-# of the License at http://www.apache.org/licenses/LICENSE-2.0
-# 
-# Unless required by applicable law or agreed to in writing, software distributed under
-# the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR REPRESENTATIONS
-# OF ANY KIND, either express or implied. See the License for the specific language
-# governing permissions and limitations under the License.
+# Copyright 2024 Adobe
+# All Rights Reserved.
+#
+# NOTICE:  All information contained herein is, and remains
+# the property of Adobe and its suppliers, if any. The intellectual
+# and technical concepts contained herein are proprietary to Adobe
+# and its suppliers and are protected by all applicable intellectual
+# property laws, including trade secret and copyright laws.
+# Dissemination of this information or reproduction of this material
+# is strictly forbidden unless prior written permission is obtained
+# from Adobe.
+
 import json
 import logging
 from xml.etree.ElementTree import fromstring
@@ -18,14 +21,12 @@ from adobe.pdfservices.operation.exception.exceptions import ServiceUsageExcepti
 from adobe.pdfservices.operation.internal.constants.request_key import RequestKey
 from adobe.pdfservices.operation.internal.exceptions import OperationException
 
-CPF_STATUS = "cpf:status"
 STATUS = "status"
 ERROR_CODE = "error_code"
-TITLE = "title"
 ERROR = "error"
-REASON = "reason"
-REPORT = "report"
 MESSAGE = "message"
+CODE = "code"
+
 
 class ResponseUtil:
     _logger = logging.getLogger(__name__)
@@ -73,7 +74,7 @@ class ResponseUtil:
         if response.status_code == 429:
             ResponseUtil.handle_service_usage_failure(response)
         # Handle CPF error response
-        return ResponseUtil.handle_cpf_error_response(response)
+        return ResponseUtil.handle_service_api_error_response(response)
 
     @staticmethod
     def get_request_tracking_id_from_response(response: requests.Response, is_ims_api_call):
@@ -85,19 +86,9 @@ class ResponseUtil:
     @staticmethod
     def handle_service_usage_failure(response: requests.Response):
         response_content = json.loads(response.content)
-        error_code = None
-        if response_content.get(CPF_STATUS, None):
-            if response_content.get(CPF_STATUS, {}).get(REPORT, None):
-                error_code = ResponseUtil._get_report_error_code(response_content)
-            response_content[MESSAGE] = ResponseUtil.QUOTA_ERROR_MESSAGE
-        else:
-            if ResponseUtil.SERVICE_USAGE_EXCEPTION_STATUS_CODE_429001_STRING == response_content.get(ERROR_CODE,
-                                                                                                      None):
-                response_content[MESSAGE] = ResponseUtil.SERVICE_USAGE_LIMIT_REACHED_ERROR_MESSAGE
-            elif ResponseUtil.SERVICE_USAGE_EXCEPTION_STATUS_CODE_429002_STRING == response_content.get(ERROR_CODE,
-                                                                                                        None):
-                response_content[MESSAGE] = ResponseUtil.INTEGRATION_SERVICE_USAGE_LIMIT_REACHED_ERROR_MESSAGE
-        raise ServiceUsageException(message=response_content.get('error').get('message'),
+        error_code = response_content.get('error').get('code')
+        message = response_content.get('error').get('message')
+        raise ServiceUsageException(message=message,
                                     request_tracking_id=ResponseUtil.get_request_tracking_id_from_response(response,
                                                                                                            False),
                                     error_code=error_code,
@@ -107,46 +98,30 @@ class ResponseUtil:
     def handle_upload_asset_failure(response: requests.Response, request_key: str):
         if request_key == RequestKey.UPLOAD:
             try:
-                    response_content = fromstring(response.content)
-                    error_code = response_content.find('Code').text
-                    request_id = response_content.find('RequestId').text
-                    error_message = response_content.find('Message').text
-                    status_code = response.status_code
+                response_content = fromstring(response.content)
+                error_code = response_content.find('Code').text
+                request_id = response_content.find('RequestId').text
+                error_message = response_content.find('Message').text
+                status_code = response.status_code
             except SAXParseException:
                 raise ServiceApiException("Error in uploading file")
             raise OperationException(message="Error response received for request", status_code=status_code,
-                                     request_tracking_id=request_id,error_message=error_message,error_code=error_code)
+                                     request_tracking_id=request_id, error_message=error_message, error_code=error_code)
 
     @staticmethod
-    def handle_cpf_error_response(response):
+    def handle_service_api_error_response(response):
         response_content = json.loads(response.content)
+        error_content = response_content.get(ERROR, None)
+        # For 429 cases
         error_code = response_content.get(ERROR_CODE, None)
-        error_message = response_content.get(MESSAGE, None)
-        report_error_code = None
-        if response_content.get(STATUS, None):
-            error_code = response_content.get(STATUS, None)
-            if response_content.get(TITLE, None):
-                error_message = response_content.get(TITLE, None)
-        elif response_content.get(REASON, None):
-            error_code = response.status_code
-            error_message = response_content.get(REASON, None)
-        elif response_content.get(CPF_STATUS, None):
-            if response_content.get(CPF_STATUS, {}).get(REPORT, None):
-                report_error_code = ResponseUtil._get_report_error_code(response_content)
-            error_code = response_content.get(CPF_STATUS, {}).get(STATUS, None)
-            error_message = response_content.get(CPF_STATUS, {}).get(TITLE, None)
-        elif response_content.get(ERROR, None):
-            error_code = response.status_code
-            error_message = response_content.get(ERROR, {}).get(MESSAGE, None)
-        raise OperationException(message="Error response received for request",
-                                 request_tracking_id=ResponseUtil.get_request_tracking_id_from_response(response,
-                                                                                                        False),
-                                 error_code=error_code,
-                                 status_code=response.status_code,
-                                 error_message=error_message,
-                                 report_error_code=report_error_code)
+        message = response_content.get(MESSAGE, None)
+        # For all other cases
+        if error_content is not None:
+            error_code = error_content.get(CODE, None)
+            message = error_content.get(MESSAGE, None)
 
-    @staticmethod
-    def _get_report_error_code(response_content):
-        stringify_report_json = response_content.get(CPF_STATUS, {}).get(REPORT, '{}')
-        return json.loads(stringify_report_json).get(ERROR_CODE, None)
+        raise ServiceApiException(message=message,
+                                  request_tracking_id=ResponseUtil.get_request_tracking_id_from_response(response,
+                                                                                                         False),
+                                  status_code=response.status_code,
+                                  error_code=error_code)
