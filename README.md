@@ -14,6 +14,8 @@ Adobe PDF Services SDK allows you to access RESTful APIs to create, convert, and
 - Insert, replace, delete, rotate, and reorder pages in PDF files
 - Extract text, images, tables, and more from native and scanned PDFs into a structured JSON file
 - Get the properties of a PDF file like page count, PDF version, file size, compliance levels, font info, permissions and more
+- Apply watermark in foreground on specified pages of PDF files.
+- Check if you PDF files meet the machine-verifiable requirements of PDF/UA and WCAG 2.0 using Accessibility Checker.
 <br>
 
 

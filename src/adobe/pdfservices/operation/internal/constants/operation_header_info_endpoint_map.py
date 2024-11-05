@@ -35,6 +35,8 @@ class OperationHeaderInfoEndpointMap(Enum):
     PDF_PROPERTIES = ("PDF Properties Operation", "pdfproperties")
     AUTO_TAG = ("PDF Autotag Operation", "autotag")
     E_SEAL = ("Electronic Seal Operation", "electronicseal")
+    PDF_WATERMARK = ("Watermark PDF Operation", "addwatermark")
+    PDF_ACCESSIBILITY_CHECKER = ("Accessibility Checker Operation", "accessibilitychecker")
 
     def __init__(self, header_info, endpoint):
         self.header_info = header_info

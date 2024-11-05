@@ -150,3 +150,17 @@ SplitPDFJob
     :members:
     :undoc-members:
     :show-inheritance:
+
+PDFWatermarkJob
+-------------------
+.. autoclass:: adobe.pdfservices.operation.pdfjobs.jobs.pdf_watermark_job.PDFWatermarkJob
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+PDFAccessibilityCheckerJob
+-------------------
+.. autoclass:: adobe.pdfservices.operation.pdfjobs.jobs.pdf_accessibility_checker_job.PDFAccessibilityCheckerJob
+    :members:
+    :undoc-members:
+    :show-inheritance:
