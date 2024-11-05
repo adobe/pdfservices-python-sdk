@@ -426,4 +426,26 @@ PDFServicesJobParams
     :undoc-members:
     :show-inheritance:
 
+PDFWatermarkParams
+-------------------
+.. autoclass:: adobe.pdfservices.operation.pdfjobs.params.pdf_watermark.pdf_watermark_params.PDFWatermarkParams
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+WatermarkAppearance
+-------------------
+.. autoclass:: adobe.pdfservices.operation.pdfjobs.params.pdf_watermark.watermark_appearance.WatermarkAppearance
+    :members:
+    :undoc-members:
+    :show-inheritance:
+    :exclude-members: json_hint,to_json
+
+PDFAccessibilityCheckerParams
+-------------------
+.. automodule:: adobe.pdfservices.operation.pdfjobs.params.pdf_accessibility_checker.pdf_accessibility_checker_params
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 

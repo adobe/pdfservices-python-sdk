@@ -157,3 +157,17 @@ PDFServicesJobResult
     :members:
     :undoc-members:
     :show-inheritance:
+
+PDFWatermarkResult
+-------------------
+.. autoclass:: adobe.pdfservices.operation.pdfjobs.result.pdf_watermark_result.PDFWatermarkResult
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+PDFAccessibilityCheckerResult
+-------------------
+.. autoclass:: adobe.pdfservices.operation.pdfjobs.result.pdf_accessibility_checker_result.PDFAccessibilityCheckerResult
+    :members:
+    :undoc-members:
+    :show-inheritance:

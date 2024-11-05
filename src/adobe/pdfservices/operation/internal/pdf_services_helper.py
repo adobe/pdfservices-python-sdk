@@ -54,6 +54,7 @@ from adobe.pdfservices.operation.pdfjobs.result.html_to_pdf_result import HTMLto
 from adobe.pdfservices.operation.pdfjobs.result.insert_pages_result import InsertPagesResult
 from adobe.pdfservices.operation.pdfjobs.result.linearize_pdf_result import LinearizePDFResult
 from adobe.pdfservices.operation.pdfjobs.result.ocr_pdf_result import OCRPDFResult
+from adobe.pdfservices.operation.pdfjobs.result.pdf_accessibility_checker_result import PDFAccessibilityCheckerResult
 from adobe.pdfservices.operation.pdfjobs.result.pdf_properties_result import PDFPropertiesResult
 from adobe.pdfservices.operation.pdfjobs.result.protect_pdf_result import ProtectPDFResult
 from adobe.pdfservices.operation.pdfjobs.result.remove_protection_result import RemoveProtectionResult
@@ -61,6 +62,7 @@ from adobe.pdfservices.operation.pdfjobs.result.reorder_pages_result import Reor
 from adobe.pdfservices.operation.pdfjobs.result.replace_page_result import ReplacePagesResult
 from adobe.pdfservices.operation.pdfjobs.result.rotate_pages_result import RotatePagesResult
 from adobe.pdfservices.operation.pdfjobs.result.split_pdf_result import SplitPDFResult
+from adobe.pdfservices.operation.pdfjobs.result.pdf_watermark_result import PDFWatermarkResult
 
 
 class PDFServicesHelper:
@@ -245,6 +247,21 @@ class PDFServicesHelper:
                                                    headers=response_headers,
                                                    result=result_type(response_content.get('metadata')))
 
+                elif result_type == PDFAccessibilityCheckerResult:
+                    response = PDFServicesResponse(status=response_content.get('status'),
+                                                   headers=response_headers,
+                                                   result=result_type(
+                                                       CloudAsset(response_content.get('asset').get('assetID'),
+                                                                  response_content.get('asset').get(
+                                                                      'downloadUri')) if response_content.get(
+                                                           'asset') else None,
+                                                       CloudAsset(response_content.get('report').get('assetID'),
+                                                                  response_content.get('report').get(
+                                                                      'downloadUri')) if response_content.get(
+                                                           'report') else None
+                                                   )
+                                                   )
+
                 else:
                     raise SdkException(message="No result class found.")
 
@@ -356,7 +373,7 @@ class PDFServicesHelper:
                 RotatePagesResult, ESealPDFResult, CompressPDFResult,
                 CombinePDFResult, ExportPDFResult, OCRPDFResult, ProtectPDFResult,
                 InsertPagesResult, ReplacePagesResult, ReorderPagesResult,
-                CreatePDFResult, HTMLtoPDFResult, RemoveProtectionResult]
+                CreatePDFResult, HTMLtoPDFResult, RemoveProtectionResult, PDFWatermarkResult]
 
     @classmethod
     def __fetch_extract_content_json(cls, context: ExecutionContext, download_uri: str):
