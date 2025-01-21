@@ -1,4 +1,4 @@
-requests~=2.31.0
+requests>=2.32.0,<=3.0.0dev
 setuptools~=69.5.1
 sphinx~=7.3.7
 sphinx-rtd-theme~=2.0.0
