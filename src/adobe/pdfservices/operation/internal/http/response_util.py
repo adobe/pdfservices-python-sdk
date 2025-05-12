@@ -12,7 +12,7 @@
 
 import json
 import logging
-from xml.etree.ElementTree import fromstring
+from defusedxml.ElementTree import fromstring
 from xml.sax import SAXParseException
 
 import requests
