@@ -14,6 +14,7 @@ from adobe.pdfservices.operation.config.proxy.proxy_authentication_credentials i
 from adobe.pdfservices.operation.config.proxy.proxy_scheme import ProxyScheme
 from adobe.pdfservices.operation.config.proxy.username_password_credentials import UsernamePasswordCredentials
 from adobe.pdfservices.operation.internal.util.enforce_types import enforce_types
+from urllib.parse import quote
 
 
 class ProxyServerConfig:
@@ -139,7 +140,9 @@ class ProxyServerConfig:
         self._host = json_data.get("host")
         self._port = json_data.get("port")
         self._scheme = ProxyScheme.get(json_data.get("scheme"))
-        credentials = json_data.get("credentials")
+        credentials = json_data.get("usernamePasswordCredentials")
         if credentials is not None:
-            self._credentials = UsernamePasswordCredentials().from_json(credentials)
+            username = quote(credentials.get("username"))
+            password = quote(credentials.get("password"))
+            self._credentials = UsernamePasswordCredentials(username, password)
         return self
