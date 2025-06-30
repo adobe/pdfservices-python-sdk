@@ -17,6 +17,8 @@ class OperationHeaderInfoEndpointMap(Enum):
     CREATE_PDF = ("Create PDF Operation", "createpdf")
     COMBINE_PDF = ("Combine Files Operation", "combinepdf")
     EXPORT_PDF = ("Export PDF Operation", "exportpdf")
+    EXPORT_PDF_FORM_DATA = ("Export PDF Form Data Operation", "getformdata")
+    IMPORT_PDF_FORM_DATA = ("Import PDF Form Data Operation", "setformdata")
     EXPORT_PDF_TO_IMAGES = ("Export PDF to Images Operation", "pdftoimages")
     HTML_TO_PDF = ("HTML to PDF Operation", "htmltopdf")
     OCR = ("OCR Operation", "ocr")

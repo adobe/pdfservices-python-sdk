@@ -48,7 +48,9 @@ from adobe.pdfservices.operation.pdfjobs.result.delete_pages_result import Delet
 from adobe.pdfservices.operation.pdfjobs.result.document_merge_result import DocumentMergePDFResult
 from adobe.pdfservices.operation.pdfjobs.result.eseal_pdf_result import ESealPDFResult
 from adobe.pdfservices.operation.pdfjobs.result.export_pdf_result import ExportPDFResult
+from adobe.pdfservices.operation.pdfjobs.result.export_pdf_form_data_result import ExportPDFFormDataResult
 from adobe.pdfservices.operation.pdfjobs.result.export_pdf_to_images_result import ExportPDFtoImagesResult
+from adobe.pdfservices.operation.pdfjobs.result.import_pdf_form_data_result import ImportPDFFormDataResult
 from adobe.pdfservices.operation.pdfjobs.result.extract_pdf_result import ExtractPDFResult
 from adobe.pdfservices.operation.pdfjobs.result.html_to_pdf_result import HTMLtoPDFResult
 from adobe.pdfservices.operation.pdfjobs.result.insert_pages_result import InsertPagesResult
@@ -371,7 +373,7 @@ class PDFServicesHelper:
     def __get_single_asset_result_classes(cls) -> List:
         return [LinearizePDFResult, DocumentMergePDFResult, DeletePagesResult,
                 RotatePagesResult, ESealPDFResult, CompressPDFResult,
-                CombinePDFResult, ExportPDFResult, OCRPDFResult, ProtectPDFResult,
+                CombinePDFResult, ExportPDFResult, ExportPDFFormDataResult, ImportPDFFormDataResult, OCRPDFResult, ProtectPDFResult,
                 InsertPagesResult, ReplacePagesResult, ReorderPagesResult,
                 CreatePDFResult, HTMLtoPDFResult, RemoveProtectionResult, PDFWatermarkResult]
 
