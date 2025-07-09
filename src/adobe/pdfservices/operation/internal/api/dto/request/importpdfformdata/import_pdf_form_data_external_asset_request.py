@@ -20,6 +20,33 @@ from adobe.pdfservices.operation.io.external_asset import ExternalAsset
 from adobe.pdfservices.operation.pdfjobs.params.import_pdf_form_data.import_pdf_form_data_params import ImportPDFFormDataParams
 
 
+class ImportPDFFormDataParamsPayload:
+    """
+    Payload class for Import PDF Form Data parameters
+    """
+    json_hint = {
+        'json_form_fields_data': 'jsonFormFieldsData'
+    }
+
+    def __init__(self, import_pdf_form_data_params: ImportPDFFormDataParams = None):
+        """
+        Constructs a new ImportPDFFormDataParamsPayload instance.
+
+        :param import_pdf_form_data_params: Parameters containing form data to import
+        :type import_pdf_form_data_params: ImportPDFFormDataParams
+        """
+        self.json_form_fields_data = None
+        if import_pdf_form_data_params is not None:
+            self.json_form_fields_data = import_pdf_form_data_params.get_json_form_fields_data()
+
+    def to_json(self):
+        """
+        :return: JSON representation of the payload
+        :rtype: str
+        """
+        return json.dumps(self, cls=JSONHintEncoder, indent=1, sort_keys=True)
+
+
 class ImportPDFFormDataExternalAssetRequest(PDFServicesAPIRequest):
     """
     Request DTO for Import PDF Form Data operation using external assets
@@ -27,7 +54,7 @@ class ImportPDFFormDataExternalAssetRequest(PDFServicesAPIRequest):
     
     json_hint = {
         'input_asset': 'input',
-        'json_form_fields_data': 'jsonFormFieldsData',
+        'params': 'params',
         'output_asset': 'output',
         'notify_config_list': 'notifiers'
     }
@@ -46,7 +73,7 @@ class ImportPDFFormDataExternalAssetRequest(PDFServicesAPIRequest):
         """
         super().__init__()
         self.input_asset = input_asset
-        self.json_form_fields_data = import_pdf_form_data_params.get_json_form_fields_data()
+        self.params = ImportPDFFormDataParamsPayload(import_pdf_form_data_params)
         self.notify_config_list = notifier_config_list
         self.output_asset = None
 
