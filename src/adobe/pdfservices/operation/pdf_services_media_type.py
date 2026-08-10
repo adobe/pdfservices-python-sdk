@@ -37,6 +37,9 @@ class PDFServicesMediaType(str, enum.Enum):
     INDD = "application/x-indesign"
     """Represents indd mime type."""
 
+    MARKDOWN = "text/markdown"
+    """Represents markdown mime type."""
+
     JPEG = "image/jpeg"
     """Represents jpeg mime type."""
 

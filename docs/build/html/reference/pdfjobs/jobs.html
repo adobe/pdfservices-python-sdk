@@ -1,24 +1,22 @@
+
+
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" data-content_root="../../">
 <head>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Jobs &mdash; pdfservices-sdk 3.0.0 documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
-      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+  <title>Jobs &mdash; pdfservices-sdk 4.3.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=7dc6ce7e" />
 
   
-  <!--[if lt IE 9]>
-    <script src="../../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-        <script src="../../_static/jquery.js?v=5d32c60e"></script>
-        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../../_static/documentation_options.js?v=acc74ff5"></script>
-        <script src="../../_static/doctools.js?v=9a2dae69"></script>
-        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=a17b270f"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -258,6 +256,10 @@
 <li class="toctree-l5"><a class="reference internal" href="#adobe.pdfservices.operation.pdfjobs.jobs.pdf_properties_job.PDFPropertiesJob"><code class="docutils literal notranslate"><span class="pre">PDFPropertiesJob</span></code></a></li>
 </ul>
 </li>
+<li class="toctree-l4"><a class="reference internal" href="#pdftomarkdownjob">PDFToMarkdownJob</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#adobe.pdfservices.operation.pdfjobs.jobs.pdf_to_markdown_job.PDFToMarkdownJob"><code class="docutils literal notranslate"><span class="pre">PDFToMarkdownJob</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l4"><a class="reference internal" href="#protectpdfjob">ProtectPDFJob</a><ul>
 <li class="toctree-l5"><a class="reference internal" href="#adobe.pdfservices.operation.pdfjobs.jobs.protect_pdf_job.ProtectPDFJob"><code class="docutils literal notranslate"><span class="pre">ProtectPDFJob</span></code></a></li>
 </ul>
@@ -288,6 +290,18 @@
 </li>
 <li class="toctree-l4"><a class="reference internal" href="#pdfaccessibilitycheckerjob">PDFAccessibilityCheckerJob</a><ul>
 <li class="toctree-l5"><a class="reference internal" href="#adobe.pdfservices.operation.pdfjobs.jobs.pdf_accessibility_checker_job.PDFAccessibilityCheckerJob"><code class="docutils literal notranslate"><span class="pre">PDFAccessibilityCheckerJob</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#importpdfformdatajob">ImportPDFFormDataJob</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#adobe.pdfservices.operation.pdfjobs.jobs.import_pdf_form_data_job.ImportPDFFormDataJob"><code class="docutils literal notranslate"><span class="pre">ImportPDFFormDataJob</span></code></a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#adobe.pdfservices.operation.pdfjobs.jobs.import_pdf_form_data_job.ImportPDFFormDataJob.set_output"><code class="docutils literal notranslate"><span class="pre">ImportPDFFormDataJob.set_output()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#adobe.pdfservices.operation.pdfjobs.jobs.import_pdf_form_data_job.ImportPDFFormDataJob.set_params"><code class="docutils literal notranslate"><span class="pre">ImportPDFFormDataJob.set_params()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#exportpdfformdatajob">ExportPDFFormDataJob</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#adobe.pdfservices.operation.pdfjobs.jobs.export_pdf_form_data_job.ExportPDFFormDataJob"><code class="docutils literal notranslate"><span class="pre">ExportPDFFormDataJob</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -621,6 +635,15 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l4"><a class="reference internal" href="params.html#importpdfformdataparams">ImportPDFFormDataParams</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="params.html#adobe.pdfservices.operation.pdfjobs.params.import_pdf_form_data.import_pdf_form_data_params.ImportPDFFormDataParams"><code class="docutils literal notranslate"><span class="pre">ImportPDFFormDataParams</span></code></a><ul>
+<li class="toctree-l6"><a class="reference internal" href="params.html#adobe.pdfservices.operation.pdfjobs.params.import_pdf_form_data.import_pdf_form_data_params.ImportPDFFormDataParams.get_json_form_fields_data"><code class="docutils literal notranslate"><span class="pre">ImportPDFFormDataParams.get_json_form_fields_data()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="params.html#adobe.pdfservices.operation.pdfjobs.params.import_pdf_form_data.import_pdf_form_data_params.ImportPDFFormDataParams.get_json_form_fields_data_string"><code class="docutils literal notranslate"><span class="pre">ImportPDFFormDataParams.get_json_form_fields_data_string()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="params.html#exportpdfformdataparams">ExportPDFFormDataParams</a></li>
 <li class="toctree-l4"><a class="reference internal" href="params.html#module-adobe.pdfservices.operation.pdfjobs.params.eseal.tsa_options">TSAOptions</a><ul>
 <li class="toctree-l5"><a class="reference internal" href="params.html#adobe.pdfservices.operation.pdfjobs.params.eseal.tsa_options.TSAOptions"><code class="docutils literal notranslate"><span class="pre">TSAOptions</span></code></a></li>
 </ul>
@@ -698,8 +721,10 @@
 <li class="toctree-l6"><a class="reference internal" href="params.html#adobe.pdfservices.operation.pdfjobs.params.extract_pdf.extract_pdf_params.ExtractPDFParams.get_add_char_info"><code class="docutils literal notranslate"><span class="pre">ExtractPDFParams.get_add_char_info()</span></code></a></li>
 <li class="toctree-l6"><a class="reference internal" href="params.html#adobe.pdfservices.operation.pdfjobs.params.extract_pdf.extract_pdf_params.ExtractPDFParams.get_elements_to_extract"><code class="docutils literal notranslate"><span class="pre">ExtractPDFParams.get_elements_to_extract()</span></code></a></li>
 <li class="toctree-l6"><a class="reference internal" href="params.html#adobe.pdfservices.operation.pdfjobs.params.extract_pdf.extract_pdf_params.ExtractPDFParams.get_elements_to_extract_renditions"><code class="docutils literal notranslate"><span class="pre">ExtractPDFParams.get_elements_to_extract_renditions()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="params.html#adobe.pdfservices.operation.pdfjobs.params.extract_pdf.extract_pdf_params.ExtractPDFParams.get_include_header_footer"><code class="docutils literal notranslate"><span class="pre">ExtractPDFParams.get_include_header_footer()</span></code></a></li>
 <li class="toctree-l6"><a class="reference internal" href="params.html#adobe.pdfservices.operation.pdfjobs.params.extract_pdf.extract_pdf_params.ExtractPDFParams.get_styling_info"><code class="docutils literal notranslate"><span class="pre">ExtractPDFParams.get_styling_info()</span></code></a></li>
 <li class="toctree-l6"><a class="reference internal" href="params.html#adobe.pdfservices.operation.pdfjobs.params.extract_pdf.extract_pdf_params.ExtractPDFParams.get_table_structure_type"><code class="docutils literal notranslate"><span class="pre">ExtractPDFParams.get_table_structure_type()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="params.html#adobe.pdfservices.operation.pdfjobs.params.extract_pdf.extract_pdf_params.ExtractPDFParams.get_tag_encapsulated_text"><code class="docutils literal notranslate"><span class="pre">ExtractPDFParams.get_tag_encapsulated_text()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -731,6 +756,7 @@
 <li class="toctree-l4"><a class="reference internal" href="params.html#module-adobe.pdfservices.operation.pdfjobs.params.html_to_pdf.html_to_pdf_params">HTMLtoPDFParams</a><ul>
 <li class="toctree-l5"><a class="reference internal" href="params.html#adobe.pdfservices.operation.pdfjobs.params.html_to_pdf.html_to_pdf_params.HTMLtoPDFParams"><code class="docutils literal notranslate"><span class="pre">HTMLtoPDFParams</span></code></a><ul>
 <li class="toctree-l6"><a class="reference internal" href="params.html#adobe.pdfservices.operation.pdfjobs.params.html_to_pdf.html_to_pdf_params.HTMLtoPDFParams.get_include_header_footer"><code class="docutils literal notranslate"><span class="pre">HTMLtoPDFParams.get_include_header_footer()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="params.html#adobe.pdfservices.operation.pdfjobs.params.html_to_pdf.html_to_pdf_params.HTMLtoPDFParams.get_include_rendered_html"><code class="docutils literal notranslate"><span class="pre">HTMLtoPDFParams.get_include_rendered_html()</span></code></a></li>
 <li class="toctree-l6"><a class="reference internal" href="params.html#adobe.pdfservices.operation.pdfjobs.params.html_to_pdf.html_to_pdf_params.HTMLtoPDFParams.get_json"><code class="docutils literal notranslate"><span class="pre">HTMLtoPDFParams.get_json()</span></code></a></li>
 <li class="toctree-l6"><a class="reference internal" href="params.html#adobe.pdfservices.operation.pdfjobs.params.html_to_pdf.html_to_pdf_params.HTMLtoPDFParams.get_page_layout"><code class="docutils literal notranslate"><span class="pre">HTMLtoPDFParams.get_page_layout()</span></code></a></li>
 </ul>
@@ -819,6 +845,13 @@
 <li class="toctree-l4"><a class="reference internal" href="params.html#module-adobe.pdfservices.operation.pdfjobs.params.pdf_properties.pdf_properties_params">PDFPropertiesParams</a><ul>
 <li class="toctree-l5"><a class="reference internal" href="params.html#adobe.pdfservices.operation.pdfjobs.params.pdf_properties.pdf_properties_params.PDFPropertiesParams"><code class="docutils literal notranslate"><span class="pre">PDFPropertiesParams</span></code></a><ul>
 <li class="toctree-l6"><a class="reference internal" href="params.html#adobe.pdfservices.operation.pdfjobs.params.pdf_properties.pdf_properties_params.PDFPropertiesParams.get_include_page_level_properties"><code class="docutils literal notranslate"><span class="pre">PDFPropertiesParams.get_include_page_level_properties()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="params.html#module-adobe.pdfservices.operation.pdfjobs.params.pdf_to_markdown.pdf_to_markdown_params">PDFToMarkdownParams</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="params.html#adobe.pdfservices.operation.pdfjobs.params.pdf_to_markdown.pdf_to_markdown_params.PDFToMarkdownParams"><code class="docutils literal notranslate"><span class="pre">PDFToMarkdownParams</span></code></a><ul>
+<li class="toctree-l6"><a class="reference internal" href="params.html#adobe.pdfservices.operation.pdfjobs.params.pdf_to_markdown.pdf_to_markdown_params.PDFToMarkdownParams.get_figures"><code class="docutils literal notranslate"><span class="pre">PDFToMarkdownParams.get_figures()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -1105,6 +1138,13 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l4"><a class="reference internal" href="result.html#pdftomarkdownresult">PDFToMarkdownResult</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="result.html#adobe.pdfservices.operation.pdfjobs.result.pdf_to_markdown_result.PDFToMarkdownResult"><code class="docutils literal notranslate"><span class="pre">PDFToMarkdownResult</span></code></a><ul>
+<li class="toctree-l6"><a class="reference internal" href="result.html#adobe.pdfservices.operation.pdfjobs.result.pdf_to_markdown_result.PDFToMarkdownResult.get_asset"><code class="docutils literal notranslate"><span class="pre">PDFToMarkdownResult.get_asset()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l4"><a class="reference internal" href="result.html#protectpdfresult">ProtectPDFResult</a><ul>
 <li class="toctree-l5"><a class="reference internal" href="result.html#adobe.pdfservices.operation.pdfjobs.result.protect_pdf_result.ProtectPDFResult"><code class="docutils literal notranslate"><span class="pre">ProtectPDFResult</span></code></a><ul>
 <li class="toctree-l6"><a class="reference internal" href="result.html#adobe.pdfservices.operation.pdfjobs.result.protect_pdf_result.ProtectPDFResult.get_asset"><code class="docutils literal notranslate"><span class="pre">ProtectPDFResult.get_asset()</span></code></a></li>
@@ -1167,6 +1207,20 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l4"><a class="reference internal" href="result.html#importpdfformdataresult">ImportPDFFormDataResult</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="result.html#adobe.pdfservices.operation.pdfjobs.result.import_pdf_form_data_result.ImportPDFFormDataResult"><code class="docutils literal notranslate"><span class="pre">ImportPDFFormDataResult</span></code></a><ul>
+<li class="toctree-l6"><a class="reference internal" href="result.html#adobe.pdfservices.operation.pdfjobs.result.import_pdf_form_data_result.ImportPDFFormDataResult.get_asset"><code class="docutils literal notranslate"><span class="pre">ImportPDFFormDataResult.get_asset()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="result.html#exportpdfformdataresult">ExportPDFFormDataResult</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="result.html#adobe.pdfservices.operation.pdfjobs.result.export_pdf_form_data_result.ExportPDFFormDataResult"><code class="docutils literal notranslate"><span class="pre">ExportPDFFormDataResult</span></code></a><ul>
+<li class="toctree-l6"><a class="reference internal" href="result.html#adobe.pdfservices.operation.pdfjobs.result.export_pdf_form_data_result.ExportPDFFormDataResult.get_asset"><code class="docutils literal notranslate"><span class="pre">ExportPDFFormDataResult.get_asset()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -1220,6 +1274,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../index.html#adobe.pdfservices.operation.pdf_services_media_type.PDFServicesMediaType.JPEG"><code class="docutils literal notranslate"><span class="pre">PDFServicesMediaType.JPEG</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="../index.html#adobe.pdfservices.operation.pdf_services_media_type.PDFServicesMediaType.JPG"><code class="docutils literal notranslate"><span class="pre">PDFServicesMediaType.JPG</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="../index.html#adobe.pdfservices.operation.pdf_services_media_type.PDFServicesMediaType.JSON"><code class="docutils literal notranslate"><span class="pre">PDFServicesMediaType.JSON</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../index.html#adobe.pdfservices.operation.pdf_services_media_type.PDFServicesMediaType.MARKDOWN"><code class="docutils literal notranslate"><span class="pre">PDFServicesMediaType.MARKDOWN</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="../index.html#adobe.pdfservices.operation.pdf_services_media_type.PDFServicesMediaType.PDF"><code class="docutils literal notranslate"><span class="pre">PDFServicesMediaType.PDF</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="../index.html#adobe.pdfservices.operation.pdf_services_media_type.PDFServicesMediaType.PNG"><code class="docutils literal notranslate"><span class="pre">PDFServicesMediaType.PNG</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="../index.html#adobe.pdfservices.operation.pdf_services_media_type.PDFServicesMediaType.PPT"><code class="docutils literal notranslate"><span class="pre">PDFServicesMediaType.PPT</span></code></a></li>
@@ -2017,6 +2072,34 @@ optimized for incremental access in network environments.</p>
 </dd></dl>
 
 </section>
+<section id="pdftomarkdownjob">
+<h2>PDFToMarkdownJob<a class="headerlink" href="#pdftomarkdownjob" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="adobe.pdfservices.operation.pdfjobs.jobs.pdf_to_markdown_job.PDFToMarkdownJob">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">adobe.pdfservices.operation.pdfjobs.jobs.pdf_to_markdown_job.</span></span><span class="sig-name descname"><span class="pre">PDFToMarkdownJob</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_asset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../io.html#adobe.pdfservices.operation.io.asset.Asset" title="adobe.pdfservices.operation.io.asset.Asset"><span class="pre">Asset</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pdf_to_markdown_params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="params.html#adobe.pdfservices.operation.pdfjobs.params.pdf_to_markdown.pdf_to_markdown_params.PDFToMarkdownParams" title="adobe.pdfservices.operation.pdfjobs.params.pdf_to_markdown.pdf_to_markdown_params.PDFToMarkdownParams"><span class="pre">PDFToMarkdownParams</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_asset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../io.html#adobe.pdfservices.operation.io.asset.Asset" title="adobe.pdfservices.operation.io.asset.Asset"><span class="pre">Asset</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#adobe.pdfservices.operation.pdfjobs.jobs.pdf_to_markdown_job.PDFToMarkdownJob" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="../index.html#adobe.pdfservices.operation.pdf_services_job.PDFServicesJob" title="adobe.pdfservices.operation.pdf_services_job.PDFServicesJob"><code class="xref py py-class docutils literal notranslate"><span class="pre">PDFServicesJob</span></code></a></p>
+<p>A job that converts a PDF file to a Markdown file.</p>
+<p>Sample usage.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;SOURCE_PATH&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span>
+<span class="n">input_stream</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="n">file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="n">credentials</span> <span class="o">=</span> <span class="n">ServicePrincipalCredentials</span><span class="p">(</span>
+    <span class="n">client_id</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;PDF_SERVICES_CLIENT_ID&#39;</span><span class="p">),</span>
+    <span class="n">client_secret</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;PDF_SERVICES_CLIENT_SECRET&#39;</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="n">pdf_services</span> <span class="o">=</span> <span class="n">PDFServices</span><span class="p">(</span><span class="n">credentials</span><span class="o">=</span><span class="n">credentials</span><span class="p">)</span>
+<span class="n">input_asset</span> <span class="o">=</span> <span class="n">pdf_services</span><span class="o">.</span><span class="n">upload</span><span class="p">(</span><span class="n">input_stream</span><span class="o">=</span><span class="n">input_stream</span><span class="p">,</span> <span class="n">mime_type</span><span class="o">=</span><span class="n">PDFServicesMediaType</span><span class="o">.</span><span class="n">PDF</span><span class="p">)</span>
+<span class="n">pdf_to_markdown_params</span> <span class="o">=</span> <span class="n">PDFToMarkdownParams</span><span class="p">(</span><span class="n">get_figures</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">pdf_to_markdown_job</span> <span class="o">=</span> <span class="n">PDFToMarkdownJob</span><span class="p">(</span><span class="n">input_asset</span><span class="p">,</span> <span class="n">pdf_to_markdown_params</span><span class="o">=</span><span class="n">pdf_to_markdown_params</span><span class="p">)</span>
+<span class="n">location</span> <span class="o">=</span> <span class="n">pdf_services</span><span class="o">.</span><span class="n">submit</span><span class="p">(</span><span class="n">pdf_to_markdown_job</span><span class="p">)</span>
+<span class="n">pdf_services_response</span> <span class="o">=</span> <span class="n">pdf_services</span><span class="o">.</span><span class="n">get_job_result</span><span class="p">(</span><span class="n">location</span><span class="p">,</span> <span class="n">PDFToMarkdownResult</span><span class="p">)</span>
+<span class="n">result_asset</span><span class="p">:</span> <span class="n">CloudAsset</span> <span class="o">=</span> <span class="n">pdf_services_response</span><span class="o">.</span><span class="n">get_result</span><span class="p">()</span><span class="o">.</span><span class="n">get_asset</span><span class="p">()</span>
+<span class="n">stream_asset</span><span class="p">:</span> <span class="n">StreamAsset</span> <span class="o">=</span> <span class="n">pdf_services</span><span class="o">.</span><span class="n">get_content</span><span class="p">(</span><span class="n">result_asset</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
 <section id="protectpdfjob">
 <h2>ProtectPDFJob<a class="headerlink" href="#protectpdfjob" title="Link to this heading"></a></h2>
 <dl class="py class">
@@ -2411,6 +2494,182 @@ that alternative text tags properly convey the meaning of an image.</p>
 <dd class="field-odd"><p><a class="reference internal" href="#adobe.pdfservices.operation.pdfjobs.jobs.pdf_accessibility_checker_job.PDFAccessibilityCheckerJob" title="adobe.pdfservices.operation.pdfjobs.jobs.pdf_accessibility_checker_job.PDFAccessibilityCheckerJob">PDFAccessibilityCheckerJob</a></p>
 </dd>
 </dl>
+</dd></dl>
+
+</section>
+<section id="importpdfformdatajob">
+<h2>ImportPDFFormDataJob<a class="headerlink" href="#importpdfformdatajob" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="adobe.pdfservices.operation.pdfjobs.jobs.import_pdf_form_data_job.ImportPDFFormDataJob">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">adobe.pdfservices.operation.pdfjobs.jobs.import_pdf_form_data_job.</span></span><span class="sig-name descname"><span class="pre">ImportPDFFormDataJob</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_asset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../io.html#adobe.pdfservices.operation.io.asset.Asset" title="adobe.pdfservices.operation.io.asset.Asset"><span class="pre">Asset</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_asset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../io.html#adobe.pdfservices.operation.io.asset.Asset" title="adobe.pdfservices.operation.io.asset.Asset"><span class="pre">Asset</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#adobe.pdfservices.operation.pdfjobs.jobs.import_pdf_form_data_job.ImportPDFFormDataJob" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="../index.html#adobe.pdfservices.operation.pdf_services_job.PDFServicesJob" title="adobe.pdfservices.operation.pdf_services_job.PDFServicesJob"><code class="xref py py-class docutils literal notranslate"><span class="pre">PDFServicesJob</span></code></a></p>
+<p>A job that imports form data into a PDF using the provided JSON input.</p>
+<p>This sample demonstrates how to use Adobe PDF Services SDK to import form data
+into a PDF form. The process involves uploading a source PDF, providing form data
+in JSON format, and submitting an import form data job.</p>
+<dl>
+<dt>Sample Usage:</dt><dd><p><a href="#id2"><span class="problematic" id="id3">``</span></a><a href="#id4"><span class="problematic" id="id5">`</span></a>python
+import json
+from pathlib import Path</p>
+<p>from adobe.pdfservices.operation.auth.service_principal_credentials import ServicePrincipalCredentials
+from adobe.pdfservices.operation.pdf_services import PDFServices
+from adobe.pdfservices.operation.pdf_services_media_type import PDFServicesMediaType
+from adobe.pdfservices.operation.pdfjobs.jobs.import_pdf_form_data_job import ImportPDFFormDataJob
+from adobe.pdfservices.operation.pdfjobs.params.import_pdf_form_data.import_pdf_form_data_params import ImportPDFFormDataParams
+from adobe.pdfservices.operation.pdfjobs.result.import_pdf_form_data_result import ImportPDFFormDataResult</p>
+<p># Initialize credentials
+credentials = ServicePrincipalCredentials(</p>
+<blockquote>
+<div><p>client_id=os.getenv(‘PDF_SERVICES_CLIENT_ID’),
+client_secret=os.getenv(‘PDF_SERVICES_CLIENT_SECRET’)</p>
+</div></blockquote>
+<p>)</p>
+<p># Create PDF services instance
+pdf_services = PDFServices(credentials=credentials)</p>
+<p># Upload the input PDF
+with open(‘input_form.pdf’, ‘rb’) as file:</p>
+<blockquote>
+<div><p>input_stream = file.read()</p>
+</div></blockquote>
+<dl class="simple">
+<dt>input_asset = pdf_services.upload(</dt><dd><p>input_stream=input_stream,
+mime_type=PDFServicesMediaType.PDF.mime_type</p>
+</dd>
+</dl>
+<p>)</p>
+<p># Create form data to import
+form_data = {</p>
+<blockquote>
+<div><p>“option_two”: “Yes”,
+“option_one”: “Yes”, 
+“name”: “sufia”,
+“option_three”: “Off”,
+“age”: “25”,
+“favorite_movie”: “Star Wars Again”</p>
+</div></blockquote>
+<p>}</p>
+<p># Create import parameters
+import_params = ImportPDFFormDataParams(json_form_fields_data=form_data)</p>
+<p># Create and configure the job
+import_job = ImportPDFFormDataJob(input_asset)
+import_job.set_params(import_params)</p>
+<p># Submit the job
+location = pdf_services.submit(import_job)
+pdf_services_response = pdf_services.get_job_result(location, ImportPDFFormDataResult)</p>
+<p># Get the result asset
+result_asset = pdf_services_response.get_result().get_asset()
+stream_asset = pdf_services.get_content(result_asset)</p>
+<p># Save the result PDF
+with open(‘output_filled_form.pdf’, ‘wb’) as output_file:</p>
+<blockquote>
+<div><p>output_file.write(stream_asset.get_input_stream())</p>
+</div></blockquote>
+<p><a href="#id6"><span class="problematic" id="id7">``</span></a><a href="#id8"><span class="problematic" id="id9">`</span></a></p>
+</dd>
+</dl>
+<p>Constructs a new ImportPDFFormDataJob instance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input_asset</strong> (<a class="reference internal" href="../io.html#adobe.pdfservices.operation.io.asset.Asset" title="adobe.pdfservices.operation.io.asset.Asset"><em>Asset</em></a>) – Asset object representing the input PDF with form fields; cannot be None.</p></li>
+<li><p><strong>output_asset</strong> (<a class="reference internal" href="../io.html#adobe.pdfservices.operation.io.asset.Asset" title="adobe.pdfservices.operation.io.asset.Asset"><em>Asset</em></a>) – Asset object representing the output asset. (Optional, use key-value)</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="adobe.pdfservices.operation.pdfjobs.jobs.import_pdf_form_data_job.ImportPDFFormDataJob.set_output">
+<span class="sig-name descname"><span class="pre">set_output</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output_asset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../io.html#adobe.pdfservices.operation.io.asset.Asset" title="adobe.pdfservices.operation.io.asset.Asset"><span class="pre">Asset</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#adobe.pdfservices.operation.pdfjobs.jobs.import_pdf_form_data_job.ImportPDFFormDataJob.set_output" title="Link to this definition"></a></dt>
+<dd><p>Sets the output asset for the job.
+Note: External assets can be set as output only when input is external asset as well.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>output_asset</strong> (<a class="reference internal" href="../io.html#adobe.pdfservices.operation.io.asset.Asset" title="adobe.pdfservices.operation.io.asset.Asset"><em>Asset</em></a>) – Asset object representing the output asset; cannot be None.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>ImportPDFFormDataJob instance for method chaining</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#adobe.pdfservices.operation.pdfjobs.jobs.import_pdf_form_data_job.ImportPDFFormDataJob" title="adobe.pdfservices.operation.pdfjobs.jobs.import_pdf_form_data_job.ImportPDFFormDataJob">ImportPDFFormDataJob</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="adobe.pdfservices.operation.pdfjobs.jobs.import_pdf_form_data_job.ImportPDFFormDataJob.set_params">
+<span class="sig-name descname"><span class="pre">set_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">import_pdf_form_data_params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="params.html#adobe.pdfservices.operation.pdfjobs.params.import_pdf_form_data.import_pdf_form_data_params.ImportPDFFormDataParams" title="adobe.pdfservices.operation.pdfjobs.params.import_pdf_form_data.import_pdf_form_data_params.ImportPDFFormDataParams"><span class="pre">ImportPDFFormDataParams</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#adobe.pdfservices.operation.pdfjobs.jobs.import_pdf_form_data_job.ImportPDFFormDataJob.set_params" title="Link to this definition"></a></dt>
+<dd><p>Sets the Import PDF Form Data parameters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>import_pdf_form_data_params</strong> (<a class="reference internal" href="params.html#adobe.pdfservices.operation.pdfjobs.params.import_pdf_form_data.import_pdf_form_data_params.ImportPDFFormDataParams" title="adobe.pdfservices.operation.pdfjobs.params.import_pdf_form_data.import_pdf_form_data_params.ImportPDFFormDataParams"><em>ImportPDFFormDataParams</em></a>) – ImportPDFFormDataParams instance; cannot be None.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>ImportPDFFormDataJob instance for method chaining</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#adobe.pdfservices.operation.pdfjobs.jobs.import_pdf_form_data_job.ImportPDFFormDataJob" title="adobe.pdfservices.operation.pdfjobs.jobs.import_pdf_form_data_job.ImportPDFFormDataJob">ImportPDFFormDataJob</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="exportpdfformdatajob">
+<h2>ExportPDFFormDataJob<a class="headerlink" href="#exportpdfformdatajob" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="adobe.pdfservices.operation.pdfjobs.jobs.export_pdf_form_data_job.ExportPDFFormDataJob">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">adobe.pdfservices.operation.pdfjobs.jobs.export_pdf_form_data_job.</span></span><span class="sig-name descname"><span class="pre">ExportPDFFormDataJob</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_asset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../io.html#adobe.pdfservices.operation.io.asset.Asset" title="adobe.pdfservices.operation.io.asset.Asset"><span class="pre">Asset</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_asset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../io.html#adobe.pdfservices.operation.io.asset.Asset" title="adobe.pdfservices.operation.io.asset.Asset"><span class="pre">Asset</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#adobe.pdfservices.operation.pdfjobs.jobs.export_pdf_form_data_job.ExportPDFFormDataJob" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="../index.html#adobe.pdfservices.operation.pdf_services_job.PDFServicesJob" title="adobe.pdfservices.operation.pdf_services_job.PDFServicesJob"><code class="xref py py-class docutils literal notranslate"><span class="pre">PDFServicesJob</span></code></a></p>
+<p>A job that exports form data from a PDF and retrieves it in JSON format.</p>
+<p>This job demonstrates how to use Adobe PDF Services SDK to extract
+form data from a PDF file. The process involves uploading a source PDF,
+submitting an export form data job, and retrieving the extracted data.</p>
+<p>Sample usage:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;SOURCE_PATH&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span>
+<span class="n">input_stream</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="n">file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="n">credentials</span> <span class="o">=</span> <span class="n">ServicePrincipalCredentials</span><span class="p">(</span>
+    <span class="n">client_id</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;PDF_SERVICES_CLIENT_ID&#39;</span><span class="p">),</span>
+    <span class="n">client_secret</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;PDF_SERVICES_CLIENT_SECRET&#39;</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">pdf_services</span> <span class="o">=</span> <span class="n">PDFServices</span><span class="p">(</span><span class="n">credentials</span><span class="o">=</span><span class="n">credentials</span><span class="p">)</span>
+<span class="n">input_asset</span> <span class="o">=</span> <span class="n">pdf_services</span><span class="o">.</span><span class="n">upload</span><span class="p">(</span><span class="n">input_stream</span><span class="o">=</span><span class="n">input_stream</span><span class="p">,</span> <span class="n">mime_type</span><span class="o">=</span><span class="n">MediaType</span><span class="o">.</span><span class="n">PDF</span><span class="p">)</span>
+
+<span class="n">export_pdf_form_data_job</span> <span class="o">=</span> <span class="n">ExportPDFFormDataJob</span><span class="p">(</span><span class="n">input_asset</span><span class="o">=</span><span class="n">input_asset</span><span class="p">)</span>
+
+<span class="n">location</span> <span class="o">=</span> <span class="n">pdf_services</span><span class="o">.</span><span class="n">submit</span><span class="p">(</span><span class="n">export_pdf_form_data_job</span><span class="p">)</span>
+<span class="n">pdf_services_response</span> <span class="o">=</span> <span class="n">pdf_services</span><span class="o">.</span><span class="n">get_job_result</span><span class="p">(</span><span class="n">location</span><span class="p">,</span> <span class="n">ExportPDFFormDataResult</span><span class="p">)</span>
+
+<span class="n">result_asset</span><span class="p">:</span> <span class="n">CloudAsset</span> <span class="o">=</span> <span class="n">pdf_services_response</span><span class="o">.</span><span class="n">get_result</span><span class="p">()</span><span class="o">.</span><span class="n">get_asset</span><span class="p">()</span>
+<span class="n">stream_asset</span><span class="p">:</span> <span class="n">StreamAsset</span> <span class="o">=</span> <span class="n">pdf_services</span><span class="o">.</span><span class="n">get_content</span><span class="p">(</span><span class="n">result_asset</span><span class="p">)</span>
+
+<span class="c1"># Save the form data JSON to a file</span>
+<span class="n">output_file_path</span> <span class="o">=</span> <span class="s2">&quot;extracted_form_data.json&quot;</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">output_file_path</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">output_file</span><span class="p">:</span>
+    <span class="n">output_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">stream_asset</span><span class="o">.</span><span class="n">get_input_stream</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>Constructs a new <code class="samp docutils literal notranslate"><span class="pre">ExportPDFFormDataJob</span></code> instance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input_asset</strong> (<a class="reference internal" href="../io.html#adobe.pdfservices.operation.io.asset.Asset" title="adobe.pdfservices.operation.io.asset.Asset"><em>Asset</em></a>) – Asset object containing the input file; can not be None.</p></li>
+<li><p><strong>output_asset</strong> (<a class="reference internal" href="../io.html#adobe.pdfservices.operation.io.asset.Asset" title="adobe.pdfservices.operation.io.asset.Asset"><em>Asset</em></a>) – Asset object representing the output asset. (Optional, use key-value)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A new instance of ExportPDFFormDataJob.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#adobe.pdfservices.operation.pdfjobs.jobs.export_pdf_form_data_job.ExportPDFFormDataJob" title="adobe.pdfservices.operation.pdfjobs.jobs.export_pdf_form_data_job.ExportPDFFormDataJob">ExportPDFFormDataJob</a></p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>External assets can be set as output only when input is external asset as well</p>
+</div>
 </dd></dl>
 
 </section>

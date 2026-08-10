@@ -27,6 +27,7 @@ class HTMLtoPDFInternalAssetRequest(PDFServicesAPIRequest):
         'json': 'json',
         'include_header_footer': 'includeHeaderFooter',
         'page_layout': 'pageLayout',
+        'include_rendered_html': 'includeRenderedHtml',
         'notify_config_list': 'notifiers'
     }
 
@@ -41,6 +42,9 @@ class HTMLtoPDFInternalAssetRequest(PDFServicesAPIRequest):
             self.json = html_to_pdf_params.get_json()
             self.include_header_footer = html_to_pdf_params.get_include_header_footer()
             self.page_layout = html_to_pdf_params.get_page_layout()
+            # Only set include_rendered_html when true to ensure it's sent to the API
+            if html_to_pdf_params.get_include_rendered_html():
+                self.include_rendered_html = True
         self.notify_config_list = notify_config_list
 
     def to_json(self):

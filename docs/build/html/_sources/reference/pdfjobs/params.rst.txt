@@ -198,6 +198,20 @@ TSABasicAuthCredentials
     :show-inheritance:
     :exclude-members: to_dict
 
+ImportPDFFormDataParams
+-------------------
+.. automodule:: adobe.pdfservices.operation.pdfjobs.params.import_pdf_form_data.import_pdf_form_data_params
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+ExportPDFFormDataParams
+-------------------
+.. automodule:: adobe.pdfservices.operation.pdfjobs.params.export_pdf_form_data.export_pdf_form_data_params
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 TSAOptions
 -------------------
 .. automodule:: adobe.pdfservices.operation.pdfjobs.params.eseal.tsa_options
@@ -301,6 +315,13 @@ OCRSupportedType
 PDFPropertiesParams
 -------------------
 .. automodule:: adobe.pdfservices.operation.pdfjobs.params.pdf_properties.pdf_properties_params
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+PDFToMarkdownParams
+-------------------
+.. automodule:: adobe.pdfservices.operation.pdfjobs.params.pdf_to_markdown.pdf_to_markdown_params
     :members:
     :undoc-members:
     :show-inheritance:

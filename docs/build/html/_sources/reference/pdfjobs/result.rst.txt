@@ -109,6 +109,13 @@ PDFPropertiesResult
     :undoc-members:
     :show-inheritance:
 
+PDFToMarkdownResult
+-------------------
+.. autoclass:: adobe.pdfservices.operation.pdfjobs.result.pdf_to_markdown_result.PDFToMarkdownResult
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 ProtectPDFResult
 -------------------
 .. autoclass:: adobe.pdfservices.operation.pdfjobs.result.protect_pdf_result.ProtectPDFResult
@@ -168,6 +175,20 @@ PDFWatermarkResult
 PDFAccessibilityCheckerResult
 -------------------
 .. autoclass:: adobe.pdfservices.operation.pdfjobs.result.pdf_accessibility_checker_result.PDFAccessibilityCheckerResult
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+ImportPDFFormDataResult
+-------------------
+.. autoclass:: adobe.pdfservices.operation.pdfjobs.result.import_pdf_form_data_result.ImportPDFFormDataResult
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+ExportPDFFormDataResult
+-------------------
+.. autoclass:: adobe.pdfservices.operation.pdfjobs.result.export_pdf_form_data_result.ExportPDFFormDataResult
     :members:
     :undoc-members:
     :show-inheritance:
