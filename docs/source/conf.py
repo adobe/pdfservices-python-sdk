@@ -13,7 +13,7 @@ sys.path.insert(0, os.path.abspath('../../src'))
 project = 'pdfservices-sdk'
 copyright = '2024, adobe'
 author = 'adobe'
-release = '3.0.0'
+release = '4.3.0'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration

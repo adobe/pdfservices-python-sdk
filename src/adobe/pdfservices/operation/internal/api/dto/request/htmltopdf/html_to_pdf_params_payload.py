@@ -20,13 +20,17 @@ class HTMLtoPDFParamsPayload:
     json_hint = {
         'json': 'json',
         'include_header_footer': 'includeHeaderFooter',
-        'page_layout': 'pageLayout'
+        'page_layout': 'pageLayout',
+        'include_rendered_html': 'includeRenderedHtml'
     }
 
     def __init__(self, html_to_pdf_params: HTMLtoPDFParams):
         self.json = html_to_pdf_params.get_json()
         self.include_header_footer = html_to_pdf_params.get_include_header_footer()
         self.page_layout = html_to_pdf_params.get_page_layout()
+        # Only set include_rendered_html when true to ensure it's sent to the API
+        if html_to_pdf_params.get_include_rendered_html():
+            self.include_rendered_html = True
 
     def to_json(self):
         return json.dumps(self, cls=JSONHintEncoder, indent=1, sort_keys=True)

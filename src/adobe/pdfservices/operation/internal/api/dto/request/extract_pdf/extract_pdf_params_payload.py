@@ -22,7 +22,9 @@ class ExtractPDFParamsPayload:
         'include_styling': 'includeStyling',
         'elements_to_extract': 'elementsToExtract',
         'table_output_format': 'tableOutputFormat',
-        'renditions_to_extract': 'renditionsToExtract'
+        'renditions_to_extract': 'renditionsToExtract',
+        'include_header_footer': 'includeHeaderFooter',
+        'tag_encapsulated_text': 'tagEncapsulatedText'
     }
 
     def __init__(self, extract_pdf_params: ExtractPDFParams):
@@ -36,6 +38,10 @@ class ExtractPDFParamsPayload:
             if extract_pdf_params.get_table_structure_type() is not None else None
         self.renditions_to_extract = extract_pdf_params.get_elements_to_extract_renditions() \
             if extract_pdf_params.get_elements_to_extract_renditions() is not None else None
+        self.include_header_footer = extract_pdf_params.get_include_header_footer() \
+            if extract_pdf_params.get_include_header_footer() is not None else None
+        self.tag_encapsulated_text = extract_pdf_params.get_tag_encapsulated_text() \
+            if extract_pdf_params.get_tag_encapsulated_text() is not None else None
 
     def to_json(self):
         return json.dumps(self, cls=JSONHintEncoder, indent=1, sort_keys=True)

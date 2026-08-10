@@ -27,6 +27,7 @@ Subpackages
    adobe.pdfservices.operation.pdfjobs.params.replace_pages
    adobe.pdfservices.operation.pdfjobs.params.rotate_pages
    adobe.pdfservices.operation.pdfjobs.params.split_pdf
+   adobe.pdfservices.operation.pdfjobs.params.import_pdf_form_data
 
 Submodules
 ----------

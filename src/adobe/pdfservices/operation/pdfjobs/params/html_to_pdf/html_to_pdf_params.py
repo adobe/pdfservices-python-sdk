@@ -25,7 +25,8 @@ class HTMLtoPDFParams(PDFServicesJobParams):
     def __init__(self, *,
                  json: str = '{}',
                  include_header_footer: bool = False,
-                 page_layout: PageLayout = PageLayout()):
+                 page_layout: PageLayout = PageLayout(),
+                 include_rendered_html: bool = False):
         """
         Constructs a new :samp:`HTMLtoPDFParams` instance.
 
@@ -49,10 +50,14 @@ class HTMLtoPDFParams(PDFServicesJobParams):
         :type include_header_footer: bool
         :param page_layout: Intended page layout of the resulting PDF file. (Optional, use key-value)
         :type page_layout: PageLayout
+        :param include_rendered_html: If true, the operation returns a ZIP file containing both the generated PDF
+            and the rendered HTML content. Default value is false. (Optional, use key-value)
+        :type include_rendered_html: bool
         """
         self.json = json
         self.include_header_footer = include_header_footer
         self.page_layout = page_layout
+        self.include_rendered_html = include_rendered_html
 
     def get_json(self):
         """
@@ -85,3 +90,11 @@ class HTMLtoPDFParams(PDFServicesJobParams):
         :rtype: bool
         """
         return self.page_layout
+
+    def get_include_rendered_html(self):
+        """
+        :return: Returns true if rendered HTML should be included in the output. When true, the operation
+            returns a ZIP file containing both the generated PDF and the rendered HTML content.
+        :rtype: bool
+        """
+        return self.include_rendered_html

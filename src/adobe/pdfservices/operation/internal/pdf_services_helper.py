@@ -58,6 +58,7 @@ from adobe.pdfservices.operation.pdfjobs.result.linearize_pdf_result import Line
 from adobe.pdfservices.operation.pdfjobs.result.ocr_pdf_result import OCRPDFResult
 from adobe.pdfservices.operation.pdfjobs.result.pdf_accessibility_checker_result import PDFAccessibilityCheckerResult
 from adobe.pdfservices.operation.pdfjobs.result.pdf_properties_result import PDFPropertiesResult
+from adobe.pdfservices.operation.pdfjobs.result.pdf_to_markdown_result import PDFToMarkdownResult
 from adobe.pdfservices.operation.pdfjobs.result.protect_pdf_result import ProtectPDFResult
 from adobe.pdfservices.operation.pdfjobs.result.remove_protection_result import RemoveProtectionResult
 from adobe.pdfservices.operation.pdfjobs.result.reorder_pages_result import ReorderPagesResult
@@ -375,7 +376,7 @@ class PDFServicesHelper:
                 RotatePagesResult, ESealPDFResult, CompressPDFResult,
                 CombinePDFResult, ExportPDFResult, ExportPDFFormDataResult, ImportPDFFormDataResult, OCRPDFResult, ProtectPDFResult,
                 InsertPagesResult, ReplacePagesResult, ReorderPagesResult,
-                CreatePDFResult, HTMLtoPDFResult, RemoveProtectionResult, PDFWatermarkResult]
+                CreatePDFResult, HTMLtoPDFResult, RemoveProtectionResult, PDFWatermarkResult, PDFToMarkdownResult]
 
     @classmethod
     def __fetch_extract_content_json(cls, context: ExecutionContext, download_uri: str):

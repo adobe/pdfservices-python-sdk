@@ -109,6 +109,13 @@ PDFPropertiesJob
     :undoc-members:
     :show-inheritance:
 
+PDFToMarkdownJob
+-------------------
+.. autoclass:: adobe.pdfservices.operation.pdfjobs.jobs.pdf_to_markdown_job.PDFToMarkdownJob
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 ProtectPDFJob
 -------------------
 .. autoclass:: adobe.pdfservices.operation.pdfjobs.jobs.protect_pdf_job.ProtectPDFJob
@@ -161,6 +168,20 @@ PDFWatermarkJob
 PDFAccessibilityCheckerJob
 -------------------
 .. autoclass:: adobe.pdfservices.operation.pdfjobs.jobs.pdf_accessibility_checker_job.PDFAccessibilityCheckerJob
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+ImportPDFFormDataJob
+-------------------
+.. autoclass:: adobe.pdfservices.operation.pdfjobs.jobs.import_pdf_form_data_job.ImportPDFFormDataJob
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+ExportPDFFormDataJob
+-------------------
+.. autoclass:: adobe.pdfservices.operation.pdfjobs.jobs.export_pdf_form_data_job.ExportPDFFormDataJob
     :members:
     :undoc-members:
     :show-inheritance:

@@ -29,7 +29,9 @@ class ExtractPDFParams(PDFServicesJobParams):
                  add_char_info: bool = False,
                  styling_info: bool = False,
                  elements_to_extract: Optional[List] = None,
-                 elements_to_extract_renditions: Optional[List] = None):
+                 elements_to_extract_renditions: Optional[List] = None,
+                 include_header_footer: bool = False,
+                 tag_encapsulated_text: Optional[List] = None):
         """
         Construct a new :class:`.ExtractPDFParams`
 
@@ -47,12 +49,20 @@ class ExtractPDFParams(PDFServicesJobParams):
         :param elements_to_extract_renditions: List of :class:`ExtractElementType<adobe.pdfservices.operation.pdfjobs.params.extract_pdf.extract_renditions_element_type.ExtractRenditionsElementType>`.
             (Optional, use key-value)
         :type elements_to_extract_renditions: List
+        :param include_header_footer: Boolean specifying whether to extract header and footer information as part of json.
+            (Optional, use key-value)
+        :type include_header_footer: bool
+        :param tag_encapsulated_text: List of elements from which to extract encapsulated text content (e.g., ["Figure"]).
+            (Optional, use key-value)
+        :type tag_encapsulated_text: list
         """
         self.table_structure_type = table_structure_type
         self.add_char_info = add_char_info
         self.styling_info = styling_info
         self.elements_to_extract_renditions = elements_to_extract_renditions
         self.elements_to_extract = elements_to_extract
+        self.include_header_footer = include_header_footer
+        self.tag_encapsulated_text = tag_encapsulated_text
 
     def get_table_structure_type(self):
         """
@@ -90,3 +100,17 @@ class ExtractPDFParams(PDFServicesJobParams):
         """
         return [element.__str__() for element in self.elements_to_extract] \
             if self.elements_to_extract is not None else None
+
+    def get_include_header_footer(self):
+        """
+        :return: Whether header and footer extraction was invoked for operation.
+        :rtype: bool
+        """
+        return self.include_header_footer
+
+    def get_tag_encapsulated_text(self):
+        """
+        :return: Returns the list of elements from which to extract encapsulated text content.
+        :rtype: list
+        """
+        return self.tag_encapsulated_text
